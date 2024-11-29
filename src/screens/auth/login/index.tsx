@@ -5,13 +5,15 @@ import {
 	CardDescription,
 	CardHeader,
 	CardTitle,
-	Input,
-	Label
+	CustomInput
 } from '@/components/ui'
 
 import styles from './LoginPage.module.scss'
+import { useLogin } from './useLogin'
 
 export default function LoginPage() {
+	const { formMethod, onSubmit, isSubmit } = useLogin()
+
 	return (
 		<section className={styles.page}>
 			<div className={styles.page_bg}>
@@ -21,27 +23,42 @@ export default function LoginPage() {
 				<CardHeader className={styles.header}>
 					<CardTitle className={styles.title}>Login</CardTitle>
 					<CardDescription className={styles.description}>
-						Enter your email and password to login to your account
+						Enter your username and password to login to your account
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
-					<form className={styles.form}>
+					<form
+						className={styles.form}
+						onSubmit={formMethod.handleSubmit(onSubmit)}
+					>
 						<div className={styles.form_item}>
-							<Label htmlFor='email'>Email</Label>
-							<Input
-								id='email'
-								type='email'
-								placeholder='m@example.com'
-								required
+							<CustomInput
+								label='Username'
+								id='username'
+								placeholder='Enter username'
+								{...formMethod.register('username', {
+									required: true
+								})}
+								error={formMethod.formState.errors.username}
 							/>
 						</div>
 						<div className={styles.form_item}>
-							<Label htmlFor='password'>Password</Label>
-							<Input id='password' type='password' />
+							<CustomInput
+								label='Password'
+								id='password'
+								type='password'
+								placeholder='******'
+								{...formMethod.register('password', {})}
+								error={formMethod.formState.errors.password}
+							/>
 						</div>
 
 						<div>
-							<Button type='submit' className={styles.button}>
+							<Button
+								loading={isSubmit}
+								type='submit'
+								className={styles.button}
+							>
 								Login
 							</Button>
 						</div>
