@@ -1,3 +1,9 @@
+import { Button } from '@/components/ui'
+
 export default function LoginPage() {
-	return <div>login Page</div>
+	return (
+		<div>
+			<Button>Click me</Button>
+		</div>
+	)
 }
