@@ -1,0 +1,8 @@
+# Ignore artifacts: 
+/build
+/node_modules
+
+# Ignore files: 
+/public
+package.json
+package.lock.json
