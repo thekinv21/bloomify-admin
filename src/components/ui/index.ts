@@ -7,6 +7,7 @@ import {
 	CardHeader,
 	CardTitle
 } from './card'
+import CustomInput from './CustomInput'
 import { Input } from './input'
 import { Label } from './label'
 
@@ -18,6 +19,7 @@ export {
 	CardFooter,
 	CardHeader,
 	CardTitle,
+	CustomInput,
 	Input,
 	Label
 }

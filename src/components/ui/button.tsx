@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { LoaderIcon } from 'lucide-react'
+import { RefreshCw } from 'lucide-react'
 
 import { cn } from '@/utils/utils'
 
@@ -75,13 +75,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 			>
 				{((leftSection && loading) ||
 					(!leftSection && !rightSection && loading)) && (
-					<LoaderIcon className='mr-2 h-4 w-4 animate-spin' />
+					<RefreshCw className='mr-2 h-4 w-4 animate-spin' />
 				)}
 				{!loading && leftSection && <div className='mr-2'>{leftSection}</div>}
 				{children}
 				{!loading && rightSection && <div className='ml-2'>{rightSection}</div>}
 				{rightSection && loading && (
-					<LoaderIcon className='ml-2 h-4 w-4 animate-spin' />
+					<RefreshCw className='ml-2 h-4 w-4 animate-spin' />
 				)}
 			</Comp>
 		)
