@@ -8,7 +8,7 @@ export interface ICustomResponse<T> {
 	pageSize?: number
 	totalElements?: number
 	totalPages?: number
-	last?: boolean
-	first?: boolean
-	empty?: boolean
+	isLast?: boolean
+	isFirst?: boolean
+	isEmpty?: boolean
 }
