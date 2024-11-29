@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import { forwardRef, InputHTMLAttributes } from 'react'
 import { FieldError } from 'react-hook-form'
 
-import { Input } from './input'
-import { Label } from './label'
+import { Input } from '../input'
+import { Label } from '../label'
 
 export interface IFieldProps {
 	label?: string

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { createJSONStorage, persist } from 'zustand/middleware'
+import { persist } from 'zustand/middleware'
 
 import { ILoginResponse, IUser } from '@/types'
 
@@ -33,7 +33,3 @@ export const useUserStore = create<IUserStore>()(
 		}
 	)
 )
-
-useUserStore.persist.setOptions({
-	storage: createJSONStorage(() => sessionStorage)
-})

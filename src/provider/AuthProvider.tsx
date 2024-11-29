@@ -1,7 +1,11 @@
-import { useEffect } from 'react'
-import { useLocation, useNavigate } from 'react-router'
+import { useCallback, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+
+import { useRoute } from '@/hooks'
 
 import { pathConstant } from '@/constant'
+
+import { Loader } from '@/components/ui'
 
 import { useUserStore } from '@/store/userStore'
 
@@ -10,28 +14,56 @@ interface IAuthProvider {
 }
 
 export function AuthProvider({ children }: IAuthProvider) {
+	const [isTransition, setIsTransition] = useState<boolean>(false)
+
 	const { user, accessToken, saveUserToStore, removeUserFromStore } =
 		useUserStore()
-	const navigate = useNavigate()
+
+	const { route } = useRoute()
 	const location = useLocation()
+
+	const handleTransitionStart = useCallback(() => {
+		setIsTransition(true)
+	}, [])
+
+	const handleTransitionEnd = useCallback(() => {
+		setIsTransition(false)
+	}, [])
 
 	useEffect(() => {
 		if (user && accessToken) {
 			saveUserToStore({ user, accessToken })
 
 			if (
-				location.pathname.includes(pathConstant.login) ||
-				location.pathname.includes(pathConstant.register) ||
-				location.pathname.includes(pathConstant.initial)
+				(location.pathname.includes(pathConstant.login) ||
+					location.pathname.includes(pathConstant.register) ||
+					location.pathname.includes(pathConstant.initial)) &&
+				location.pathname !== pathConstant.home
 			) {
-				navigate(pathConstant.home, { replace: true })
+				route(pathConstant.home, { replace: true })
 			}
 		} else {
 			removeUserFromStore()
-
-			navigate(pathConstant.login, { replace: true })
+			if (location.pathname !== pathConstant.login) {
+				route(pathConstant.login, { replace: true })
+			}
 		}
-	}, [accessToken, user, location.pathname, navigate])
+	}, [
+		user,
+		accessToken,
+		location.pathname,
+		route,
+		saveUserToStore,
+		removeUserFromStore
+	])
 
-	return <>{children}</>
+	useEffect(() => {
+		handleTransitionStart()
+
+		const timeout = setTimeout(handleTransitionEnd, 2000)
+
+		return () => clearTimeout(timeout)
+	}, [location.pathname, handleTransitionStart, handleTransitionEnd])
+
+	return <>{isTransition ? <Loader /> : children}</>
 }

@@ -7,9 +7,10 @@ import {
 	CardHeader,
 	CardTitle
 } from './card'
-import CustomInput from './CustomInput'
+import CustomInput from './custom/CustomInput'
 import { Input } from './input'
 import { Label } from './label'
+import { Loader } from './loader/Loader'
 
 export {
 	Button,
@@ -21,5 +22,6 @@ export {
 	CardTitle,
 	CustomInput,
 	Input,
-	Label
+	Label,
+	Loader
 }
