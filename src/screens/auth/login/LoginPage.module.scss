@@ -1,0 +1,39 @@
+.page {
+	@apply flex h-screen w-screen items-center justify-center;
+}
+
+.page_bg {
+	@apply absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px];
+
+	.page_bg_color {
+		@apply absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-[#c5d9da] opacity-20 blur-[100px];
+	}
+}
+
+.card {
+	@apply mx-auto max-w-sm;
+
+	.header {
+		@apply space-y-1;
+
+		.title {
+			@apply text-2xl font-bold;
+		}
+
+		.description {
+			@apply text-opacity-70;
+		}
+	}
+
+	.form {
+		@apply space-y-4;
+
+		.form_item {
+			@apply space-y-2;
+		}
+
+		.button {
+			@apply my-3 w-full;
+		}
+	}
+}
