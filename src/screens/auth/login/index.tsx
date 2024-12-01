@@ -1,3 +1,7 @@
+import { AtSign, Eye, EyeOff, Lock } from 'lucide-react'
+
+import { useTranslate } from '@/hooks'
+
 import {
 	Button,
 	Card,
@@ -12,7 +16,8 @@ import styles from './LoginPage.module.scss'
 import { useLogin } from './useLogin'
 
 export default function LoginPage() {
-	const { formMethod, onSubmit, isSubmit } = useLogin()
+	const { formMethod, onSubmit, isSubmit, isShow, handleToggle } = useLogin()
+	const { t } = useTranslate()
 
 	return (
 		<section className={styles.page}>
@@ -21,9 +26,9 @@ export default function LoginPage() {
 			</div>
 			<Card className={styles.card}>
 				<CardHeader className={styles.header}>
-					<CardTitle className={styles.title}>Login</CardTitle>
+					<CardTitle className={styles.title}>{t(`login`)}</CardTitle>
 					<CardDescription className={styles.description}>
-						Enter your username and password to login to your account
+						{t(`login_placeholder`)}
 					</CardDescription>
 				</CardHeader>
 				<CardContent>
@@ -33,22 +38,32 @@ export default function LoginPage() {
 					>
 						<div className={styles.form_item}>
 							<CustomInput
-								label='Username'
+								label={t(`username`)}
 								id='username'
-								placeholder='Enter username'
-								{...formMethod.register('username', {
-									required: true
-								})}
+								placeholder={t(`username_placeholder`)}
+								iconLeft={
+									<AtSign size={18} strokeWidth={2} aria-hidden='true' />
+								}
+								{...formMethod.register('username')}
 								error={formMethod.formState.errors.username}
 							/>
 						</div>
 						<div className={styles.form_item}>
 							<CustomInput
-								label='Password'
+								label={t(`password`)}
 								id='password'
-								type='password'
+								type={isShow ? 'text' : 'password'}
 								placeholder='******'
-								{...formMethod.register('password', {})}
+								iconRight={
+									isShow ? (
+										<EyeOff size={18} strokeWidth={2} aria-hidden='true' />
+									) : (
+										<Eye size={18} strokeWidth={2} aria-hidden='true' />
+									)
+								}
+								iconLeft={<Lock size={18} strokeWidth={2} aria-hidden='true' />}
+								iconRightOnClick={handleToggle}
+								{...formMethod.register('password')}
 								error={formMethod.formState.errors.password}
 							/>
 						</div>
@@ -59,7 +74,7 @@ export default function LoginPage() {
 								type='submit'
 								className={styles.button}
 							>
-								Login
+								{t(`login`)}
 							</Button>
 						</div>
 					</form>

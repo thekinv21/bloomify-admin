@@ -18,6 +18,7 @@ import { loginSchema } from './loginSchema'
 
 export const useLogin = () => {
 	const [isSubmit, setIsSubmit] = useState<boolean>(false)
+	const [isShow, setIsShow] = useState<boolean>(false)
 
 	const { route } = useRoute()
 
@@ -54,9 +55,15 @@ export const useLogin = () => {
 		LOGIN(data)
 	}
 
+	const handleToggle = () => {
+		setIsShow(!isShow)
+	}
+
 	return {
 		formMethod,
 		onSubmit,
-		isSubmit
+		isSubmit,
+		handleToggle,
+		isShow
 	}
 }

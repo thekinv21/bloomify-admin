@@ -11,17 +11,17 @@
 }
 
 .card {
-	@apply mx-auto max-w-sm;
+	@apply mx-auto min-w-[400px];
 
 	.header {
 		@apply space-y-1;
 
 		.title {
-			@apply text-2xl font-bold;
+			@apply text-2xl font-semibold uppercase opacity-70;
 		}
 
 		.description {
-			@apply text-opacity-70;
+			@apply text-xs text-opacity-70;
 		}
 	}
 
