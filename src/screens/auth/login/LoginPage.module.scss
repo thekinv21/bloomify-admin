@@ -11,29 +11,29 @@
 }
 
 .card {
-	@apply mx-auto max-w-sm;
+	@apply mx-auto min-h-[370px] min-w-[400px];
 
 	.header {
-		@apply space-y-1;
+		@apply space-y-3;
 
 		.title {
-			@apply text-2xl font-bold;
+			@apply text-2xl font-semibold uppercase opacity-70;
 		}
 
 		.description {
-			@apply text-opacity-70;
+			@apply text-xs text-opacity-70;
 		}
 	}
 
 	.form {
-		@apply space-y-4;
+		@apply space-y-5;
 
 		.form_item {
 			@apply space-y-2;
 		}
 
 		.button {
-			@apply my-3 w-full;
+			@apply mt-3 w-full;
 		}
 	}
 }

@@ -1,3 +1,4 @@
 import { useRoute } from './useRoute'
+import { useTranslate } from './useTranslate'
 
-export { useRoute }
+export { useRoute, useTranslate }
