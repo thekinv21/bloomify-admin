@@ -11,7 +11,7 @@
 	"password_must_be": "Şifre 4 karakterden fazla olmalıdır",
 	"dashboard": "Kontrol Paneli",
 	"user": "Kullanıcı",
-	"role": "Rol",
+	"role": "Roller",
 	"admin": "Yönetici"
 	
 }
