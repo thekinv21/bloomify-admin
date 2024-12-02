@@ -35,16 +35,22 @@ export function AuthProvider({ children }: IAuthProvider) {
 			saveUserToStore({ user, accessToken })
 
 			if (
-				(location.pathname.includes(pathConstant.login) ||
-					location.pathname.includes(pathConstant.register) ||
-					location.pathname.includes(pathConstant.initial)) &&
-				location.pathname !== pathConstant.home
+				[
+					pathConstant.login?.toString(),
+					pathConstant.register?.toString(),
+					pathConstant.initial?.toString()
+				].includes(location.pathname)
 			) {
 				route(pathConstant.home, { replace: true })
 			}
 		} else {
-			removeUserFromStore()
-			if (location.pathname !== pathConstant.login) {
+			if (
+				![
+					pathConstant.login?.toString(),
+					pathConstant.register?.toString(),
+					pathConstant.initial?.toString()
+				].includes(location.pathname)
+			) {
 				route(pathConstant.login, { replace: true })
 			}
 		}
