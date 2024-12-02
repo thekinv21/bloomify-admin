@@ -8,5 +8,9 @@
 	"password": "Password",
 	"password_placeholder": "Enter Password",
 	"password_required": "Password is required",
-	"password_must_be": "Password must be at least 4 characters"
+	"password_must_be": "Password must be at least 4 characters",
+	"dashboard": "Dashboard",
+	"user": "User",
+	"role": "Role",
+	"admin": "admin"
 }

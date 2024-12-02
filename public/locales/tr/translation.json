@@ -8,5 +8,10 @@
 	"password": "Şifre",
 	"password_placeholder": "Şifre giriniz",
 	"password_required": "Şifre zorunludur",
-	"password_must_be": "Şifre 4 karakterden fazla olmalıdır"
+	"password_must_be": "Şifre 4 karakterden fazla olmalıdır",
+	"dashboard": "Kontrol Paneli",
+	"user": "Kullanıcı",
+	"role": "Rol",
+	"admin": "Yönetici"
+	
 }
