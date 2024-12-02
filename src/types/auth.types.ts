@@ -1,4 +1,4 @@
-import { IUser } from './user.types'
+import { IUser } from './admin/user.types'
 
 export interface ILoginResponse {
 	accessToken: string

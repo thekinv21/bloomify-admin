@@ -12,3 +12,8 @@ export interface ICustomResponse<T> {
 	isFirst?: boolean
 	isEmpty?: boolean
 }
+
+export interface IOption<T> {
+	label: string
+	value: T
+}
