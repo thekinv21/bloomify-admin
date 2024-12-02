@@ -1,0 +1,50 @@
+.sidebar {
+	@apply relative flex h-[calc(100vh)] w-full max-w-[20rem] flex-col overflow-y-auto overflow-x-hidden border-r bg-clip-border p-4 shadow-xl;
+}
+
+.logo {
+	@apply mb-2 flex select-none items-center justify-start gap-2 border-b border-gray-100/70 p-4;
+	> h5 {
+		@apply mt-2 font-sans text-xl font-semibold uppercase tracking-normal text-black/70;
+	}
+}
+
+.links {
+	@apply flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
+}
+
+.link_button {
+	@apply relative flex w-full items-center rounded px-3 py-2.5 text-start leading-tight outline-none transition-all hover:bg-gray-50 hover:bg-opacity-80 hover:text-gray-900 focus:bg-gray-50 focus:bg-opacity-80 focus:text-gray-900 active:bg-gray-50 active:bg-opacity-80 active:text-gray-900;
+}
+
+.link_icon {
+	@apply mr-2.5 grid place-items-center;
+}
+
+.link_label {
+	@apply text-sm font-normal capitalize;
+}
+
+.dropdown_label {
+	@apply flex w-full items-center justify-between;
+
+	> span {
+		@apply text-sm font-normal capitalize;
+	}
+}
+
+.dropdown_list {
+	@apply my-3 list-disc space-y-3 pl-3;
+}
+
+.dropdown_item {
+	@apply inline-flex w-full rounded px-5 py-1.5 text-sm transition duration-300 ease-out;
+
+	> li {
+		@apply flex items-center gap-2;
+	}
+
+	&:hover {
+		@apply bg-gray-50 bg-opacity-80;
+	}
+}
