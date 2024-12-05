@@ -17,3 +17,8 @@ export enum HttpEnum {
 	GET = 'get',
 	DELETE = 'delete'
 }
+
+export enum SidebarStatus {
+	COLLAPSED = 'COLLAPSED',
+	NORMAL = 'NORMAL'
+}
