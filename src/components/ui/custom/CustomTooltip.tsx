@@ -11,10 +11,10 @@ interface ICustomTooltip {
 	children: ReactNode
 	message: string
 	position?: 'top' | 'right' | 'bottom' | 'left'
-	offset?: number
-	align?: 'start' | 'center' | 'end'
 	isLink?: boolean
 	url?: string
+	offset?: number
+	align?: 'start' | 'center' | 'end'
 }
 
 export function CustomTooltip({ children, ...props }: ICustomTooltip) {
