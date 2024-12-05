@@ -23,7 +23,13 @@ export function Sidebar() {
 			}
 		>
 			<SidebarLogo sidebar={sidebar} />
-			<div className={styles.sidebar_content}>
+			<div
+				className={
+					sidebar !== SidebarStatus.COLLAPSED
+						? styles.sidebar_content
+						: styles.collapsed_sidebar_content
+				}
+			>
 				<SidebarLinks />
 			</div>
 			<Button

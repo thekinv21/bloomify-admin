@@ -19,7 +19,7 @@ export function SidebarItem({ item }: ISidebarItem) {
 		<NavLink
 			to={item.url}
 			className={({ isActive }) =>
-				[styles.link_button, isActive ? 'bg-gray-50 bg-opacity-80' : ''].join(
+				[styles.link_button, isActive ? 'bg-gray-50 text-primary' : ''].join(
 					' '
 				)
 			}
@@ -50,7 +50,7 @@ export function SidebarItemDropdown({
 	const toggleDropdown = () => setIsOpen(!isOpen)
 
 	return (
-		<div>
+		<>
 			<button
 				className={styles.link_button}
 				onClick={toggleDropdown}
@@ -80,7 +80,7 @@ export function SidebarItemDropdown({
 							className={({ isActive }) =>
 								[
 									styles.dropdown_item,
-									isActive ? 'bg-gray-50 bg-opacity-80' : ''
+									isActive ? 'bg-gray-50 text-primary' : ''
 								].join(' ')
 							}
 						>
@@ -92,6 +92,6 @@ export function SidebarItemDropdown({
 					))}
 				</ul>
 			</AnimateHeight>
-		</div>
+		</>
 	)
 }
