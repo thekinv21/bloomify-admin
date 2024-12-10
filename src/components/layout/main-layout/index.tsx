@@ -1,3 +1,5 @@
+import { domAnimation, LazyMotion } from 'motion/react'
+
 import { Sidebar } from '../sidebar/Sidebar'
 
 import styles from './MainLayout.module.scss'
@@ -8,20 +10,22 @@ interface IMainLayout {
 
 export function MainLayout({ children }: IMainLayout) {
 	return (
-		<section className='relative'>
-			<div className={styles.main_layout}>
-				<div className={styles.sidebar}>
-					<Sidebar />
-				</div>
+		<LazyMotion features={domAnimation}>
+			<section className='relative'>
+				<div className={styles.main_layout}>
+					<>
+						<Sidebar />
+					</>
 
-				<div className={styles.container}>
-					{/* <Header /> */}
+					<div className={styles.container}>
+						{/* <Header /> */}
 
-					<main id='screen_content' className={styles.content}>
-						{children}
-					</main>
+						<main id='screen_content' className={styles.content}>
+							{children}
+						</main>
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</LazyMotion>
 	)
 }

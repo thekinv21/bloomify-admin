@@ -1,5 +1,5 @@
 .sidebar {
-	@apply relative flex h-[calc(100vh)] w-full min-w-[17rem] max-w-[20rem] flex-col border-r bg-clip-border p-4 shadow-xl transition-all duration-500 ease-in-out;
+	@apply relative md:flex h-[calc(100vh)] flex-col border-r bg-clip-border p-4 shadow-xl hidden ;
 }
 
 .sidebar_content {
@@ -13,7 +13,7 @@
 .logo {
 	@apply mb-2 flex select-none items-center justify-start gap-2 border-b border-gray-100/70 p-4;
 	> h5 {
-		@apply mt-2 font-sans text-xl font-semibold uppercase tracking-normal text-black/70;
+		@apply mt-2 font-sans text-xl font-semibold  tracking-normal text-black/70;
 	}
 }
 
@@ -25,7 +25,7 @@
 	@apply relative flex w-full items-center rounded px-3 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
 
 	&:hover {
-		@apply bg-gray-50 text-primary;
+		@apply  text-primary;
 	}
 }
 
@@ -34,18 +34,18 @@
 }
 
 .link_label {
-	@apply text-sm font-medium uppercase;
+	@apply text-sm font-medium capitalize;
 }
 
 .dropdown_label {
-	@apply flex w-full items-center justify-between;
+	@apply flex w-full items-center justify-between capitalize;
 
 	> span {
-		@apply text-sm font-medium uppercase;
+		@apply text-sm font-medium ;
 	}
 
 	&:hover {
-		@apply bg-gray-50 text-primary transition-all duration-300 ease-in-out;
+		@apply  text-primary transition-all duration-300 ease-in-out;
 	}
 }
 
@@ -54,35 +54,28 @@
 }
 
 .dropdown_item {
-	@apply inline-flex w-full rounded px-5 py-1.5 text-sm uppercase transition duration-300 ease-out;
+	@apply inline-flex w-full rounded px-5 py-1.5 text-sm  transition duration-300 ease-out border-none outline-none;
 
 	> li {
 		@apply flex items-center gap-2;
 	}
 
 	&:hover {
-		@apply bg-gray-50 text-primary transition-all duration-300 ease-in-out;
+		@apply  text-primary transition-all duration-300 ease-in-out;
 	}
 }
 
 // Collapsed sidebar styles
 
 .collapsed_sidebar {
-	@apply relative flex h-[calc(100vh)] w-[6rem] max-w-[6rem] flex-col border-r bg-clip-border p-4 shadow-xl transition-all duration-300 ease-in-out;
-}
-
-.collapsed_link_button {
-	@apply flex w-full items-center rounded px-3 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
-
-	&:hover {
-		@apply bg-gray-50 text-primary;
-	}
-}
-
-.collapsed_link_icon {
-	@apply mx-auto;
+	@apply relative md:flex h-[calc(100vh)]  flex-col border-r bg-clip-border p-4 shadow-xl hidden ;
 }
 
 .collapsed_sidebar_content {
 	@apply relative overflow-scroll overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
+}
+
+
+.collapsed_sidebar_item {
+	@apply capitalize cursor-pointer;
 }

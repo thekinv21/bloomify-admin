@@ -3,6 +3,7 @@ import { SidebarStatus } from '@/types/custom.enum'
 import { useAppStore } from '@/store/appStore'
 
 import styles from './Sidebar.module.scss'
+import { SidebarCollapsedDropdownItem } from './SidebarCollapsedDropdownItem'
 import { SidebarCollapsedItem } from './SidebarCollapsedItem'
 import { SidebarItem, SidebarItemDropdown } from './SidebarItem'
 import { sidebarLinks } from './SidebarLinksData'
@@ -40,7 +41,7 @@ export function SidebarLinks() {
 					{sidebarLinks.map((item, idx) => (
 						<aside key={idx}>
 							{item.subLinks?.length ? (
-								<></>
+								<SidebarCollapsedDropdownItem key={idx} item={item} />
 							) : (
 								<SidebarCollapsedItem key={idx} item={item} />
 							)}

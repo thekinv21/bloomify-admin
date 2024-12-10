@@ -1,4 +1,5 @@
 import { ChevronsLeftIcon, ChevronsRightIcon } from 'lucide-react'
+import { motion } from 'motion/react'
 
 import { SidebarStatus } from '@/types/custom.enum'
 
@@ -15,12 +16,14 @@ export function Sidebar() {
 	const { sidebar, toggleSidebar } = useAppStore()
 
 	return (
-		<div
+		<motion.aside
 			className={
 				sidebar === SidebarStatus.COLLAPSED
 					? styles.collapsed_sidebar
 					: styles.sidebar
 			}
+			animate={{ width: sidebar === SidebarStatus.COLLAPSED ? 100 : 270 }}
+			transition={{ type: 'spring', stiffness: 300, damping: 22 }}
 		>
 			<SidebarLogo sidebar={sidebar} />
 			<div
@@ -50,6 +53,6 @@ export function Sidebar() {
 					<ChevronsRightIcon strokeWidth={1} size={18} />
 				)}
 			</Button>
-		</div>
+		</motion.aside>
 	)
 }
