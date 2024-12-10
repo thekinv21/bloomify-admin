@@ -1,5 +1,5 @@
 .sidebar {
-	@apply relative md:flex h-[calc(100vh)] flex-col border-r bg-clip-border p-4 shadow-xl hidden ;
+	@apply relative md:flex h-[calc(100vh)] flex-col border-r bg-clip-border p-4 shadow-xl ;
 }
 
 .sidebar_content {
@@ -68,7 +68,7 @@
 // Collapsed sidebar styles
 
 .collapsed_sidebar {
-	@apply relative md:flex h-[calc(100vh)]  flex-col border-r bg-clip-border p-4 shadow-xl hidden ;
+	@apply relative md:flex h-[calc(100vh)]  flex-col border-r bg-clip-border p-4 shadow-xl  ;
 }
 
 .collapsed_sidebar_content {

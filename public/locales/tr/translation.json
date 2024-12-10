@@ -12,6 +12,12 @@
 	"dashboard": "Kontrol Paneli",
 	"user": "Kullanıcı",
 	"role": "Roller",
-	"admin": "Yönetici"
+	"admin": "Yönetici",
+	"russian": "Rusça",
+	"english": "İngilizce",
+	"turkish": "Türkçe",
+	"light": "Açık",
+	"dark": "Koyu",
+	"system": "Sistem"
 	
 }

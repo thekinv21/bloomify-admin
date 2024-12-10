@@ -1,5 +1,6 @@
 import { domAnimation, LazyMotion } from 'motion/react'
 
+import { Header } from '../header/Header'
 import { Sidebar } from '../sidebar/Sidebar'
 
 import styles from './MainLayout.module.scss'
@@ -18,7 +19,7 @@ export function MainLayout({ children }: IMainLayout) {
 					</>
 
 					<div className={styles.container}>
-						{/* <Header /> */}
+						<Header />
 
 						<main id='screen_content' className={styles.content}>
 							{children}
