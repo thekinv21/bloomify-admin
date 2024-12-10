@@ -1,4 +1,3 @@
-import clsx from 'clsx'
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 
@@ -9,25 +8,26 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui'
 
-import styles from './Sidebar.module.scss'
-import { ISidebarLink } from './SidebarLinksData'
+import { ISidebarLink, ISidebarSubLink } from './SidebarLinksData'
 import { cn } from '@/utils/utils'
 
-interface ISidebarCollapsedItem {
+interface ISidebarCollapsedDropdownItem {
 	item: ISidebarLink
 }
 
-export function SidebarCollapsedItem({ item }: ISidebarCollapsedItem) {
+export function SidebarCollapsedDropdownItem({
+	item
+}: ISidebarCollapsedDropdownItem) {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 
 	const location = useLocation()
 
-	const hasActiveLink = item.url === location.pathname
+	const hasActiveLink = item.subLinks?.some(
+		link => location.pathname === link.url
+	)
 
 	return (
-		<a
-			href={item.url}
-			rel='noopener noreferrer'
+		<div
 			className={cn(
 				'mx-auto flex h-12 w-12 cursor-pointer items-center justify-center rounded-lg',
 				hasActiveLink ? 'text-primary' : ''
@@ -44,17 +44,19 @@ export function SidebarCollapsedItem({ item }: ISidebarCollapsedItem) {
 				</DropdownMenuTrigger>
 
 				<DropdownMenuContent side='right' sideOffset={50} className='w-56'>
-					<DropdownMenuItem
-						onClick={() => {
-							window.location.href = item.url
-						}}
-						className={clsx(styles.collapsed_sidebar_item)}
-					>
-						<>{item.icon}</>
-						<span>{item.label}</span>
-					</DropdownMenuItem>
+					{item.subLinks?.map((subLink: ISidebarSubLink) => (
+						<DropdownMenuItem
+							onClick={() => {
+								window.location.href = subLink.url
+							}}
+							key={subLink.url}
+						>
+							<>{subLink.icon}</>
+							<span className='capitalize'>{subLink.label}</span>
+						</DropdownMenuItem>
+					))}
 				</DropdownMenuContent>
 			</DropdownMenu>
-		</a>
+		</div>
 	)
 }

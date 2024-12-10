@@ -19,9 +19,7 @@ export function SidebarItem({ item }: ISidebarItem) {
 		<NavLink
 			to={item.url}
 			className={({ isActive }) =>
-				[styles.link_button, isActive ? 'bg-gray-50 text-primary' : ''].join(
-					' '
-				)
+				[styles.link_button, isActive ? 'text-primary' : ''].join(' ')
 			}
 		>
 			<div className={styles.link_icon}>{item.icon}</div>
@@ -54,34 +52,24 @@ export function SidebarItemDropdown({
 			<button
 				className={styles.link_button}
 				onClick={toggleDropdown}
-				aria-expanded={isOpen || hasActiveLink}
+				aria-expanded={hasActiveLink}
 			>
 				<span className={styles.link_icon}>{icon}</span>
 				<div className={styles.dropdown_label}>
 					<span>{t(label)}</span>
 					<p>
-						{isOpen || hasActiveLink ? (
-							<ChevronDown size={16} />
-						) : (
-							<ChevronRight size={16} />
-						)}
+						{isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
 					</p>
 				</div>
 			</button>
-			<AnimateHeight
-				duration={500}
-				height={isOpen || hasActiveLink ? 'auto' : 0}
-			>
+			<AnimateHeight duration={500} height={isOpen ? 'auto' : 0}>
 				<ul className={styles.dropdown_list}>
 					{subLinks.map((item: ISidebarSubLink, idx: number) => (
 						<NavLink
 							to={item.url}
 							key={idx}
 							className={({ isActive }) =>
-								[
-									styles.dropdown_item,
-									isActive ? 'bg-gray-50 text-primary' : ''
-								].join(' ')
+								[styles.dropdown_item, isActive ? 'text-primary' : ''].join(' ')
 							}
 						>
 							<li>
