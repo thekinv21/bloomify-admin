@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -29,6 +30,9 @@ import { Label } from './label'
 import { Loader } from './loader/Loader'
 
 export {
+	Avatar,
+	AvatarFallback,
+	AvatarImage,
 	Button,
 	Card,
 	CardContent,
