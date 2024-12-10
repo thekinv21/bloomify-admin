@@ -12,5 +12,12 @@
 	"dashboard": "Dashboard",
 	"user": "User",
 	"role": "Role",
-	"admin": "admin"
+	"admin": "admin",
+	"russian": "Russian",
+	"english": "English",
+	"turkish": "Turkish",
+	"light": "Light",
+	"dark": "Dark",
+	"system": "System"
+	
 }
