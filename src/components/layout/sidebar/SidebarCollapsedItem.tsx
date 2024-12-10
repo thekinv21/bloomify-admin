@@ -2,6 +2,8 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 
+import { useTranslate } from '@/hooks'
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -23,6 +25,8 @@ export function SidebarCollapsedItem({ item }: ISidebarCollapsedItem) {
 	const location = useLocation()
 
 	const hasActiveLink = item.url === location.pathname
+
+	const { t } = useTranslate()
 
 	return (
 		<a
@@ -51,7 +55,7 @@ export function SidebarCollapsedItem({ item }: ISidebarCollapsedItem) {
 						className={clsx(styles.collapsed_sidebar_item)}
 					>
 						<>{item.icon}</>
-						<span>{item.label}</span>
+						<span>{t(`${item.label}`)}</span>
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>

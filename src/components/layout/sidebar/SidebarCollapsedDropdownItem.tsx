@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 
+import { useTranslate } from '@/hooks'
+
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -25,6 +27,8 @@ export function SidebarCollapsedDropdownItem({
 	const hasActiveLink = item.subLinks?.some(
 		link => location.pathname === link.url
 	)
+
+	const { t } = useTranslate()
 
 	return (
 		<div
@@ -52,7 +56,8 @@ export function SidebarCollapsedDropdownItem({
 							key={subLink.url}
 						>
 							<>{subLink.icon}</>
-							<span className='capitalize'>{subLink.label}</span>
+
+							<span className='capitalize'>{t(`${subLink.label}`)}</span>
 						</DropdownMenuItem>
 					))}
 				</DropdownMenuContent>
