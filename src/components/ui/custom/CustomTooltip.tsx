@@ -28,11 +28,14 @@ export function CustomTooltip({ children, ...props }: ICustomTooltip) {
 					align={props.align}
 				>
 					{props.isLink ? (
-						<a href={props.url?.toString()} className='cursor-pointer'>
+						<a
+							href={props.url?.toString()}
+							className='cursor-pointer capitalize'
+						>
 							{props.message}
 						</a>
 					) : (
-						<span className='cursor-text'>{props.message}</span>
+						<span className='cursor-text capitalize'>{props.message}</span>
 					)}
 				</TooltipContent>
 			</Tooltip>
