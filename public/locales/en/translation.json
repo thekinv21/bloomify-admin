@@ -18,6 +18,9 @@
 	"turkish": "Turkish",
 	"light": "Light",
 	"dark": "Dark",
-	"system": "System"
+	"system": "System",
+	"settings": "Settings",
+	"logout": "Logout",
+	"profile": "Profile"
 	
 }

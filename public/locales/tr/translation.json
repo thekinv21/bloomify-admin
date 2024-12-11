@@ -18,6 +18,9 @@
 	"turkish": "Türkçe",
 	"light": "Açık",
 	"dark": "Koyu",
-	"system": "Sistem"
+	"system": "Sistem",
+	"settings": "Ayarlar",
+	"logout": "Çıkış Yap",
+	"profile": "Profil"
 	
 }
