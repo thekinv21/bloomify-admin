@@ -1,3 +1,4 @@
+import { t } from 'i18next'
 import Swal from 'sweetalert2'
 
 import './Alert.scss'
@@ -14,10 +15,10 @@ import { IAlert, IAlertNotification } from './Alert.types'
 export function AlertNotification(props: IAlertNotification) {
 	const notification = Swal.mixin({
 		toast: true,
-		position: 'top-right',
+		position: 'top',
 		icon: props.icon,
 		showConfirmButton: false,
-		timer: 15000,
+		timer: 4000,
 		showCloseButton: false,
 		customClass: {
 			popup: props.customClass
@@ -40,11 +41,11 @@ export function Alert(props: IAlert) {
 	})
 	sweetAlert
 		.fire({
-			title: props.title ?? 'Are you sure?',
-			text: props.subTitle ?? 'You want to continue?',
+			title: props.title ?? `${t(`are_you_sure`)}`,
+			text: props.subTitle ?? `${t(`are_yor_sure_confirm`)}`,
 			icon: props.icon ?? 'warning',
-			confirmButtonText: props.confirmText ?? `Confirm`,
-			cancelButtonText: props.cancelText ?? `Cancel`,
+			confirmButtonText: props.confirmText ?? `${t(`yes`)}`,
+			cancelButtonText: props.cancelText ?? `${t(`no`)}`,
 			reverseButtons: true,
 			showConfirmButton: props.isConfirmAlert ?? true,
 			showCancelButton: props.isConfirmAlert ?? true,

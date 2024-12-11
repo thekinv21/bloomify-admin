@@ -16,7 +16,9 @@ const axiosClassic = axios.create(options)
 const axiosWithAuth = axios.create(options)
 
 axiosWithAuth.interceptors.request.use(config => {
-	const accessToken = sessionStorage.getItem(TokenEnum.ACCESS_TOKEN)
+	const store = localStorage?.getItem(TokenEnum.USER)
+	const accessToken = store ? JSON.parse(store)?.state?.accessToken : null
+
 	if (config.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`
 	}

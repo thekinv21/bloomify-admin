@@ -12,6 +12,8 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui'
 
+import styles from '../Header.module.scss'
+
 type TypeMode = {
 	mode: string
 	icon: LucideIcon
@@ -19,7 +21,7 @@ type TypeMode = {
 
 type TypeTheme = 'light' | 'dark' | 'system'
 
-export default function HeaderSystemAction() {
+export function Mode() {
 	const [theme, setTheme] = useState<TypeTheme>('system')
 	const { t } = useTranslate()
 
@@ -45,10 +47,7 @@ export default function HeaderSystemAction() {
 		<div>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<button
-						aria-label='Change Mode'
-						className='flex h-10 w-10 items-center justify-center rounded-full border outline-none focus:outline-none'
-					>
+					<button aria-label='Change Mode' className={styles.mode_trigger}>
 						{displayTheme === 'light' && (
 							<Sun size={18} strokeWidth={2} aria-hidden='true' />
 						)}
@@ -57,7 +56,7 @@ export default function HeaderSystemAction() {
 						)}
 					</button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent className='mt-12 w-auto md:min-w-40' side='left'>
+				<DropdownMenuContent className={styles.mode_menu_content} side='left'>
 					{modes.map(({ mode, icon }) => (
 						<DropdownMenuItem
 							key={mode}
