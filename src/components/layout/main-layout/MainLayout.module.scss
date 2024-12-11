@@ -7,9 +7,9 @@
 }
 
 .container {
-	@apply flex max-h-screen min-h-screen flex-1 flex-col;
+	@apply flex max-h-screen min-h-screen flex-1 flex-col overflow-y-auto;
 }
 
 .content {
-	@apply overflow-hidden p-4 sm:p-6 lg:ltr:ml-[260px] lg:rtl:mr-[260px];
+	@apply overflow-x-scroll p-4 sm:p-6 lg:ltr:ml-[260px] lg:rtl:mr-[260px];
 }
