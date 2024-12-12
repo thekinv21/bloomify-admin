@@ -12,22 +12,25 @@ import { Mode } from './mode/Mode'
 import { UserActions } from './user-actions/UserActions'
 
 export function Header() {
-	const { sidebar, toggleSidebar } = useAppStore()
+	const { toggleSidebar, sidebar } = useAppStore()
+
+	const handleToggleSidebar = () => {
+		toggleSidebar(
+			sidebar === SidebarStatus.MOBILE
+				? SidebarStatus.NORMAL
+				: SidebarStatus.MOBILE
+		)
+	}
 
 	return (
 		<header className={styles.header}>
 			<div className={styles.left_side}>
 				<Button
+					type='button'
 					size='icon'
 					variant='outline'
 					className={styles.hamburger}
-					onClick={() =>
-						toggleSidebar(
-							sidebar === SidebarStatus.COLLAPSED
-								? SidebarStatus.NORMAL
-								: SidebarStatus.COLLAPSED
-						)
-					}
+					onClick={handleToggleSidebar}
 				>
 					<MenuIcon strokeWidth={1} size={18} />
 				</Button>

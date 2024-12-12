@@ -1,9 +1,5 @@
 .main_layout {
-	@apply flex min-h-screen text-black transition-all duration-300;
-}
-
-.sidebar {
-	@apply hidden lg:block lg:w-[260px];
+	@apply relative z-20 flex min-h-screen text-black transition-all duration-300;
 }
 
 .container {

@@ -1,12 +1,12 @@
 .header {
-	@apply flex h-16 w-full items-center justify-between bg-clip-border p-4 shadow;
+	@apply fixed z-10 flex h-16 w-full items-center justify-between bg-clip-border p-4 shadow;
 }
 
 .left_side {
-	@apply flex items-center gap-x-5;
+	@apply z-10 flex items-center gap-x-5;
 
 	.hamburger {
-		@apply flex md:hidden;
+		@apply flex rounded-full md:hidden;
 	}
 }
 
