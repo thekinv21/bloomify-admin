@@ -1,5 +1,5 @@
 .sidebar {
-	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white bg-clip-border p-4 shadow-xl md:flex;
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white bg-clip-border p-4 shadow-lg md:flex lg:relative;
 }
 
 .sidebar_content {
@@ -13,7 +13,7 @@
 .logo {
 	@apply mb-2 flex select-none items-center justify-start gap-2 border-b border-gray-100/70 p-4;
 	> h5 {
-		@apply mt-2 font-sans text-xl font-semibold tracking-normal text-black/70;
+		@apply mt-2 font-sans text-lg font-semibold tracking-normal text-black/70;
 	}
 }
 
@@ -68,13 +68,21 @@
 // Collapsed sidebar styles
 
 .collapsed_sidebar {
-	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white shadow-xl md:flex;
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white shadow-lg md:flex lg:relative;
 }
 
 .collapsed_sidebar_content {
-	@apply relative overflow-scroll overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
+	@apply overflow-scroll overflow-y-auto overflow-x-hidden sm:fixed lg:relative [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
 }
 
 .collapsed_sidebar_item {
 	@apply cursor-pointer capitalize;
+}
+
+.mobile_sidebar {
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white shadow-lg md:hidden lg:relative;
+}
+
+.links_collapsed {
+	@apply flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
 }

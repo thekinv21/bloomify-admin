@@ -1,5 +1,10 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
+	ChartContainer,
+	ChartTooltip,
+	ChartTooltipContent
+} from '@/components/ui/chart'
+import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -43,6 +48,9 @@ export {
 	CardFooter,
 	CardHeader,
 	CardTitle,
+	ChartContainer,
+	ChartTooltip,
+	ChartTooltipContent,
 	CustomInput,
 	CustomTooltip,
 	DropdownMenu,

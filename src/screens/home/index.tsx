@@ -1,11 +1,15 @@
-import { useUserStore } from '@/store/userStore'
+import { CustomAreaChart } from './CustomAreaChart'
+import { CustomRadialChart } from './CustomRadialChart'
+import { DonutChart } from './DonutChart'
 
 export default function HomePage() {
-	const { user } = useUserStore()
-
 	return (
-		<div className='flex h-screen w-full items-center justify-center'>
-			Hoş geldin: {user && user?.firstName + user?.lastName}
-		</div>
+		<section className='grid grid-cols-1 gap-6 lg:grid-cols-2'>
+			<DonutChart />
+			<CustomRadialChart />
+			<div className='lg:col-span-2'>
+				<CustomAreaChart />
+			</div>
+		</section>
 	)
 }

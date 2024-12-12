@@ -18,15 +18,15 @@ import { SidebarLogo } from './SidebarLogo'
 export function Sidebar() {
 	const { sidebar, toggleSidebar } = useAppStore()
 
-	const { isMobile } = useResponsive()
+	const { isTablet } = useResponsive()
 
 	useEffect(() => {
-		if (isMobile) {
+		if (isTablet) {
 			toggleSidebar(SidebarStatus.MOBILE)
 		} else {
 			toggleSidebar(SidebarStatus.NORMAL)
 		}
-	}, [isMobile])
+	}, [isTablet])
 
 	function setSidebarWidth() {
 		switch (sidebar) {
@@ -56,7 +56,7 @@ export function Sidebar() {
 			return
 		}
 
-		if (isMobile && sidebar === SidebarStatus.NORMAL) {
+		if (isTablet && sidebar === SidebarStatus.NORMAL) {
 			toggleSidebar(SidebarStatus.MOBILE)
 			return
 		}
@@ -70,6 +70,7 @@ export function Sidebar() {
 
 	return (
 		<motion.aside
+			id='sidebar'
 			className={setSidebarClassName()}
 			animate={{
 				width: setSidebarWidth()
@@ -87,6 +88,7 @@ export function Sidebar() {
 				<SidebarLinks />
 			</div>
 			<Button
+				type='button'
 				className={clsx(
 					styles.toggle_btn,
 					sidebar === SidebarStatus.MOBILE ? 'hidden' : 'flex'
