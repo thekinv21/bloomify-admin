@@ -29,9 +29,9 @@ export const useUserActions = () => {
 		},
 		onError: (error: AxiosError) => {
 			AlertNotification({
-				icon: AlertEnum.ERROR,
+				icon: AlertEnum.WARNING,
 				message: errorCatch(error),
-				customClass: AlertCustomEnum.ERROR
+				customClass: AlertCustomEnum.WARNING
 			})
 		}
 	})

@@ -1,5 +1,5 @@
 .header {
-	@apply fixed z-10 flex h-16 w-full items-center justify-between bg-clip-border p-4 shadow;
+	@apply fixed z-10 flex h-16 w-full items-center justify-between bg-clip-border p-4 shadow lg:relative;
 }
 
 .left_side {
