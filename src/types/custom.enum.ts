@@ -1,7 +1,7 @@
 export enum RoleEnum {
 	USER = 'USER',
 	ADMIN = 'ADMIN',
-	SUPER_ADMIN = 'SUPERADMIN'
+	SUPER_ADMIN = 'SUPER_ADMIN'
 }
 
 export enum TokenEnum {
@@ -12,7 +12,8 @@ export enum TokenEnum {
 
 export enum SidebarStatus {
 	COLLAPSED = 'COLLAPSED',
-	NORMAL = 'NORMAL'
+	NORMAL = 'NORMAL',
+	MOBILE = 'MOBILE'
 }
 
 export enum AlertEnum {
