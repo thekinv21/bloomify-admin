@@ -7,36 +7,39 @@ import { Button } from '@/components/ui'
 import { useAppStore } from '@/store/appStore'
 
 import styles from './Header.module.scss'
-import HeaderLocalization from './HeaderLocalization'
-import HeaderSystemAction from './HeaderSystemAction'
-import HeaderUserAction from './HeaderUserAction'
+import { Localization } from './localization/Localization'
+import { Mode } from './mode/Mode'
+import { UserActions } from './user-actions/UserActions'
 
 export function Header() {
-	const { sidebar, toggleSidebar } = useAppStore()
+	const { toggleSidebar, sidebar } = useAppStore()
+
+	const handleToggleSidebar = () => {
+		toggleSidebar(
+			sidebar === SidebarStatus.MOBILE
+				? SidebarStatus.NORMAL
+				: SidebarStatus.MOBILE
+		)
+	}
 
 	return (
 		<header className={styles.header}>
-			<div className='flex items-center gap-x-5'>
+			<div className={styles.left_side}>
 				<Button
+					type='button'
 					size='icon'
 					variant='outline'
-					className='flex md:hidden'
-					onClick={() =>
-						toggleSidebar(
-							sidebar === SidebarStatus.COLLAPSED
-								? SidebarStatus.NORMAL
-								: SidebarStatus.COLLAPSED
-						)
-					}
+					className={styles.hamburger}
+					onClick={handleToggleSidebar}
 				>
 					<MenuIcon strokeWidth={1} size={18} />
 				</Button>
 			</div>
 
-			<div className='flex items-center justify-center gap-x-5'>
-				<HeaderSystemAction />
-				<HeaderLocalization />
-				<HeaderUserAction />
+			<div className={styles.right_side}>
+				<Mode />
+				<Localization />
+				<UserActions />
 			</div>
 		</header>
 	)

@@ -1,5 +1,5 @@
 .sidebar {
-	@apply relative md:flex h-[calc(100vh)] flex-col border-r bg-clip-border p-4 shadow-xl ;
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white bg-clip-border p-4 shadow-xl md:flex;
 }
 
 .sidebar_content {
@@ -13,7 +13,7 @@
 .logo {
 	@apply mb-2 flex select-none items-center justify-start gap-2 border-b border-gray-100/70 p-4;
 	> h5 {
-		@apply mt-2 font-sans text-xl font-semibold  tracking-normal text-black/70;
+		@apply mt-2 font-sans text-xl font-semibold tracking-normal text-black/70;
 	}
 }
 
@@ -25,7 +25,7 @@
 	@apply relative flex w-full items-center rounded px-3 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
 
 	&:hover {
-		@apply  text-primary;
+		@apply text-primary;
 	}
 }
 
@@ -41,11 +41,11 @@
 	@apply flex w-full items-center justify-between capitalize;
 
 	> span {
-		@apply text-sm font-medium ;
+		@apply text-sm font-medium;
 	}
 
 	&:hover {
-		@apply  text-primary transition-all duration-300 ease-in-out;
+		@apply text-primary transition-all duration-300 ease-in-out;
 	}
 }
 
@@ -54,28 +54,27 @@
 }
 
 .dropdown_item {
-	@apply inline-flex w-full rounded px-5 py-1.5 text-sm  transition duration-300 ease-out border-none outline-none;
+	@apply inline-flex w-full rounded border-none px-5 py-1.5 text-sm outline-none transition duration-300 ease-out;
 
 	> li {
 		@apply flex items-center gap-2;
 	}
 
 	&:hover {
-		@apply  text-primary transition-all duration-300 ease-in-out;
+		@apply text-primary transition-all duration-300 ease-in-out;
 	}
 }
 
 // Collapsed sidebar styles
 
 .collapsed_sidebar {
-	@apply relative md:flex h-[calc(100vh)]  flex-col border-r bg-clip-border p-4 shadow-xl  ;
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white shadow-xl md:flex;
 }
 
 .collapsed_sidebar_content {
 	@apply relative overflow-scroll overflow-y-auto overflow-x-hidden [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
 }
 
-
 .collapsed_sidebar_item {
-	@apply capitalize cursor-pointer;
+	@apply cursor-pointer capitalize;
 }

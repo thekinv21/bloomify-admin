@@ -1,3 +1,4 @@
+import { AlertCustomEnum, AlertMessageEnum } from '@/types/custom.enum'
 import { ICustomResponse } from '@/types/custom.types'
 import { IRoute } from '@/types/routes.types'
 
@@ -21,6 +22,8 @@ import {
 } from './auth.types'
 
 export type {
+	AlertCustomEnum,
+	AlertMessageEnum,
 	ICreateRoleRequest,
 	ICreateUserRequest,
 	ICustomResponse,

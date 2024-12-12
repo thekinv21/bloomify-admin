@@ -18,6 +18,13 @@
 	"turkish": "Turkish",
 	"light": "Light",
 	"dark": "Dark",
-	"system": "System"
+	"system": "System",
+	"settings": "Settings",
+	"logout": "Logout",
+	"profile": "Profile",
+	"are_you_sure": "Are you sure?",
+	"are_yor_sure_confirm" : "Are you sure you want to continue?",
+	"yes": "Yes",
+	"no": "No"
 	
 }

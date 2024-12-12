@@ -18,7 +18,7 @@ type TypeLocalization = {
 	flag: string
 }
 
-export default function HeaderLocalization() {
+export function Localization() {
 	const { t } = useTranslate()
 
 	const { language, toggleLanguage } = useAppStore()

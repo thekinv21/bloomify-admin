@@ -15,7 +15,11 @@ export function SidebarLogo({ sidebar }: ISidebarLogo) {
 			{sidebar === SidebarStatus.NORMAL ? (
 				<h5>Bloomify</h5>
 			) : (
-				<h5 className='w-full text-center'>B</h5>
+				<>
+					{sidebar === SidebarStatus.MOBILE ? null : (
+						<h5 className='w-full text-center'>B</h5>
+					)}
+				</>
 			)}
 		</a>
 	)

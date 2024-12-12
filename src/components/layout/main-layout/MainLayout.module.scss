@@ -1,15 +1,11 @@
 .main_layout {
-	@apply flex min-h-screen text-black transition-all duration-300;
-}
-
-.sidebar {
-	@apply hidden lg:block lg:w-[260px];
+	@apply relative z-20 flex min-h-screen text-black transition-all duration-300;
 }
 
 .container {
-	@apply flex min-h-screen flex-1 flex-col;
+	@apply flex max-h-screen min-h-screen flex-1 flex-col overflow-y-auto;
 }
 
 .content {
-	@apply  min-h-[90dvh] overflow-y-auto overflow-x-hidden p-4 sm:p-6 lg:ltr:ml-[260px] lg:rtl:mr-[260px];
+	@apply overflow-x-scroll p-4 sm:p-6 lg:ltr:ml-[260px] lg:rtl:mr-[260px];
 }

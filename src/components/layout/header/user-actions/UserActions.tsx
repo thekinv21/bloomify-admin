@@ -1,12 +1,4 @@
-import {
-	Bolt,
-	BookOpen,
-	Layers2,
-	LogOut,
-	LucideIcon,
-	Pin,
-	UserPen
-} from 'lucide-react'
+import { LogOut, LucideIcon, Settings, UserPen } from 'lucide-react'
 
 import {
 	Avatar,
@@ -21,6 +13,8 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui'
 
+import { useUserActions } from './useUserActions'
+
 interface IMenu {
 	icon: LucideIcon
 	label: string
@@ -28,31 +22,21 @@ interface IMenu {
 
 const menuOptions: IMenu[] = [
 	{
-		icon: Bolt,
-		label: 'Option 1'
-	},
-	{
-		icon: Layers2,
-		label: 'Option 2'
-	},
-	{
-		icon: BookOpen,
-		label: 'Option 3'
+		icon: Settings,
+		label: 'settings'
 	}
 ]
 
 const secondaryMenuOptions: IMenu[] = [
 	{
-		icon: Pin,
-		label: 'Option 4'
-	},
-	{
 		icon: UserPen,
-		label: 'Option 5'
+		label: 'profile'
 	}
 ]
 
-export default function HeaderUserAction() {
+export function UserActions() {
+	const { handleLogout, t, user } = useUserActions()
+
 	const MenuItems = (items: IMenu[]) =>
 		items.map(({ icon: Icon, label }, idx) => (
 			<DropdownMenuItem key={idx}>
@@ -62,7 +46,7 @@ export default function HeaderUserAction() {
 					className='opacity-60'
 					aria-hidden='true'
 				/>
-				<span>{label}</span>
+				<span>{t(`${label}`)}</span>
 			</DropdownMenuItem>
 		))
 
@@ -80,10 +64,10 @@ export default function HeaderUserAction() {
 			<DropdownMenuContent className='mt-12 w-auto md:min-w-64' side='left'>
 				<DropdownMenuLabel className='flex min-w-0 flex-col'>
 					<span className='truncate text-sm font-medium text-foreground'>
-						Admin Panel
+						{user?.firstName + ' ' + user?.lastName}
 					</span>
 					<span className='truncate text-xs font-normal text-muted-foreground'>
-						admin@gmail.com
+						{user?.email}
 					</span>
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
@@ -91,14 +75,17 @@ export default function HeaderUserAction() {
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>{MenuItems(secondaryMenuOptions)}</DropdownMenuGroup>
 				<DropdownMenuSeparator />
-				<DropdownMenuItem className='text-red-500 hover:text-red-600'>
+				<DropdownMenuItem
+					className='text-red-500 hover:text-red-600'
+					onClick={handleLogout}
+				>
 					<LogOut
 						size={16}
 						strokeWidth={2}
 						className='opacity-60'
 						aria-hidden='true'
 					/>
-					<span>Logout</span>
+					<span>{t('logout')}</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
 		</DropdownMenu>

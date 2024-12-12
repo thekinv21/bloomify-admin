@@ -14,6 +14,7 @@ import {
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 
+import { Alert, AlertNotification } from './alert/Alert'
 import { Button } from './button'
 import {
 	Card,
@@ -30,6 +31,8 @@ import { Label } from './label'
 import { Loader } from './loader/Loader'
 
 export {
+	Alert,
+	AlertNotification,
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
