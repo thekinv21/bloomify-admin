@@ -10,11 +10,7 @@ export default defineConfig({
 		}
 	},
 
-	css: {
-		preprocessorOptions: {
-			scss: {
-				silenceDeprecations: ['legacy-js-api']
-			}
-		}
+	server: {
+		port: 5173
 	}
 })
