@@ -18,15 +18,15 @@ import { SidebarLogo } from './SidebarLogo'
 export function Sidebar() {
 	const { sidebar, toggleSidebar } = useAppStore()
 
-	const { isTablet } = useResponsive()
+	const { isDesktop } = useResponsive()
 
 	useEffect(() => {
-		if (isTablet) {
+		if (isDesktop) {
 			toggleSidebar(SidebarStatus.MOBILE)
 		} else {
 			toggleSidebar(SidebarStatus.NORMAL)
 		}
-	}, [isTablet])
+	}, [isDesktop])
 
 	function setSidebarWidth() {
 		switch (sidebar) {
@@ -56,7 +56,7 @@ export function Sidebar() {
 			return
 		}
 
-		if (isTablet && sidebar === SidebarStatus.NORMAL) {
+		if (isDesktop && sidebar === SidebarStatus.NORMAL) {
 			toggleSidebar(SidebarStatus.MOBILE)
 			return
 		}

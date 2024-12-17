@@ -6,7 +6,7 @@
 	@apply z-10 flex items-center gap-x-5;
 
 	.hamburger {
-		@apply flex rounded-full md:hidden;
+		@apply flex rounded-full lg:hidden;
 	}
 }
 
