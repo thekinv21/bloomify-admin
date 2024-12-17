@@ -1,6 +1,6 @@
-import { useAuth } from './useAuth'
+import { useCookie } from './useCookie'
 import { useResponsive } from './useResponsive'
 import { useRoute } from './useRoute'
 import { useTranslate } from './useTranslate'
 
-export { useAuth, useResponsive, useRoute, useTranslate }
+export { useCookie, useResponsive, useRoute, useTranslate }

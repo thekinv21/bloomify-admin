@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useLocation } from 'react-router'
 
-import { useRoute } from '@/hooks'
+import { useCookie, useRoute } from '@/hooks'
 
 import { pathConstant } from '@/constant'
 
@@ -16,8 +16,9 @@ interface IAuthProvider {
 export function AuthProvider({ children }: IAuthProvider) {
 	const [isTransition, setIsTransition] = useState<boolean>(false)
 
-	const { user, accessToken, saveUserToStore, removeUserFromStore } =
-		useUserStore()
+	const { saveUserToStore, removeUserFromStore } = useUserStore()
+
+	const { accessToken, user } = useCookie()
 
 	const { route } = useRoute()
 	const location = useLocation()
@@ -32,8 +33,6 @@ export function AuthProvider({ children }: IAuthProvider) {
 
 	useEffect(() => {
 		if (user && accessToken) {
-			saveUserToStore({ user, accessToken })
-
 			if (
 				[
 					pathConstant.login?.toString(),

@@ -80,7 +80,7 @@
 }
 
 .collapsed_sidebar_content {
-	@apply overflow-scroll overflow-y-auto overflow-x-hidden sm:fixed lg:relative [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
+	@apply overflow-scroll overflow-y-auto overflow-x-hidden sm:fixed md:relative [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
 }
 
 .collapsed_sidebar_item {
