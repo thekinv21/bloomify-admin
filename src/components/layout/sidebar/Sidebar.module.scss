@@ -1,5 +1,5 @@
 .sidebar {
-	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white bg-clip-border p-4 shadow-lg md:flex lg:relative;
+	@apply fixed left-0 z-30 h-[calc(100vh)] select-none flex-col border-r bg-white bg-clip-border p-4 shadow-lg md:flex lg:relative;
 }
 
 .sidebar_content {
@@ -21,11 +21,15 @@
 	@apply flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
 }
 
+.heading {
+	@apply my-2 px-2 text-xs font-semibold uppercase opacity-70;
+}
+
 .link_button {
-	@apply relative flex w-full items-center rounded px-3 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
+	@apply relative flex w-full items-center rounded px-2 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
 
 	&:hover {
-		@apply text-primary;
+		@apply bg-gray-100/30 text-primary;
 	}
 }
 
@@ -50,14 +54,18 @@
 }
 
 .dropdown_list {
-	@apply my-3 list-disc space-y-3 pl-3;
+	@apply list-disc p-0;
+
+	> li {
+		@apply cursor-pointer;
+	}
 }
 
 .dropdown_item {
-	@apply inline-flex w-full rounded border-none px-5 py-1.5 text-sm outline-none transition duration-300 ease-out;
+	@apply inline-flex w-full rounded border-none py-2.5 pl-5 text-sm outline-none transition duration-300 ease-out;
 
 	> li {
-		@apply flex items-center gap-2;
+		@apply flex items-center gap-2 before:border-l-emerald-50 before:text-lg before:content-['-'];
 	}
 
 	&:hover {
@@ -84,5 +92,5 @@
 }
 
 .links_collapsed {
-	@apply flex flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
+	@apply flex select-none flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700;
 }
