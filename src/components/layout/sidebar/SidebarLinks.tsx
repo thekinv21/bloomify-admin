@@ -1,3 +1,5 @@
+import { useTranslate } from '@/hooks'
+
 import { SidebarStatus } from '@/types/custom.enum'
 
 import { useAppStore } from '@/store/appStore'
@@ -10,6 +12,7 @@ import { sidebarLinks } from './SidebarLinksData'
 
 export function SidebarLinks() {
 	const { sidebar } = useAppStore()
+	const { t } = useTranslate()
 
 	return (
 		<nav
@@ -23,7 +26,9 @@ export function SidebarLinks() {
 				<>
 					{sidebarLinks.map((item, idx) => (
 						<aside key={idx}>
-							{item.heading && <p className={styles.heading}>{item.heading}</p>}
+							{item.heading && (
+								<p className={styles.heading}>{t(`${item.heading}`)}</p>
+							)}
 
 							<>
 								{item.subLinks?.length ? (

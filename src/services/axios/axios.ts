@@ -25,8 +25,6 @@ axiosWithAuth.interceptors.request.use(config => {
 		? JSON.parse(cookieObject?.value)?.state?.accessToken
 		: null
 
-	console.log('cookieObject', accessToken)
-
 	if (config.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`
 	}
