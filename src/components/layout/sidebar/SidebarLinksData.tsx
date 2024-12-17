@@ -8,6 +8,7 @@ import {
 import { pathConstant } from '@/constant'
 
 export interface ISidebarLink {
+	heading?: string
 	label: string
 	url: string
 	icon: JSX.Element
@@ -24,12 +25,13 @@ export const sidebarLinks: ISidebarLink[] = [
 	{
 		label: 'dashboard',
 		url: pathConstant.home,
-		icon: <LayoutDashboardIcon size={21} strokeWidth={2} />
+		icon: <LayoutDashboardIcon size={18} strokeWidth={2} />
 	},
 	{
 		label: 'admin',
+		heading: 'admin',
 		url: '/admin/:name',
-		icon: <ShieldCheckIcon size={21} strokeWidth={2} />,
+		icon: <ShieldCheckIcon size={18} strokeWidth={2} />,
 		subLinks: [
 			{
 				label: 'user',

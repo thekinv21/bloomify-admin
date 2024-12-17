@@ -23,16 +23,20 @@ export function SidebarLinks() {
 				<>
 					{sidebarLinks.map((item, idx) => (
 						<aside key={idx}>
-							{item.subLinks?.length ? (
-								<SidebarItemDropdown
-									key={idx}
-									icon={item.icon}
-									label={item.label}
-									subLinks={item.subLinks}
-								/>
-							) : (
-								<SidebarItem key={idx} item={item} />
-							)}
+							{item.heading && <p className={styles.heading}>{item.heading}</p>}
+
+							<>
+								{item.subLinks?.length ? (
+									<SidebarItemDropdown
+										key={idx}
+										icon={item.icon}
+										label={item.label}
+										subLinks={item.subLinks}
+									/>
+								) : (
+									<SidebarItem key={idx} item={item} />
+								)}
+							</>
 						</aside>
 					))}
 				</>
