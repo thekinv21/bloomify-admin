@@ -31,6 +31,7 @@ import {
 } from './card'
 import CustomInput from './custom/CustomInput'
 import { CustomTooltip } from './custom/CustomTooltip'
+import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
 import { Label } from './label'
 import { Loader } from './loader/Loader'
@@ -53,6 +54,7 @@ export {
 	ChartTooltipContent,
 	CustomInput,
 	CustomTooltip,
+	DataTable,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
