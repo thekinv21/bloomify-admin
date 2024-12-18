@@ -20,6 +20,6 @@ export interface IOption<T> {
 
 export interface IPaginationParams {
 	page: number
-	pageSize: number
+	size: number
 	searchTerm?: string | null
 }
