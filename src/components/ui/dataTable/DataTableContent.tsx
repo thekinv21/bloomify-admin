@@ -5,9 +5,6 @@ import styles from './DataTable.module.scss'
 
 interface IDataTableContent<TData> {
 	customTable: Table<TData>
-	totalPages: number
-	totalElements: number
-	isLoading: boolean
 	isFetching: boolean
 }
 

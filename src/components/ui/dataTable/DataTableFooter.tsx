@@ -1,3 +1,4 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import { Table } from '@tanstack/react-table'
 import {
 	ChevronLeft,
@@ -6,24 +7,25 @@ import {
 	ChevronsRight
 } from 'lucide-react'
 
+import { ICustomResponse } from '@/types'
+
 import styles from './DataTable.module.scss'
 
 interface IDataTableFooter<TData> {
 	customTable: Table<TData>
-	totalPages: number
-	totalElements: number
-	isLoading: boolean
-	isFetching: boolean
+	query: UseQueryResult<ICustomResponse<TData[]>, Error>
 }
 
 export function DataTableFooter<TData>(props: IDataTableFooter<TData>) {
 	const PAGE_SIZES: number[] = [10, 20, 30, 40, 50]
 
+	const response = props.query
+
 	return (
 		<div className={styles.custom_table_footer}>
 			<div className={styles.show_per_item}>
 				Showing {props.customTable.getRowModel().rows.length} of{' '}
-				{props.totalElements} rows
+				{response?.data?.totalElements} rows
 			</div>
 
 			<div className={styles.navigation_container}>
@@ -57,7 +59,7 @@ export function DataTableFooter<TData>(props: IDataTableFooter<TData>) {
 					</button>
 					<span>
 						{props.customTable.getState().pagination.pageIndex + 1} of{' '}
-						{props?.totalPages}
+						{response?.data?.totalPages}
 					</span>
 					<button
 						onClick={() => props.customTable.nextPage()}

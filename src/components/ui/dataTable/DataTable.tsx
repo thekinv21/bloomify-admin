@@ -1,3 +1,4 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import {
 	ColumnDef,
 	getCoreRowModel,
@@ -7,6 +8,8 @@ import {
 } from '@tanstack/react-table'
 import React from 'react'
 
+import { ICustomResponse } from '@/types'
+
 import styles from './DataTable.module.scss'
 import { DataTableContent } from './DataTableContent'
 import { DataTableFooter } from './DataTableFooter'
@@ -15,11 +18,7 @@ import { DataTableHeading } from './DataTableHeading'
 interface IDataTable<TData> {
 	columns: ColumnDef<TData>[]
 	tableHeading: string
-	data: TData[]
-	totalPages: number
-	totalElements: number
-	isFetching: boolean
-	isLoading: boolean
+	query: UseQueryResult<ICustomResponse<TData[]>, Error>
 	pagination: PaginationState
 	setPagination: OnChangeFn<PaginationState>
 	searchTerm: string
@@ -29,13 +28,15 @@ interface IDataTable<TData> {
 export function DataTable<TData>({ columns, ...props }: IDataTable<TData>) {
 	const defaultData = React.useMemo(() => [], [])
 
+	const response = props.query?.data
+
 	const customTable = useReactTable({
-		data: props.data || defaultData,
+		data: (response?.content as TData[]) || defaultData,
 		columns,
 		state: {
 			pagination: props.pagination
 		},
-		pageCount: props.totalPages || 0,
+		pageCount: response?.totalPages || 0,
 		onPaginationChange: props.setPagination,
 		getCoreRowModel: getCoreRowModel(),
 		manualPagination: true
@@ -48,22 +49,11 @@ export function DataTable<TData>({ columns, ...props }: IDataTable<TData>) {
 				searchTerm={props.searchTerm}
 				setSearchTerm={props.setSearchTerm}
 			/>
-
 			<DataTableContent
 				customTable={customTable}
-				totalPages={props.totalPages}
-				totalElements={props.totalElements}
-				isFetching={props.isFetching}
-				isLoading={props.isLoading}
+				isFetching={props.query.isFetching}
 			/>
-
-			<DataTableFooter
-				customTable={customTable}
-				totalPages={props.totalPages}
-				totalElements={props.totalElements}
-				isFetching={props.isFetching}
-				isLoading={props.isLoading}
-			/>
+			<DataTableFooter customTable={customTable} query={props.query} />
 		</aside>
 	)
 }
