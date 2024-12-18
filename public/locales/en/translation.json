@@ -32,6 +32,8 @@
 	"isActive": "IsActive",
 	"actions": "Actions",
 	"createdAt": "Created At",
-	"updatedAt": "Updated At"
+	"updatedAt": "Updated At",
+	"active": "Active",
+	"passive": "Passive"
 	
 }

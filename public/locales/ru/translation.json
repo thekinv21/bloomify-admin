@@ -32,5 +32,7 @@
 	"isActive": "Активен",
 	"actions": "Действия",
 	"createdAt": "Создано",
-	"updatedAt": "Обновлено"
+	"updatedAt": "Обновлено",
+	"active": "Активен",
+	"passive": "Пассивный"
 }
