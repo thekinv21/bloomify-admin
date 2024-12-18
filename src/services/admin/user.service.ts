@@ -4,7 +4,7 @@ import {
 	IUpdateUserRequest,
 	IUser
 } from '@/types'
-import { IOption } from '@/types/custom.types'
+import { IOption, IPaginationParams } from '@/types/custom.types'
 
 import { API_URL, axiosWithAuth } from '../axios/axios'
 
@@ -18,9 +18,12 @@ class UserService {
 		return response
 	}
 
-	async getAllActive() {
+	async getAllActive(params: IPaginationParams) {
 		const response = await axiosWithAuth.get<ICustomResponse<IUser[]>>(
-			`${this.BASE_URL}`
+			`${this.BASE_URL}`,
+			{
+				params
+			}
 		)
 		return response
 	}
