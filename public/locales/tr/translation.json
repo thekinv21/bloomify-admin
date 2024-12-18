@@ -42,5 +42,6 @@
 	"add": "Ekle",
 	"create": "Oluştur",
 	"loading_data": "Veriler yükleniyor, lütfen bekleyin...",
-	"data_empty": "Veri Bulunamadı.."
+	"data_empty": "Veri Bulunamadı..",
+	"status": "Durum"
 }

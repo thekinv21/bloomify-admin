@@ -42,5 +42,6 @@
 	"add": "Add",
 	"create": "Create",
 	"loading_data": "Loading data, please wait...",
-	"data_empty": "Data is Empty.."
+	"data_empty": "Data is Empty..",
+	"status": "Status"
 }
