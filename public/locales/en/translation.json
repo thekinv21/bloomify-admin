@@ -34,6 +34,12 @@
 	"createdAt": "Created At",
 	"updatedAt": "Updated At",
 	"active": "Active",
-	"passive": "Passive"
+	"passive": "Passive",
+	"search": "Search",
+	"toggle": "Toggle",
+	"delete": "Delete",
+	"edit": "Edit",
+	"add": "Add",
+	"create": "Create"
 	
 }

@@ -34,5 +34,11 @@
 	"createdAt": "Oluşturulma Tarihi",
 	"updatedAt": "Güncelleme Tarihi",
 	"active": "Aktif",
-	"passive": "Pasif"
+	"passive": "Pasif",
+	"search": "Ara yap",
+	"toggle": "Değiştir",
+	"delete": "Sil",
+	"edit": "Düzenle",
+	"add": "Ekle",
+	"create": "Oluştur"
 }
