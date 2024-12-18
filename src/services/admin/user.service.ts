@@ -11,19 +11,19 @@ import { API_URL, axiosWithAuth } from '../axios/axios'
 class UserService {
 	private BASE_URL = `${API_URL}/api/user`
 
-	async getAll() {
+	async getAll(params: IPaginationParams) {
 		const response = await axiosWithAuth.get<ICustomResponse<IUser[]>>(
-			`${this.BASE_URL}/admin`
+			`${this.BASE_URL}/admin`,
+			{
+				params
+			}
 		)
 		return response
 	}
 
-	async getAllActive(params: IPaginationParams) {
+	async getAllActive() {
 		const response = await axiosWithAuth.get<ICustomResponse<IUser[]>>(
-			`${this.BASE_URL}`,
-			{
-				params
-			}
+			`${this.BASE_URL}`
 		)
 		return response
 	}
