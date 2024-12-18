@@ -25,5 +25,12 @@
 	"are_you_sure": "Вы уверены?",
 	"are_yor_sure_confirm" : "Вы уверены, что хотите продолжить?",
 	"yes": "Да",
-	"no": "Нет"
+	"no": "Нет",
+	"firstName": "Имя",
+	"lastName": "Фамилия",
+	"email": "Электронная почта",
+	"isActive": "Активен",
+	"actions": "Действия",
+	"createdAt": "Создано",
+	"updatedAt": "Обновлено"
 }

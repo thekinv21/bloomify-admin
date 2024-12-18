@@ -25,6 +25,13 @@
 	"are_you_sure": "Are you sure?",
 	"are_yor_sure_confirm" : "Are you sure you want to continue?",
 	"yes": "Yes",
-	"no": "No"
+	"no": "No",
+	"firstName": "FirstName",
+	"lastName": "LastName",
+	"email": "Email",
+	"isActive": "IsActive",
+	"actions": "Actions",
+	"createdAt": "Created At",
+	"updatedAt": "Updated At"
 	
 }
