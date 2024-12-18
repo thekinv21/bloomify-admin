@@ -25,6 +25,22 @@
 	"are_you_sure": "Are you sure?",
 	"are_yor_sure_confirm" : "Are you sure you want to continue?",
 	"yes": "Yes",
-	"no": "No"
-	
+	"no": "No",
+	"firstName": "FirstName",
+	"lastName": "LastName",
+	"email": "Email",
+	"isActive": "IsActive",
+	"actions": "Actions",
+	"createdAt": "Created At",
+	"updatedAt": "Updated At",
+	"active": "Active",
+	"passive": "Passive",
+	"search": "Search",
+	"toggle": "Toggle",
+	"delete": "Delete",
+	"edit": "Edit",
+	"add": "Add",
+	"create": "Create",
+	"loading_data": "Loading data, please wait...",
+	"data_empty": "Data is Empty.."
 }

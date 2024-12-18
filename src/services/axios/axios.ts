@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios'
+import Cookies from 'js-cookie'
 
 import { TokenEnum } from '@/types/custom.enum'
 
@@ -16,8 +17,13 @@ const axiosClassic = axios.create(options)
 const axiosWithAuth = axios.create(options)
 
 axiosWithAuth.interceptors.request.use(config => {
-	const store = localStorage?.getItem(TokenEnum.USER)
-	const accessToken = store ? JSON.parse(store)?.state?.accessToken : null
+	const cookie = Cookies?.get(TokenEnum.USER)
+
+	const cookieObject = cookie ? JSON.parse(cookie) : null
+
+	const accessToken = cookieObject
+		? JSON.parse(cookieObject?.value)?.state?.accessToken
+		: null
 
 	if (config.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`

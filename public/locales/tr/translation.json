@@ -25,6 +25,22 @@
 	"are_you_sure": "Emin misiniz?",
 	"are_yor_sure_confirm" : "Devam etmek istediğinizden emin misiniz?",
 	"yes": "Evet",
-	"no": "Hayır"
-	
+	"no": "Hayır",
+	"firstName": "Ad",
+	"lastName": "Soyad",
+	"email": "E-posta",
+	"isActive": "Aktif",
+	"actions": "İşlemler",
+	"createdAt": "Oluşturulma Tarihi",
+	"updatedAt": "Güncelleme Tarihi",
+	"active": "Aktif",
+	"passive": "Pasif",
+	"search": "Ara yap",
+	"toggle": "Değiştir",
+	"delete": "Sil",
+	"edit": "Düzenle",
+	"add": "Ekle",
+	"create": "Oluştur",
+	"loading_data": "Veriler yükleniyor, lütfen bekleyin...",
+	"data_empty": "Veri Bulunamadı.."
 }

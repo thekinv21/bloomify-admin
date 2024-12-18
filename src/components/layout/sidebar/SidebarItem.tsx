@@ -19,7 +19,10 @@ export function SidebarItem({ item }: ISidebarItem) {
 		<NavLink
 			to={item.url}
 			className={({ isActive }) =>
-				[styles.link_button, isActive ? 'text-primary' : ''].join(' ')
+				[
+					styles.link_button,
+					isActive ? 'bg-gray-100/20 text-primary' : ''
+				].join(' ')
 			}
 		>
 			<div className={styles.link_icon}>{item.icon}</div>

@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import { AxiosError } from 'axios'
 
-import { useTranslate } from '@/hooks'
+import { useCookie, useTranslate } from '@/hooks'
 
 import { keyConstant } from '@/constant'
 
@@ -14,7 +14,8 @@ import { Alert, AlertNotification } from '@/components/ui'
 import { useUserStore } from '@/store/userStore'
 
 export const useUserActions = () => {
-	const { accessToken, removeUserFromStore, user } = useUserStore()
+	const { removeUserFromStore } = useUserStore()
+	const { accessToken, user } = useCookie()
 
 	const { t } = useTranslate()
 

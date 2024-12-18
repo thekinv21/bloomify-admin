@@ -71,6 +71,7 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 
 					<Input
 						id={id}
+						aria-hidden='true'
 						className={clsx(
 							className,
 							iconLeft ? 'ps-10' : '',

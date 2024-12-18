@@ -17,3 +17,9 @@ export interface IOption<T> {
 	label: string
 	value: T
 }
+
+export interface IPaginationParams {
+	page: number
+	size: number
+	searchTerm?: string | null
+}
