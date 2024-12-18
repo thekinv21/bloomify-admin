@@ -9,7 +9,7 @@ import { userService } from '@/services'
 export const useFetchUsers = (props: IPaginationParams) => {
 	const query = useQuery({
 		queryKey: [keyConstant.get_users, props],
-		queryFn: () => userService.getAllActive(props),
+		queryFn: () => userService.getAll(props),
 		select(data) {
 			return data?.data
 		},

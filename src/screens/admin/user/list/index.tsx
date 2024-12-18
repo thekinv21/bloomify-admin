@@ -59,7 +59,7 @@ export function UserList() {
 			},
 			{
 				accessorKey: 'isActive',
-				header: () => <span>{t('isActive')}</span>,
+				header: () => <span>{t('status')}</span>,
 				cell: info => (info.getValue() ? t('active') : t('passive'))
 			},
 
