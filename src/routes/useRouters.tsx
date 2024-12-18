@@ -2,7 +2,7 @@ import { pathConstant } from '@/constant'
 
 import { IRoute } from '@/types'
 
-import { HomePage, LoginPage } from '@/screens'
+import { HomePage, LoginPage, UserPage } from '@/screens'
 
 export const useRouters = () => {
 	const routes: IRoute[] = [
@@ -29,7 +29,7 @@ export const useRouters = () => {
 		},
 		{
 			path: pathConstant.user,
-			element: <div>User</div>,
+			element: <UserPage />,
 			layout: 'default'
 		},
 		{
