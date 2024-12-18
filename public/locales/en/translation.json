@@ -40,6 +40,7 @@
 	"delete": "Delete",
 	"edit": "Edit",
 	"add": "Add",
-	"create": "Create"
-	
+	"create": "Create",
+	"loading_data": "Loading data, please wait...",
+	"data_empty": "Data is Empty.."
 }
