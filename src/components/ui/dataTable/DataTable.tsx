@@ -17,12 +17,14 @@ import { DataTableHeading } from './DataTableHeading'
 
 interface IDataTable<TData> {
 	columns: ColumnDef<TData>[]
-	tableHeading: string
 	query: UseQueryResult<ICustomResponse<TData[]>, Error>
 	pagination: PaginationState
 	setPagination: OnChangeFn<PaginationState>
 	searchTerm: string
 	setSearchTerm: (v: string) => void
+	tableHeading: string
+	setIsOpen?: (v: boolean) => void
+	navigateTo?: string
 }
 
 export function DataTable<TData>({ columns, ...props }: IDataTable<TData>) {
@@ -48,6 +50,8 @@ export function DataTable<TData>({ columns, ...props }: IDataTable<TData>) {
 				heading={props.tableHeading}
 				searchTerm={props.searchTerm}
 				setSearchTerm={props.setSearchTerm}
+				setIsOpen={props.setIsOpen as (v: boolean) => void}
+				navigateTo={props.navigateTo}
 			/>
 			<DataTableContent
 				customTable={customTable}

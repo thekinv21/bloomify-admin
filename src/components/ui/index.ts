@@ -21,6 +21,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
+import { BreadCrumb } from './breadcrumb/index'
 import { Button } from './button'
 import {
 	Card,
@@ -31,6 +32,7 @@ import {
 	CardTitle
 } from './card'
 import CustomInput from './custom/CustomInput'
+import { CustomModal } from './custom/CustomModal'
 import { CustomTooltip } from './custom/CustomTooltip'
 import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
@@ -43,6 +45,7 @@ export {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
+	BreadCrumb,
 	Button,
 	Card,
 	CardContent,
@@ -54,6 +57,7 @@ export {
 	ChartTooltip,
 	ChartTooltipContent,
 	CustomInput,
+	CustomModal,
 	CustomTooltip,
 	DataTable,
 	DropdownMenu,

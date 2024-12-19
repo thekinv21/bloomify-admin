@@ -5,6 +5,10 @@
 .custom_table_heading {
 	@apply mb-5 flex flex-col items-start gap-5 px-1 sm:flex-row sm:items-center sm:justify-between md:gap-0;
 
+	.block_container {
+		@apply flex w-full flex-col items-center gap-5 sm:w-auto sm:flex-row;
+	}
+
 	.input_container {
 		@apply relative w-full sm:w-auto;
 	}
@@ -14,14 +18,14 @@
 }
 
 .custom_table_content {
-	@apply overflow-x-auto overflow-y-hidden rounded border border-gray-100;
+	@apply w-full overflow-x-auto overflow-y-auto rounded border border-gray-100 [&::-webkit-scrollbar-thumb]:bg-none [&::-webkit-scrollbar]:[width:0px];
 }
 
 .custom_table {
 	@apply min-w-full divide-y divide-gray-100;
 
 	> thead {
-		@apply select-none bg-gray-50;
+		@apply sticky left-0 top-0 z-20 select-none bg-gray-50;
 
 		> tr {
 			> th {
@@ -31,7 +35,7 @@
 	}
 
 	> tbody {
-		@apply divide-y divide-gray-100 bg-white;
+		@apply divide-y divide-gray-100 overflow-y-auto bg-white;
 
 		> tr {
 			@apply hover:bg-gray-50;

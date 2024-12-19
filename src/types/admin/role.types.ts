@@ -1,6 +1,6 @@
 export interface IRole {
-	createdAt: Date
-	updateAt: Date
+	createdAt?: Date
+	updateAt?: Date
 	id: number
 	name: string
 	isActive: boolean

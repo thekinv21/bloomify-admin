@@ -50,7 +50,6 @@
 	"loading_data": "Veriler yükleniyor, lütfen bekleyin...",
 	"data_empty": "Veri Bulunamadı..",
 	"status": "Durum",
-	"users_list": "Kullanıcı Listesi",
 	"successfully_donned": "Başarıyla tamamlandı",
 	"showingRows": "{{current}} satırdan {{total}} gösteriliyor",
   "rows": "satır",
@@ -58,5 +57,10 @@
 	"roleName": "Rol Adı",
 	"roleName_placeholder": "Rol Adı giriniz",
 	"roleName_required": "Rol Adı zorunludur",
-	"roleName_must_be": "Rol Adı 4 karakterden fazla olmalıdır"
+	"roleName_must_be": "Rol Adı 4 karakterden fazla olmalıdır",
+	"create_role" : "Rol Oluştur",
+	"edit_role" : "Rolü Düzenle",
+	"users_list": "Kullanıcı Listesi",
+	"create_user" : "Kullanıcı Oluştur",
+	"edit_user" : "Kullanıcıyı Düzenle"
 }

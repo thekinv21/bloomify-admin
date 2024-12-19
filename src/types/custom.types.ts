@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface ICustomResponse<T> {
 	status: string
 	code: number
@@ -22,4 +24,10 @@ export interface IPaginationParams {
 	page: number
 	size: number
 	searchTerm?: string | null
+}
+
+export interface IBreadCrumbProps {
+	link: string
+	title: string
+	icon: ReactNode
 }

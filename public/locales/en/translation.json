@@ -12,7 +12,7 @@
 	"dashboard": "Dashboard",
 	"user": "User",
 	"role": "Role",
-	"admin": "admin",
+	"admin": "Admin",
 	"russian": "Russian",
 	"english": "English",
 	"turkish": "Turkish",
@@ -50,7 +50,6 @@
 	"loading_data": "Loading data, please wait...",
 	"data_empty": "Data is Empty..",
 	"status": "Status",
-	"users_list": "Users List",
 	"successfully_donned": "Successfully Donned",
 	"showingRows": "Showing {{current}} of {{total}} rows",
   "rows": "rows",
@@ -58,6 +57,11 @@
 	"roleName": "Role Name",
 	"roleName_placeholder": "Enter Role Name",
 	"roleName_required": "Role Name is required",
-	"roleName_must_be": "Role Name must be at least 4 characters"
+	"roleName_must_be": "Role Name must be at least 4 characters",
+	"create_role" : "Create Role",
+	"edit_role" : "Edit Role",
+	"users_list": "Users List",
+	"create_user" : "Create User",
+	"edit_user" : "Edit User"
 	
 }

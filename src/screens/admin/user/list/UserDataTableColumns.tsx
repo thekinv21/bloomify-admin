@@ -2,7 +2,7 @@ import { ColumnDef } from '@tanstack/react-table'
 import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
 import { useMemo } from 'react'
 
-import { useTranslate } from '@/hooks'
+import { useCookie, useTranslate } from '@/hooks'
 
 import { IUser } from '@/types'
 
@@ -18,6 +18,8 @@ export const UserDataTableColumns = () => {
 
 	const { toggleUser } = useToggleUser()
 	const { deleteUser } = useDeleteUser()
+
+	const { isAdmins } = useCookie()
 
 	const columns = useMemo<ColumnDef<IUser>[]>(
 		() => [
@@ -77,25 +79,30 @@ export const UserDataTableColumns = () => {
 					const id = info.getValue() as string
 					return (
 						<div className='flex items-start gap-x-5'>
-							<button
-								title={t(`edit`)}
-								onClick={() => alert(`Edit Id = ${id}`)}
-							>
-								<FilePenLineIcon color='blue' size={20} />
-							</button>
-							<button
-								title={t(`delete`)}
-								onClick={() => {
-									Alert({
-										subTitle: t('delete_confirm'),
-										action: async () => {
-											return deleteUser(id)
-										}
-									})
-								}}
-							>
-								<Trash2Icon color='red' size={20} />
-							</button>
+							{isAdmins && (
+								<button
+									title={t(`edit`)}
+									onClick={() => alert(`Edit Id = ${id}`)}
+								>
+									<FilePenLineIcon color='blue' size={20} />
+								</button>
+							)}
+
+							{isAdmins && (
+								<button
+									title={t(`delete`)}
+									onClick={() => {
+										Alert({
+											subTitle: t('delete_confirm'),
+											action: async () => {
+												return deleteUser(id)
+											}
+										})
+									}}
+								>
+									<Trash2Icon color='red' size={20} />
+								</button>
+							)}
 						</div>
 					)
 				}

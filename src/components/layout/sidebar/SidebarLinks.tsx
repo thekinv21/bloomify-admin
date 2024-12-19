@@ -34,7 +34,7 @@ export function SidebarLinks() {
 						<div key={idx}>
 							{(isAlwaysVisible ||
 								item.hasAuthority?.some((role: string) =>
-									USER_ROLES.includes(role)
+									USER_ROLES?.includes(role)
 								)) && (
 								<div>
 									{item.heading && (
@@ -64,7 +64,7 @@ export function SidebarLinks() {
 						<div key={idx}>
 							{(isAlwaysVisible ||
 								item.hasAuthority?.some((role: string) =>
-									USER_ROLES.includes(role)
+									USER_ROLES?.includes(role)
 								)) && (
 								<div>
 									{item.subLinks?.length ? (

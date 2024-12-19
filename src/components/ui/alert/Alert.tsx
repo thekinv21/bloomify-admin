@@ -23,10 +23,18 @@ export function AlertNotification(props: IAlertNotification) {
 		customClass: {
 			popup: props.customClass
 		},
-		width: props.width ?? 320
+		width:
+			props.message?.toString().length > 40
+				? props.width
+					? props.width
+					: 450
+				: 'auto'
 	})
 	notification.fire({
-		title: props.message?.slice(0, 60) + ' ... '
+		title:
+			props.message?.toString().length > 40
+				? `${props.message.toString().slice(0, 37)}...`
+				: props.message?.toString()
 	})
 }
 
