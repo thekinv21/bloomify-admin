@@ -15,7 +15,7 @@ export function DataTableContent<TData>(props: IDataTableContent<TData>) {
 		<div
 			className={cn(
 				styles.custom_table_content,
-				`h-auto md:h-auto lg:h-[calc(79dvh-8rem)]`
+				`lg:${props.customTable.getRowModel().rows.length > 10 ? 'h-[calc(79dvh-8rem)]' : 'h-auto'} h-auto md:h-auto`
 			)}
 		>
 			<table className={styles.custom_table}>
