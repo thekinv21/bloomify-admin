@@ -59,12 +59,8 @@
 	"roleName_required": "Rol Adı zorunludur",
 	"roleName_must_be": "Rol Adı 4 karakterden fazla olmalıdır",
 	"create_role" : "Rol Oluştur",
-	"create_role_description" : "Yeni bir rol oluştur",
 	"edit_role" : "Rolü Düzenle",
-	"edit_role_description" : "Rol bilgilerini düzenle",
 	"users_list": "Kullanıcı Listesi",
 	"create_user" : "Kullanıcı Oluştur",
-	"create_user_description" : "Yeni bir kullanıcı oluştur",
-	"edit_user" : "Kullanıcıyı Düzenle",
-	"edit_user_description" : "Kullanıcı bilgilerini düzenle"
+	"edit_user" : "Kullanıcıyı Düzenle"
 }

@@ -80,13 +80,21 @@ export function RoleList() {
 			/>
 
 			{isAdd && (
-				<CustomModal isOpen={isAdd} setIsOpen={setIsAdd} title={t('add')}>
+				<CustomModal
+					title={t('create_role')}
+					isOpen={isAdd}
+					setIsOpen={setIsAdd}
+				>
 					<RoleForm setIsOpen={setIsAdd} type={CrudEnum.CREATE} />
 				</CustomModal>
 			)}
 
 			{isEdit && Id !== null && (
-				<CustomModal isOpen={isEdit} setIsOpen={setIsEdit} title={t('edit')}>
+				<CustomModal
+					title={t('edit_role')}
+					isOpen={isEdit}
+					setIsOpen={setIsEdit}
+				>
 					<RoleForm setIsOpen={setIsEdit} type={CrudEnum.EDIT} roleId={Id} />
 				</CustomModal>
 			)}

@@ -38,7 +38,7 @@ export function DataTableHeading(props: IDataTableHeading) {
 						className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
 						onClick={() => props.setIsOpen?.(true)}
 					>
-						{t('add')}
+						{t('create')}
 					</Button>
 				)}
 			</div>
