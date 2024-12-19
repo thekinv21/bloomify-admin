@@ -18,6 +18,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
 import { Button } from './button'
@@ -31,6 +32,7 @@ import {
 } from './card'
 import CustomInput from './custom/CustomInput'
 import { CustomTooltip } from './custom/CustomTooltip'
+import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
 import { Label } from './label'
 import { Loader } from './loader/Loader'
@@ -53,6 +55,7 @@ export {
 	ChartTooltipContent,
 	CustomInput,
 	CustomTooltip,
+	DataTable,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -67,5 +70,6 @@ export {
 	DropdownMenuTrigger,
 	Input,
 	Label,
-	Loader
+	Loader,
+	Switch
 }

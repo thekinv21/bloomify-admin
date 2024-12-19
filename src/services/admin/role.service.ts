@@ -4,16 +4,19 @@ import {
 	IRole,
 	IUpdateRoleRequest
 } from '@/types'
-import { IOption } from '@/types/custom.types'
+import { IOption, IPaginationParams } from '@/types/custom.types'
 
 import { API_URL, axiosWithAuth } from '../axios/axios'
 
 class RoleService {
 	private BASE_URL = `${API_URL}/api/role`
 
-	async getAll() {
+	async getAll(params: IPaginationParams) {
 		const response = await axiosWithAuth.get<ICustomResponse<IRole[]>>(
-			`${this.BASE_URL}/admin`
+			`${this.BASE_URL}/admin`,
+			{
+				params
+			}
 		)
 		return response
 	}

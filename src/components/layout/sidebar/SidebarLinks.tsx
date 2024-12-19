@@ -1,6 +1,6 @@
-import { useTranslate } from '@/hooks'
+import { useCookie, useTranslate } from '@/hooks'
 
-import { SidebarStatus } from '@/types/custom.enum'
+import { RoleEnum, SidebarStatus } from '@/types/custom.enum'
 
 import { useAppStore } from '@/store/appStore'
 
@@ -8,11 +8,17 @@ import styles from './Sidebar.module.scss'
 import { SidebarCollapsedDropdownItem } from './SidebarCollapsedDropdownItem'
 import { SidebarCollapsedItem } from './SidebarCollapsedItem'
 import { SidebarItem, SidebarItemDropdown } from './SidebarItem'
-import { sidebarLinks } from './SidebarLinksData'
+import { ISidebarLink, sidebarLinks } from './SidebarLinksData'
 
 export function SidebarLinks() {
 	const { sidebar } = useAppStore()
 	const { t } = useTranslate()
+
+	const { USER_ROLES } = useCookie()
+
+	const isAlwaysVisible =
+		USER_ROLES?.includes(RoleEnum.ADMIN) ||
+		USER_ROLES?.includes(RoleEnum.SUPER_ADMIN)
 
 	return (
 		<nav
@@ -23,40 +29,54 @@ export function SidebarLinks() {
 			}
 		>
 			{sidebar !== SidebarStatus.COLLAPSED ? (
-				<>
-					{sidebarLinks.map((item, idx) => (
-						<aside key={idx}>
-							{item.heading && (
-								<p className={styles.heading}>{t(`${item.heading}`)}</p>
-							)}
+				<aside>
+					{sidebarLinks.map((item: ISidebarLink, idx: number) => (
+						<div key={idx}>
+							{(isAlwaysVisible ||
+								item.hasAuthority?.some((role: string) =>
+									USER_ROLES.includes(role)
+								)) && (
+								<div>
+									{item.heading && (
+										<p className={styles.heading}>{t(`${item.heading}`)}</p>
+									)}
 
-							<>
-								{item.subLinks?.length ? (
-									<SidebarItemDropdown
-										key={idx}
-										icon={item.icon}
-										label={item.label}
-										subLinks={item.subLinks}
-									/>
-								) : (
-									<SidebarItem key={idx} item={item} />
-								)}
-							</>
-						</aside>
-					))}
-				</>
-			) : (
-				<>
-					{sidebarLinks.map((item, idx) => (
-						<aside key={idx}>
-							{item.subLinks?.length ? (
-								<SidebarCollapsedDropdownItem key={idx} item={item} />
-							) : (
-								<SidebarCollapsedItem key={idx} item={item} />
+									<div>
+										{item.subLinks?.length ? (
+											<SidebarItemDropdown
+												key={idx}
+												icon={item.icon}
+												label={item.label}
+												subLinks={item.subLinks}
+											/>
+										) : (
+											<SidebarItem key={idx} item={item} />
+										)}
+									</div>
+								</div>
 							)}
-						</aside>
+						</div>
 					))}
-				</>
+				</aside>
+			) : (
+				<aside>
+					{sidebarLinks.map((item: ISidebarLink, idx: number) => (
+						<div key={idx}>
+							{(isAlwaysVisible ||
+								item.hasAuthority?.some((role: string) =>
+									USER_ROLES.includes(role)
+								)) && (
+								<div>
+									{item.subLinks?.length ? (
+										<SidebarCollapsedDropdownItem key={idx} item={item} />
+									) : (
+										<SidebarCollapsedItem key={idx} item={item} />
+									)}
+								</div>
+							)}
+						</div>
+					))}
+				</aside>
 			)}
 		</nav>
 	)

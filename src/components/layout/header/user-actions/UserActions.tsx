@@ -40,12 +40,7 @@ export function UserActions() {
 	const MenuItems = (items: IMenu[]) =>
 		items.map(({ icon: Icon, label }, idx) => (
 			<DropdownMenuItem key={idx}>
-				<Icon
-					size={16}
-					strokeWidth={2}
-					className='opacity-60'
-					aria-hidden='true'
-				/>
+				<Icon size={16} strokeWidth={2} className='opacity-60' />
 				<span>{t(`${label}`)}</span>
 			</DropdownMenuItem>
 		))
@@ -79,12 +74,7 @@ export function UserActions() {
 					className='text-red-500 hover:text-red-600'
 					onClick={handleLogout}
 				>
-					<LogOut
-						size={16}
-						strokeWidth={2}
-						className='opacity-60'
-						aria-hidden='true'
-					/>
+					<LogOut size={16} strokeWidth={2} className='opacity-60' />
 					<span>{t('logout')}</span>
 				</DropdownMenuItem>
 			</DropdownMenuContent>
