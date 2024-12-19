@@ -5,6 +5,10 @@
 .custom_table_heading {
 	@apply mb-5 flex flex-col items-start gap-5 px-1 sm:flex-row sm:items-center sm:justify-between md:gap-0;
 
+	.block_container {
+		@apply flex w-full flex-col items-center gap-5 sm:w-auto sm:flex-row;
+	}
+
 	.input_container {
 		@apply relative w-full sm:w-auto;
 	}
