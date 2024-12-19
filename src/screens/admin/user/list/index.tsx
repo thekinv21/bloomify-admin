@@ -84,7 +84,7 @@ export function UserList() {
 			{isAdd && (
 				<CustomModal
 					title={t('create_user')}
-					size='xl'
+					size='lg'
 					isOpen={isAdd}
 					setIsOpen={setIsAdd}
 				>
