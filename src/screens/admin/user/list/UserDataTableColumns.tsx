@@ -8,6 +8,7 @@ import { IUser } from '@/types'
 
 import { Alert, Switch } from '@/components/ui'
 
+import { useDeleteUser } from '../hooks/useDeleteUser'
 import { useToggleUser } from '../hooks/useToggleUser'
 
 import { DateShowFormat } from '@/utils'
@@ -16,6 +17,7 @@ export const UserDataTableColumns = () => {
 	const { t } = useTranslate()
 
 	const { toggleUser } = useToggleUser()
+	const { deleteUser } = useDeleteUser()
 
 	const columns = useMemo<ColumnDef<IUser>[]>(
 		() => [
@@ -57,7 +59,7 @@ export const UserDataTableColumns = () => {
 							checked={info.getValue() as boolean}
 							onClick={() => {
 								Alert({
-									subTitle: t('toggle'),
+									subTitle: t('toggle_confirm'),
 									action: async () => {
 										return toggleUser(ID)
 									}
@@ -74,7 +76,7 @@ export const UserDataTableColumns = () => {
 				cell: info => {
 					const id = info.getValue() as string
 					return (
-						<div className='flex items-start gap-2'>
+						<div className='flex items-start gap-x-5'>
 							<button
 								title={t(`edit`)}
 								onClick={() => alert(`Edit Id = ${id}`)}
@@ -83,7 +85,14 @@ export const UserDataTableColumns = () => {
 							</button>
 							<button
 								title={t(`delete`)}
-								onClick={() => alert(`Delete Id = ${id}`)}
+								onClick={() => {
+									Alert({
+										subTitle: t('delete_confirm'),
+										action: async () => {
+											return deleteUser(id)
+										}
+									})
+								}}
 							>
 								<Trash2Icon color='red' size={20} />
 							</button>

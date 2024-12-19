@@ -14,8 +14,11 @@ export const useCookie = () => {
 		? JSON.parse(cookieObject?.value)?.state?.accessToken
 		: null
 
+	const USER_ROLES = user?.roles
+
 	return {
 		user,
-		accessToken
+		accessToken,
+		USER_ROLES
 	}
 }
