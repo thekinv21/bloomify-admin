@@ -36,6 +36,7 @@
 	"active": "Aktif",
 	"passive": "Pasif",
 	"search": "Ara yap",
+	"list": "Liste",
 	"toggle": "Değiştir",
 	"delete": "Sil",
 	"edit": "Düzenle",
@@ -43,5 +44,6 @@
 	"create": "Oluştur",
 	"loading_data": "Veriler yükleniyor, lütfen bekleyin...",
 	"data_empty": "Veri Bulunamadı..",
-	"status": "Durum"
+	"status": "Durum",
+	"users_list": "Kullanıcı Listesi"
 }

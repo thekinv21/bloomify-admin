@@ -36,6 +36,7 @@
 	"active": "Active",
 	"passive": "Passive",
 	"search": "Search",
+	"list": "List",
 	"toggle": "Toggle",
 	"delete": "Delete",
 	"edit": "Edit",
@@ -43,5 +44,7 @@
 	"create": "Create",
 	"loading_data": "Loading data, please wait...",
 	"data_empty": "Data is Empty..",
-	"status": "Status"
+	"status": "Status",
+	"users_list": "Users List"
+
 }
