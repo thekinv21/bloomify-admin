@@ -57,5 +57,18 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+
+		::-moz-selection {
+			background: hsl(var(--primary));
+			color: hsl(var(--muted));
+		}
+		::-webkit-selection {
+			background: hsl(var(--primary));
+			color: hsl(var(--muted));
+		}
+		::selection {
+			background: hsl(var(--primary));
+			color: hsl(var(--muted));
+		}
 	}
 }
