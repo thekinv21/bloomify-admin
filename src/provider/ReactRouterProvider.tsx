@@ -4,6 +4,7 @@ import { IRoute } from '@/types/routes.types'
 
 import { MainLayout } from '@/components/layout'
 
+import { AllowPageProvider } from './AllowPageProvider'
 import { AuthProvider } from './AuthProvider'
 import { useRouters } from '@/routes/useRouters'
 
@@ -20,7 +21,15 @@ export default function ReactRouterProvider() {
 							path={route.path}
 							element={
 								route.layout === 'default' ? (
-									<MainLayout>{route.element}</MainLayout>
+									<MainLayout>
+										{route.hasAuthority ? (
+											<AllowPageProvider hasAuthority={route.hasAuthority}>
+												{route.element}
+											</AllowPageProvider>
+										) : (
+											<>{route.element}</>
+										)}
+									</MainLayout>
 								) : (
 									route.element
 								)

@@ -41,16 +41,13 @@ export const sidebarLinks: ISidebarLink[] = [
 			{
 				label: 'user',
 				url: pathConstant.user,
-				icon: <UserRoundCheckIcon size={16} strokeWidth={2} />,
-				hasAuthority: [RoleEnum.ADMIN]
+				icon: <UserRoundCheckIcon size={16} strokeWidth={2} />
 			},
 			{
 				label: 'role',
 				url: pathConstant.role,
-				icon: <UserRoundCogIcon size={16} strokeWidth={2} />,
-				hasAuthority: [RoleEnum.SUPER_ADMIN]
+				icon: <UserRoundCogIcon size={16} strokeWidth={2} />
 			}
-		],
-		hasAuthority: [RoleEnum.ADMIN]
+		]
 	}
 ]

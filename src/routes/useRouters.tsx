@@ -1,6 +1,7 @@
 import { pathConstant } from '@/constant'
 
 import { IRoute } from '@/types'
+import { RoleEnum } from '@/types/custom.enum'
 
 import { HomePage, LoginPage, UserPage } from '@/screens'
 
@@ -30,12 +31,14 @@ export const useRouters = () => {
 		{
 			path: pathConstant.user,
 			element: <UserPage />,
-			layout: 'default'
+			layout: 'default',
+			hasAuthority: [RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN]
 		},
 		{
 			path: pathConstant.role,
 			element: <div>Role</div>,
-			layout: 'default'
+			layout: 'default',
+			hasAuthority: [RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN]
 		}
 	]
 
