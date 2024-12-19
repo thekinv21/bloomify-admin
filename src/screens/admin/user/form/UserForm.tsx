@@ -1,4 +1,12 @@
-import { UserRoundCogIcon } from 'lucide-react'
+import {
+	AtSignIcon,
+	EyeIcon,
+	EyeOffIcon,
+	LockIcon,
+	MailIcon,
+	UserPenIcon,
+	UserRoundCogIcon
+} from 'lucide-react'
 import { Controller } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
@@ -14,14 +22,56 @@ type TypeUserForm = {
 }
 
 export function UserForm(props: TypeUserForm) {
-	const { t, formMethod, onSubmit } = useUserForm(props)
+	const { t, formMethod, onSubmit, isShow, handleToggle } = useUserForm(props)
 
 	return (
-		<form className='space-y-5' onSubmit={formMethod.handleSubmit(onSubmit)}>
+		<form
+			className='grid grid-cols-1 gap-5 sm:grid-cols-2'
+			onSubmit={formMethod.handleSubmit(onSubmit)}
+		>
 			<CustomInput
-				label={t('userName')}
-				placeholder={t('userName_placeholder')}
-				iconLeft={<UserRoundCogIcon size={20} />}
+				label={t('firstName')}
+				placeholder={t('firstName_placeholder')}
+				iconLeft={<UserPenIcon size={18} />}
+			/>
+
+			<CustomInput
+				label={t('lastName')}
+				placeholder={t('lastName_placeholder')}
+				iconLeft={<UserPenIcon size={18} />}
+			/>
+
+			<CustomInput
+				label={t('username')}
+				placeholder={t('username_placeholder')}
+				iconLeft={<AtSignIcon size={18} />}
+			/>
+
+			<CustomInput
+				label={t('email')}
+				placeholder={t('email_placeholder')}
+				iconLeft={<MailIcon size={18} />}
+			/>
+
+			<CustomInput
+				type={isShow ? 'text' : 'password'}
+				label={t('password')}
+				placeholder={t('password_placeholder')}
+				iconRight={
+					isShow ? (
+						<EyeOffIcon size={18} strokeWidth={2} />
+					) : (
+						<EyeIcon size={18} strokeWidth={2} />
+					)
+				}
+				iconLeft={<LockIcon size={18} strokeWidth={2} />}
+				iconRightOnClick={handleToggle}
+			/>
+
+			<CustomInput
+				label={t('role')}
+				placeholder={t('role_placeholder')}
+				iconLeft={<UserRoundCogIcon size={18} />}
 			/>
 
 			<div className='space-y-3'>
@@ -48,7 +98,7 @@ export function UserForm(props: TypeUserForm) {
 			<Button
 				// loading={createPending || editPending}
 				// disabled={createPending || editPending}
-				className='w-full'
+				className='col-span-2 w-full'
 				type='submit'
 			>
 				{props.type === CrudEnum.CREATE ? t('create') : t('edit')}
