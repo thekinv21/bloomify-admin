@@ -5,12 +5,18 @@ import React, { useEffect } from 'react'
 
 import { useDebounce, useTranslate } from '@/hooks'
 
-import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
+import { AlertCustomEnum, AlertEnum, CrudEnum } from '@/types/custom.enum'
 
 import { errorCatch } from '@/services'
 
-import { AlertNotification, BreadCrumb, DataTable } from '@/components/ui'
+import {
+	AlertNotification,
+	BreadCrumb,
+	CustomModal,
+	DataTable
+} from '@/components/ui'
 
+import { RoleForm } from '../form/RoleForm'
 import { useFetchRoles } from '../hooks/useFetchRoles'
 
 import { RoleDataTableColumns } from './RoleDataTableColumns'
@@ -19,6 +25,7 @@ export function RoleList() {
 	const { t } = useTranslate()
 
 	const [searchTerm, setSearchTerm] = React.useState<string>('')
+	const [isAdd, setIsAdd] = React.useState<boolean>(false)
 
 	const [pagination, setPagination] = React.useState<PaginationState>({
 		pageIndex: 0,
@@ -43,7 +50,7 @@ export function RoleList() {
 		}
 	}, [query.isError])
 
-	const columns = RoleDataTableColumns()
+	const { columns, Id, isEdit, setIsEdit } = RoleDataTableColumns()
 
 	return (
 		<>
@@ -69,7 +76,20 @@ export function RoleList() {
 				setPagination={setPagination}
 				searchTerm={searchTerm}
 				setSearchTerm={setSearchTerm}
+				setIsOpen={setIsAdd}
 			/>
+
+			{isAdd && (
+				<CustomModal isOpen={isAdd} setIsOpen={setIsAdd} title={t('add')}>
+					<RoleForm setIsOpen={setIsAdd} type={CrudEnum.CREATE} />
+				</CustomModal>
+			)}
+
+			{isEdit && Id !== null && (
+				<CustomModal isOpen={isEdit} setIsOpen={setIsEdit} title={t('edit')}>
+					<RoleForm setIsOpen={setIsEdit} type={CrudEnum.EDIT} roleId={Id} />
+				</CustomModal>
+			)}
 		</>
 	)
 }

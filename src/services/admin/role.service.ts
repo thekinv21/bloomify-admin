@@ -28,14 +28,14 @@ class RoleService {
 		return response
 	}
 
-	async getById(roleId: string) {
+	async getById(roleId: number) {
 		const response = await axiosWithAuth.get<ICustomResponse<IRole>>(
 			`${this.BASE_URL}/admin/${roleId}`
 		)
 		return response
 	}
 
-	async getActiveById(roleId: string) {
+	async getActiveById(roleId: number) {
 		const response = await axiosWithAuth.get<ICustomResponse<IRole>>(
 			`${this.BASE_URL}/${roleId}`
 		)

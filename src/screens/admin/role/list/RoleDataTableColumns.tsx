@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { useCookie, useTranslate } from '@/hooks'
 
@@ -20,6 +20,9 @@ export const RoleDataTableColumns = () => {
 
 	const { toggleRole } = useToggleRole()
 	const { deleteRole } = useDeleteRole()
+
+	const [isEdit, setIsEdit] = React.useState<boolean>(false)
+	const [Id, setId] = React.useState<number | null>(null)
 
 	const columns = useMemo<ColumnDef<IRole>[]>(
 		() => [
@@ -73,7 +76,10 @@ export const RoleDataTableColumns = () => {
 							{isAdmins && (
 								<button
 									title={t(`edit`)}
-									onClick={() => alert(`Edit Id = ${id}`)}
+									onClick={() => {
+										setId(+id)
+										setIsEdit(!isEdit)
+									}}
 								>
 									<FilePenLineIcon color='blue' size={20} />
 								</button>
@@ -99,8 +105,13 @@ export const RoleDataTableColumns = () => {
 				}
 			}
 		],
-		[]
+		[Id, isEdit]
 	)
 
-	return columns
+	return {
+		columns,
+		isEdit,
+		setIsEdit,
+		Id
+	}
 }
