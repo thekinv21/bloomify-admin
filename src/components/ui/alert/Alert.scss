@@ -23,7 +23,7 @@
 }
 
 .swal2-title {
-	@apply select-none font-normal capitalize;
+	@apply mb-[5px] select-none text-2xl font-normal capitalize;
 }
 
 .swal2-popup.swal2-toast .swal2-title {
@@ -43,4 +43,11 @@
 
 .swal2-popup.swal2-toast.swal2-show {
 	animation: fadeInDown 0.5s !important;
+}
+
+.swal2-html-container {
+	color: #f18f49 !important;
+	margin-bottom: 5px !important;
+	text-overflow: wrap !important;
+	font-size: 16px !important;
 }
