@@ -46,6 +46,7 @@
 	"data_empty": "Data is Empty..",
 	"status": "Status",
 	"users_list": "Users List",
-	"successfully_donned": "Successfully Donned!"
-
+	"successfully_donned": "Successfully Donned!",
+	"showingRows": "Showing {{current}} of {{total}} rows",
+  "rows": "rows"
 }

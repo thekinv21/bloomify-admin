@@ -46,5 +46,7 @@
 	"data_empty": "Данные отсутствуют..",
 	"status": "Статус",
 	"users_list": "Список пользователей",
-	"successfully_donned": "Успешно выполнено!"
+	"successfully_donned": "Успешно выполнено!",
+	"showingRows": "Показано {{current}} из {{total}} строк",
+  "rows": "строк"
 }
