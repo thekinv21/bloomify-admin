@@ -47,7 +47,7 @@
 	@apply mb-2 mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row sm:justify-between;
 
 	.show_per_item {
-		@apply text-sm font-semibold uppercase text-gray-600 lg:pl-1;
+		@apply text-sm font-normal uppercase text-gray-600 lg:pl-1;
 	}
 
 	.navigation_container {
@@ -61,18 +61,18 @@
 			}
 
 			> span {
-				@apply mx-2 text-sm font-semibold uppercase text-gray-600;
+				@apply mx-2 text-sm font-normal uppercase text-gray-600;
 			}
 		}
 
 		.show_per_page {
-			@apply rounded border border-gray-300 px-5 py-1.5 text-center text-sm font-semibold uppercase text-gray-600 outline-none;
+			@apply rounded border border-gray-300 px-5 py-1.5 text-center text-sm font-normal uppercase text-gray-600 outline-none;
 		}
 	}
 }
 
 .empty_data_container {
-	@apply h-40 font-semibold text-gray-600;
+	@apply h-40 font-normal text-gray-600;
 }
 
 .empty_data {

@@ -7,6 +7,8 @@ import {
 	ChevronsRight
 } from 'lucide-react'
 
+import { useTranslate } from '@/hooks'
+
 import { ICustomResponse } from '@/types'
 
 import styles from './DataTable.module.scss'
@@ -21,11 +23,15 @@ export function DataTableFooter<TData>(props: IDataTableFooter<TData>) {
 
 	const response = props.query
 
+	const { t } = useTranslate()
+
 	return (
 		<div className={styles.custom_table_footer}>
 			<div className={styles.show_per_item}>
-				Showing {props.customTable.getRowModel().rows.length} of{' '}
-				{response?.data?.totalElements} rows
+				{t('showingRows', {
+					current: props.customTable.getRowModel().rows.length,
+					total: response?.data?.totalElements
+				})}
 			</div>
 
 			<div className={styles.navigation_container}>
