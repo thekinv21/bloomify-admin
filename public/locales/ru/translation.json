@@ -50,7 +50,6 @@
 	"loading_data": "Загрузка данных, подождите пожалуйста...",
 	"data_empty": "Данные отсутствуют..",
 	"status": "Статус",
-	"users_list": "Список пользователей",
 	"successfully_donned": "Успешно выполнено",
 	"showingRows": "Показано {{current}} из {{total}} строк",
   "rows": "строк",
@@ -58,5 +57,14 @@
 	"roleName": "Имя роли",
 	"roleName_placeholder": "Введите имя роли",
 	"roleName_required": "Имя роли обязательно",
-	"roleName_must_be": "Имя роли должно содержать не менее 4 символов"
+	"roleName_must_be": "Имя роли должно содержать не менее 4 символов",
+	"create_role" : "Создать роль",
+	"create_role_description" : "Создать новую роль",
+	"edit_role" : "Редактировать роль",
+	"edit_role_description" : "Редактировать информацию о роли",
+	"users_list": "Список пользователей",
+	"create_user" : "Создать пользователя",
+	"create_user_description" : "Создать нового пользователя",
+	"edit_user" : "Редактировать пользователя",
+	"edit_user_description" : "Редактировать информацию о пользователе"
 }
