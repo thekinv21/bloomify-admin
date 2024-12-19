@@ -34,9 +34,8 @@ export function DataTableHeading(props: IDataTableHeading) {
 
 				{props.setIsOpen && (
 					<Button
-						size='icon'
 						leftSection={<Plus size={16} />}
-						className='w-full text-xs font-semibold uppercase sm:w-24 sm:pr-3'
+						className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
 						onClick={() => props.setIsOpen?.(true)}
 					>
 						{t('add')}
