@@ -4,6 +4,11 @@ export enum RoleEnum {
 	SUPER_ADMIN = 'SUPER_ADMIN'
 }
 
+export enum CrudEnum {
+	CREATE = 'CREATE',
+	EDIT = 'EDIT'
+}
+
 export enum TokenEnum {
 	ACCESS_TOKEN = 'accessToken',
 	REFRESH_TOKEN = 'refreshToken',
