@@ -3,6 +3,7 @@ import { t } from 'i18next'
 import { Database } from 'lucide-react'
 
 import styles from './DataTable.module.scss'
+import { cn } from '@/utils/utils'
 
 interface IDataTableContent<TData> {
 	customTable: Table<TData>
@@ -11,7 +12,12 @@ interface IDataTableContent<TData> {
 
 export function DataTableContent<TData>(props: IDataTableContent<TData>) {
 	return (
-		<div className={styles.custom_table_content}>
+		<div
+			className={cn(
+				styles.custom_table_content,
+				`h-auto md:h-auto lg:h-[calc(79dvh-8rem)]`
+			)}
+		>
 			<table className={styles.custom_table}>
 				<thead>
 					{props.customTable.getHeaderGroups().map(item => (
