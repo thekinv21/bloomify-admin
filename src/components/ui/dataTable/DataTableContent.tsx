@@ -1,5 +1,6 @@
 import { flexRender, Table } from '@tanstack/react-table'
 import { t } from 'i18next'
+import { Database } from 'lucide-react'
 
 import styles from './DataTable.module.scss'
 
@@ -42,15 +43,33 @@ export function DataTableContent<TData>(props: IDataTableContent<TData>) {
 					</tbody>
 				) : (
 					<tbody>
-						{props.customTable.getRowModel().rows.map(row => (
-							<tr key={row.id} className=''>
-								{row.getVisibleCells().map(cell => (
-									<td key={cell.id}>
-										{flexRender(cell.column.columnDef.cell, cell.getContext())}
-									</td>
-								))}
+						{Array.isArray(props.customTable.getRowModel().rows) &&
+						props.customTable.getRowModel().rows.length ? (
+							props.customTable.getRowModel().rows.map(row => (
+								<tr key={row.id}>
+									{row.getVisibleCells().map(cell => (
+										<td key={cell.id}>
+											{flexRender(
+												cell.column.columnDef.cell,
+												cell.getContext()
+											)}
+										</td>
+									))}
+								</tr>
+							))
+						) : (
+							<tr>
+								<td
+									className={styles.empty_data_container}
+									colSpan={props.customTable.getAllColumns().length}
+								>
+									<div className={styles.empty_data}>
+										<Database size={24} />
+										{t('data_empty')}
+									</div>
+								</td>
 							</tr>
-						))}
+						)}
 					</tbody>
 				)}
 			</table>

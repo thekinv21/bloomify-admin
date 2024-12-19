@@ -2,7 +2,7 @@ import { PaginationState } from '@tanstack/react-table'
 import { AxiosError } from 'axios'
 import React, { useEffect } from 'react'
 
-import { useDebounce } from '@/hooks'
+import { useDebounce, useTranslate } from '@/hooks'
 
 import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 
@@ -15,6 +15,8 @@ import { useFetchUsers } from '../hooks/useFetchUsers'
 import { UserDataTableColumns } from './UserDataTableColumns'
 
 export function UserList() {
+	const { t } = useTranslate()
+
 	const [searchTerm, setSearchTerm] = React.useState<string>('')
 
 	const [pagination, setPagination] = React.useState<PaginationState>({
@@ -45,7 +47,7 @@ export function UserList() {
 	return (
 		<DataTable
 			columns={columns}
-			tableHeading='Users List'
+			tableHeading={t('users_list')}
 			query={query}
 			pagination={pagination}
 			setPagination={setPagination}
