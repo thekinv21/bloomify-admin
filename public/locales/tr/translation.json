@@ -53,5 +53,10 @@
 	"users_list": "Kullanıcı Listesi",
 	"successfully_donned": "Başarıyla tamamlandı",
 	"showingRows": "{{current}} satırdan {{total}} gösteriliyor",
-  "rows": "satır"
+  "rows": "satır",
+	"roles_list": "Roller Listesi",
+	"roleName": "Rol Adı",
+	"roleName_placeholder": "Rol Adı giriniz",
+	"roleName_required": "Rol Adı zorunludur",
+	"roleName_must_be": "Rol Adı 4 karakterden fazla olmalıdır"
 }

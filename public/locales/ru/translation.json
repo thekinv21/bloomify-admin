@@ -53,5 +53,10 @@
 	"users_list": "Список пользователей",
 	"successfully_donned": "Успешно выполнено",
 	"showingRows": "Показано {{current}} из {{total}} строк",
-  "rows": "строк"
+  "rows": "строк",
+	"roles_list": "Список ролей",
+	"roleName": "Имя роли",
+	"roleName_placeholder": "Введите имя роли",
+	"roleName_required": "Имя роли обязательно",
+	"roleName_must_be": "Имя роли должно содержать не менее 4 символов"
 }

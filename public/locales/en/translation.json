@@ -53,5 +53,11 @@
 	"users_list": "Users List",
 	"successfully_donned": "Successfully Donned",
 	"showingRows": "Showing {{current}} of {{total}} rows",
-  "rows": "rows"
+  "rows": "rows",
+	"roles_list": "Roles List",
+	"roleName": "Role Name",
+	"roleName_placeholder": "Enter Role Name",
+	"roleName_required": "Role Name is required",
+	"roleName_must_be": "Role Name must be at least 4 characters"
+	
 }
