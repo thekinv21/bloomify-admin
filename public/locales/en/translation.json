@@ -45,6 +45,7 @@
 	"loading_data": "Loading data, please wait...",
 	"data_empty": "Data is Empty..",
 	"status": "Status",
-	"users_list": "Users List"
+	"users_list": "Users List",
+	"successfully_donned": "Successfully Donned!"
 
 }

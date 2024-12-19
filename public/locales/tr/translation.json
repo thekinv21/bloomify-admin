@@ -45,5 +45,6 @@
 	"loading_data": "Veriler yükleniyor, lütfen bekleyin...",
 	"data_empty": "Veri Bulunamadı..",
 	"status": "Durum",
-	"users_list": "Kullanıcı Listesi"
+	"users_list": "Kullanıcı Listesi",
+	"successfully": "Başarıyla tamamlandı!"
 }
