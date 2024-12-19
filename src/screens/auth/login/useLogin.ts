@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
+import { AxiosError } from 'axios'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -9,8 +10,11 @@ import { useRoute } from '@/hooks'
 import { keyConstant, pathConstant } from '@/constant'
 
 import { ILoginRequest } from '@/types'
+import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 
-import { authService } from '@/services'
+import { authService, errorCatch } from '@/services'
+
+import { AlertNotification } from '@/components/ui'
 
 import { useUserStore } from '@/store/userStore'
 
@@ -42,11 +46,15 @@ export const useLogin = () => {
 			formMethod.reset()
 			route(pathConstant.home)
 		},
-		onError(error) {
-			console.log(error)
+		onError(error: AxiosError) {
 			setIsSubmit(false)
 			removeUserFromStore()
 			formMethod.resetField('password')
+			AlertNotification({
+				icon: AlertEnum.WARNING,
+				message: errorCatch(error),
+				customClass: AlertCustomEnum.WARNING
+			})
 		}
 	})
 

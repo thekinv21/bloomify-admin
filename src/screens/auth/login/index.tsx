@@ -41,9 +41,7 @@ export default function LoginPage() {
 								label={t(`username`)}
 								id='username'
 								placeholder={t(`username_placeholder`)}
-								iconLeft={
-									<AtSign size={18} strokeWidth={2} aria-hidden='true' />
-								}
+								iconLeft={<AtSign size={18} strokeWidth={2} />}
 								{...formMethod.register('username')}
 								error={formMethod.formState.errors.username}
 							/>
@@ -56,12 +54,12 @@ export default function LoginPage() {
 								placeholder='******'
 								iconRight={
 									isShow ? (
-										<EyeOff size={18} strokeWidth={2} aria-hidden='true' />
+										<EyeOff size={18} strokeWidth={2} />
 									) : (
-										<Eye size={18} strokeWidth={2} aria-hidden='true' />
+										<Eye size={18} strokeWidth={2} />
 									)
 								}
-								iconLeft={<Lock size={18} strokeWidth={2} aria-hidden='true' />}
+								iconLeft={<Lock size={18} strokeWidth={2} />}
 								iconRightOnClick={handleToggle}
 								{...formMethod.register('password')}
 								error={formMethod.formState.errors.password}

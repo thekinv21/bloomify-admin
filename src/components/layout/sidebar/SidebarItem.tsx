@@ -3,7 +3,9 @@ import { useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 import { NavLink, useLocation } from 'react-router'
 
-import { useTranslate } from '@/hooks'
+import { useCookie, useTranslate } from '@/hooks'
+
+import { RoleEnum } from '@/types/custom.enum'
 
 import styles from './Sidebar.module.scss'
 import { ISidebarLink, ISidebarSubLink } from './SidebarLinksData'
@@ -35,20 +37,30 @@ interface ISidebarItemDropdown {
 	icon: JSX.Element
 	label: string
 	subLinks: ISidebarSubLink[]
+	hasAuthority?: string[]
 }
 
-export function SidebarItemDropdown({
-	icon,
-	label,
-	subLinks
-}: ISidebarItemDropdown) {
-	const [isOpen, setIsOpen] = useState<boolean>(false)
+export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 	const { t } = useTranslate()
 	const location = useLocation()
 
-	const hasActiveLink = subLinks.some(link => location.pathname === link.url)
+	const { USER_ROLES } = useCookie()
+
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 
 	const toggleDropdown = () => setIsOpen(!isOpen)
+
+	const isAlwaysVisible =
+		USER_ROLES?.includes(RoleEnum.ADMIN) ||
+		USER_ROLES?.includes(RoleEnum.SUPER_ADMIN)
+
+	const hasActiveLink = dropdownLink?.subLinks.some(
+		link => location.pathname === link.url
+	)
+
+	const hasAuthorityForViewSubMenu = dropdownLink.hasAuthority?.some(
+		(role: string) => USER_ROLES?.includes(role)
+	)
 
 	return (
 		<>
@@ -57,9 +69,9 @@ export function SidebarItemDropdown({
 				onClick={toggleDropdown}
 				aria-expanded={hasActiveLink}
 			>
-				<span className={styles.link_icon}>{icon}</span>
+				<span className={styles.link_icon}>{dropdownLink.icon}</span>
 				<div className={styles.dropdown_label}>
-					<span>{t(label)}</span>
+					<span>{t(dropdownLink.label)}</span>
 					<p>
 						{isOpen ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
 					</p>
@@ -67,19 +79,25 @@ export function SidebarItemDropdown({
 			</button>
 			<AnimateHeight duration={500} height={isOpen ? 'auto' : 0}>
 				<ul className={styles.dropdown_list}>
-					{subLinks.map((item: ISidebarSubLink, idx: number) => (
-						<NavLink
-							to={item.url}
-							key={idx}
-							className={({ isActive }) =>
-								[styles.dropdown_item, isActive ? 'text-primary' : ''].join(' ')
-							}
-						>
-							<li>
-								<span>{item.icon}</span>
-								<p>{t(`${item.label}`)}</p>
-							</li>
-						</NavLink>
+					{dropdownLink.subLinks.map((item: ISidebarSubLink, idx: number) => (
+						<aside key={idx}>
+							{isAlwaysVisible || hasAuthorityForViewSubMenu ? (
+								<NavLink
+									to={item.url}
+									key={idx}
+									className={({ isActive }) =>
+										[styles.dropdown_item, isActive ? 'text-primary' : ''].join(
+											' '
+										)
+									}
+								>
+									<li>
+										<span>{item.icon}</span>
+										<p>{t(`${item.label}`)}</p>
+									</li>
+								</NavLink>
+							) : null}
+						</aside>
 					))}
 				</ul>
 			</AnimateHeight>

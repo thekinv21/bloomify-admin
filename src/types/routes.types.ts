@@ -4,4 +4,5 @@ export interface IRoute {
 	path: string
 	element: ReactNode
 	layout: 'blank' | 'default'
+	hasAuthority?: string[]
 }

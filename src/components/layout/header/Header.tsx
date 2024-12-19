@@ -8,7 +8,6 @@ import { useAppStore } from '@/store/appStore'
 
 import styles from './Header.module.scss'
 import { Localization } from './localization/Localization'
-import { Mode } from './mode/Mode'
 import { UserActions } from './user-actions/UserActions'
 
 export function Header() {
@@ -37,7 +36,6 @@ export function Header() {
 			</div>
 
 			<div className={styles.right_side}>
-				<Mode />
 				<Localization />
 				<UserActions />
 			</div>
