@@ -21,6 +21,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
+import { BreadCrumb } from './breadcrumb/index'
 import { Button } from './button'
 import {
 	Card,
@@ -43,6 +44,7 @@ export {
 	Avatar,
 	AvatarFallback,
 	AvatarImage,
+	BreadCrumb,
 	Button,
 	Card,
 	CardContent,
