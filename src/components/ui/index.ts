@@ -18,6 +18,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
 import { Button } from './button'
@@ -69,5 +70,6 @@ export {
 	DropdownMenuTrigger,
 	Input,
 	Label,
-	Loader
+	Loader,
+	Switch
 }
