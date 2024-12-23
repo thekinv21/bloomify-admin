@@ -1,4 +1,3 @@
-import { API_URL, axiosClassic, axiosWithAuth } from './axios/axios'
 import {
 	IGetMeResponse,
 	ILoginRequest,
@@ -6,6 +5,8 @@ import {
 	ILogoutRequest,
 	IRegisterRequest
 } from '@/types'
+
+import { API_URL, axiosClassic, axiosWithAuth } from './axios/axios'
 
 class AuthService {
 	private BASE_URL = `${API_URL}/api/auth`
