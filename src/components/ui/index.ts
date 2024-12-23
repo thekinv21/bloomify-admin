@@ -18,6 +18,7 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import { MultiSelect } from '@/components/ui/select/react-select/multi/MultiSelect'
 import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
@@ -38,6 +39,7 @@ import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
 import { Label } from './label'
 import { Loader } from './loader/Loader'
+import { SingleSelect } from './select/react-select/single/SingleSelect'
 
 export {
 	Alert,
@@ -75,5 +77,7 @@ export {
 	Input,
 	Label,
 	Loader,
+	MultiSelect,
+	SingleSelect,
 	Switch
 }
