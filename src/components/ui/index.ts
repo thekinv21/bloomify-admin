@@ -31,8 +31,11 @@ import {
 	CardHeader,
 	CardTitle
 } from './card'
+import { Command, CommandGroup, CommandItem, CommandList } from './command'
 import CustomInput from './custom/CustomInput'
 import { CustomModal } from './custom/CustomModal'
+import CustomMultiSelect from './custom/CustomMultiSelect'
+import { CustomSingleSelect } from './custom/CustomSingleSelect'
 import { CustomTooltip } from './custom/CustomTooltip'
 import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
@@ -56,8 +59,14 @@ export {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
+	Command,
+	CommandGroup,
+	CommandItem,
+	CommandList,
 	CustomInput,
 	CustomModal,
+	CustomMultiSelect,
+	CustomSingleSelect,
 	CustomTooltip,
 	DataTable,
 	DropdownMenu,
