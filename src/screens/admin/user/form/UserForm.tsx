@@ -4,14 +4,13 @@ import {
 	EyeOffIcon,
 	LockIcon,
 	MailIcon,
-	UserPenIcon,
-	UserRoundCogIcon
+	UserPenIcon
 } from 'lucide-react'
 import { Controller } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 
-import { Button, CustomInput, Switch } from '@/components/ui'
+import { Button, CustomInput, CustomMultiSelect, Switch } from '@/components/ui'
 
 import { useUserForm } from './useUserForm'
 
@@ -68,10 +67,19 @@ export function UserForm(props: TypeUserForm) {
 				iconRightOnClick={handleToggle}
 			/>
 
-			<CustomInput
+			<CustomMultiSelect
 				label={t('role')}
 				placeholder={t('role_placeholder')}
-				iconLeft={<UserRoundCogIcon size={18} />}
+				options={[
+					{
+						label: 'Admin',
+						value: 'admin'
+					},
+					{
+						label: 'User',
+						value: 'user'
+					}
+				]}
 			/>
 
 			<div className='space-y-3'>
