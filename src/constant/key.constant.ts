@@ -9,10 +9,12 @@ export const keyConstant = {
 	edit_user: 'edit-user',
 	delete_user: 'delete-user',
 	toggle_user: 'toggle-user',
+	get_user_for_select: 'get-user-for-select',
 	get_roles: 'get-all-roles',
 	get_role: 'get-role-by-id',
 	create_role: 'create-role',
 	edit_role: 'edit-role',
 	delete_role: 'delete-role',
-	toggle_role: 'toggle-role'
+	toggle_role: 'toggle-role',
+	get_role_for_select: 'get-role-for-select'
 } as const

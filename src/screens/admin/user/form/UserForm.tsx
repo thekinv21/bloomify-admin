@@ -10,7 +10,7 @@ import { Controller } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 
-import { Button, CustomInput, CustomMultiSelect, Switch } from '@/components/ui'
+import { Button, CustomInput, Switch } from '@/components/ui'
 
 import { useUserForm } from './useUserForm'
 
@@ -65,21 +65,6 @@ export function UserForm(props: TypeUserForm) {
 				}
 				iconLeft={<LockIcon size={18} strokeWidth={2} />}
 				iconRightOnClick={handleToggle}
-			/>
-
-			<CustomMultiSelect
-				label={t('role')}
-				placeholder={t('role_placeholder')}
-				options={[
-					{
-						label: 'Admin',
-						value: 'admin'
-					},
-					{
-						label: 'User',
-						value: 'user'
-					}
-				]}
 			/>
 
 			<div className='space-y-3'>

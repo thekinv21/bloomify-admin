@@ -7,6 +7,8 @@ import { useTranslate } from '@/hooks'
 
 import { CrudEnum } from '@/types/custom.enum'
 
+import { useRoleForSelect } from '../../role/hooks/useRoleForSelect'
+
 import { userSchema } from './userSchema'
 
 type TypeUseUserForm = {
@@ -32,6 +34,10 @@ export const useUserForm = (props: TypeUseUserForm) => {
 		}
 	})
 
+	const { query: roleSelectQuery } = useRoleForSelect()
+
+	console.log('item', roleSelectQuery?.data)
+
 	const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = data => {
 		console.log(data)
 		console.log(props)
@@ -42,6 +48,7 @@ export const useUserForm = (props: TypeUseUserForm) => {
 		formMethod,
 		onSubmit,
 		isShow,
-		handleToggle
+		handleToggle,
+		roleSelectQuery
 	}
 }
