@@ -66,6 +66,9 @@
 	"edit_role" : "Edit Role",
 	"users_list": "Users List",
 	"create_user" : "Create User",
-	"edit_user" : "Edit User"
+	"edit_user" : "Edit User",
+	"not_found": "Not Found",
+	"options_is_not_found": "Options is not found",
+	"select_option": "Select Option"
 	
 }

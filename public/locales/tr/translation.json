@@ -66,5 +66,8 @@
 	"edit_role" : "Rolü Düzenle",
 	"users_list": "Kullanıcı Listesi",
 	"create_user" : "Kullanıcı Oluştur",
-	"edit_user" : "Kullanıcıyı Düzenle"
+	"edit_user" : "Kullanıcıyı Düzenle",
+	"not_found": "Bulunamadı",
+	"options_is_not_found": "Seçenekler bulunamadı",
+	"select_option": "Seçenek Seçiniz"
 }
