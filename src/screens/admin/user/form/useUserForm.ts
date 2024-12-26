@@ -43,7 +43,7 @@ export const useUserForm = (props: TypeUseUserForm) => {
 	const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = data => {
 		const roles: string[] = (roleSelectQuery.data as IOption<number>[])
 			.filter((role: IOption<number>) =>
-				data.roles.some((roleId: number) => roleId === role.value)
+				data.roles.some((roleName: string) => roleName === role.label)
 			)
 			.map((role: IOption<number>) => role.label)
 

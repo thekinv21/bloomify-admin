@@ -3,7 +3,13 @@
 import clsx from 'clsx'
 import { Check, ChevronDown, Loader2Icon } from 'lucide-react'
 import { useId, useState } from 'react'
-import { Control, Controller, FieldError, FieldValues } from 'react-hook-form'
+import {
+	Control,
+	Controller,
+	FieldError,
+	FieldValues,
+	Merge
+} from 'react-hook-form'
 
 import { useTranslate } from '@/hooks'
 
@@ -23,19 +29,25 @@ import {
 	PopoverTrigger
 } from '@/components/ui'
 
-interface ISingleSelect {
+interface IMultiSelect {
 	control: Control<FieldValues>
 	name: string
 	options: IOption<unknown>[]
 	label?: string
 	placeholder?: string
 	required?: boolean
-	error?: FieldError
+	error?:
+		| FieldError
+		| Merge<
+				FieldError,
+				[(FieldError | undefined)?, ...(FieldError | undefined)[]]
+		  >
+		| undefined
 	isLoading?: boolean
 	isDisabled?: boolean
 }
 
-export function CustomSingleSelect(props: ISingleSelect) {
+export function CustomMultiSelect(props: IMultiSelect) {
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const uuid = useId()
 
@@ -48,10 +60,12 @@ export function CustomSingleSelect(props: ISingleSelect) {
 				name={props.name}
 				rules={{ required: props.required }}
 				render={({ field }) => {
-					const value = field.value
+					const value = field.value || []
 					const handleSelect = (cur: string) => {
-						field.onChange(cur === value ? '' : cur)
-						setIsOpen(false)
+						const newValue = value.includes(cur)
+							? value.filter((item: string) => item !== cur)
+							: [...value, cur]
+						field.onChange(newValue)
 					}
 
 					return (
@@ -88,10 +102,15 @@ export function CustomSingleSelect(props: ISingleSelect) {
 													: 'text-muted-foreground'
 											)}
 										>
-											{value
-												? props.options.find(
-														opt => String(opt.value) === String(value)
-													)?.label
+											{value?.length
+												? value
+														.map(
+															(val: IOption<unknown>) =>
+																props.options.find(
+																	opt => String(opt.value) === String(val)
+																)?.label
+														)
+														.join(', ')
 												: props.placeholder
 													? props.placeholder
 													: t('select_option')}
@@ -116,8 +135,8 @@ export function CustomSingleSelect(props: ISingleSelect) {
 											<CommandGroup>
 												{!props.isLoading ? (
 													Array.isArray(props.options) &&
-													props.options?.length &&
-													props.options?.map(
+													props.options.length &&
+													props.options.map(
 														(opt: IOption<unknown>, idx: number) => (
 															<CommandItem
 																key={idx}
@@ -125,7 +144,7 @@ export function CustomSingleSelect(props: ISingleSelect) {
 																onSelect={handleSelect}
 															>
 																{opt.label}
-																{String(value) === String(opt.value) && (
+																{value.includes(String(opt.value)) && (
 																	<Check
 																		size={16}
 																		strokeWidth={2}
@@ -160,7 +179,7 @@ export function CustomSingleSelect(props: ISingleSelect) {
 					role='alert'
 					aria-live='polite'
 				>
-					{t(`${props.error.message}`)}
+					{t('select_option')}
 				</p>
 			) : null}
 		</div>

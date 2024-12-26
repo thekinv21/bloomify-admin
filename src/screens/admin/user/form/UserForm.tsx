@@ -6,18 +6,14 @@ import {
 	MailIcon,
 	UserPenIcon
 } from 'lucide-react'
-import { Controller } from 'react-hook-form'
+import { Control, Controller, FieldValues } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 import '@/types/custom.types'
 import { IOption } from '@/types/custom.types'
 
-import {
-	Button,
-	CustomInput,
-	CustomSingleSelect,
-	Switch
-} from '@/components/ui'
+import { Button, CustomInput, Switch } from '@/components/ui'
+import { CustomMultiSelect } from '@/components/ui/custom/CustomMultiSelect'
 
 import { useUserForm } from './useUserForm'
 
@@ -101,14 +97,14 @@ export function UserForm(props: TypeUserForm) {
 					error={errors.password}
 				/>
 
-				<CustomSingleSelect
-					control={control}
+				<CustomMultiSelect
+					control={control as unknown as Control<FieldValues>}
 					name='roles'
 					label={t('role')}
 					placeholder={t('role_placeholder')}
-					error={errors.username}
-					// isLoading={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
-					// isDisabled={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
+					error={errors.roles}
+					isLoading={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
+					isDisabled={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
 					options={roleSelectQuery?.data as IOption<number>[]}
 				/>
 			</div>
