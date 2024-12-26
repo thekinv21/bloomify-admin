@@ -66,6 +66,7 @@
 	"roleName_must_be": "Rol Adı 4 karakterden fazla olmalıdır",
 	"role_placeholder": "Rolleri Seçiniz",
 	"role_required": "Roller zorunludur",
+	"show_roles": "Rollerini Göster",
 	"create_role" : "Rol Oluştur",
 	"edit_role" : "Rolü Düzenle",
 	"users_list": "Kullanıcı Listesi",

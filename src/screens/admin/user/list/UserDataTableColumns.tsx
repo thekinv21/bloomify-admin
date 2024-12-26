@@ -1,12 +1,20 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
+import { FilePenLineIcon, Trash2Icon, UserRoundCogIcon } from 'lucide-react'
 import { useMemo } from 'react'
 
 import { useCookie, useTranslate } from '@/hooks'
 
 import { IUser } from '@/types'
 
-import { Alert, Switch } from '@/components/ui'
+import {
+	Alert,
+	Button,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+	Switch
+} from '@/components/ui'
 
 import { useDeleteUser } from '../hooks/useDeleteUser'
 import { useToggleUser } from '../hooks/useToggleUser'
@@ -47,6 +55,33 @@ export const UserDataTableColumns = () => {
 				accessorKey: 'updatedAt',
 				header: () => <>{t('updatedAt')}</>,
 				cell: info => <>{DateShowFormat(info.getValue() as string)}</>
+			},
+
+			{
+				accessorKey: 'roles',
+				header: () => <>{t('role')}</>,
+				cell: info => {
+					const row = info.row.original
+					const roles = row.roles
+
+					return (
+						<DropdownMenu>
+							<DropdownMenuTrigger className='select-none text-sm font-normal outline-none'>
+								<Button variant='outline' size='xs'>
+									{t('show_roles')}
+								</Button>
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className='min-w-28 text-sm'>
+								{roles.map((role: string, idx: number) => (
+									<DropdownMenuItem key={idx}>
+										<UserRoundCogIcon size={16} strokeWidth={2} />
+										{role}
+									</DropdownMenuItem>
+								))}
+							</DropdownMenuContent>
+						</DropdownMenu>
+					)
+				}
 			},
 
 			{

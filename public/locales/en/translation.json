@@ -66,6 +66,7 @@
 	"roleName_must_be": "Role Name must be at least 4 characters",
 	"role_placeholder": "Select Roles",
 	"role_required": "Role is required",
+	"show_roles": "Show roles",
 	"create_role" : "Create Role",
 	"edit_role" : "Edit Role",
 	"users_list": "Users List",
