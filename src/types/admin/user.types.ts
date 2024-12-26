@@ -16,7 +16,7 @@ export interface ICreateUserRequest {
 	lastName: string
 	username: string
 	email: string
-	password: string
+	password?: string
 	avatarPath?: string
 	isActive?: boolean
 	roles?: string[]

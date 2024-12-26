@@ -31,7 +31,8 @@ export function UserForm(props: TypeUserForm) {
 		isShow,
 		handleToggle,
 		createPending,
-		roleSelectQuery
+		roleSelectQuery,
+		editPending
 	} = useUserForm(props)
 
 	const {
@@ -79,23 +80,27 @@ export function UserForm(props: TypeUserForm) {
 				/>
 			</div>
 
-			<div className='grid grid-cols-1 gap-5 sm:grid-cols-2'>
-				<CustomInput
-					type={isShow ? 'text' : 'password'}
-					label={t('password')}
-					placeholder={t('password_placeholder')}
-					iconRight={
-						isShow ? (
-							<EyeOffIcon size={18} strokeWidth={2} />
-						) : (
-							<EyeIcon size={18} strokeWidth={2} />
-						)
-					}
-					iconLeft={<LockIcon size={18} strokeWidth={2} />}
-					iconRightOnClick={handleToggle}
-					{...register('password')}
-					error={errors.password}
-				/>
+			<div className={'grid grid-cols-1 gap-5 sm:grid-cols-2'}>
+				{props.type === CrudEnum.CREATE && (
+					<CustomInput
+						type={isShow ? 'text' : 'password'}
+						label={t('password')}
+						placeholder={t('password_placeholder')}
+						iconRight={
+							isShow ? (
+								<EyeOffIcon size={18} strokeWidth={2} />
+							) : (
+								<EyeIcon size={18} strokeWidth={2} />
+							)
+						}
+						iconLeft={<LockIcon size={18} strokeWidth={2} />}
+						iconRightOnClick={handleToggle}
+						{...register('password', {
+							required: props.type === CrudEnum.CREATE ? true : false
+						})}
+						error={errors.password}
+					/>
+				)}
 
 				<CustomMultiSelect
 					control={control as unknown as Control<FieldValues>}
@@ -107,32 +112,32 @@ export function UserForm(props: TypeUserForm) {
 					isDisabled={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
 					options={roleSelectQuery?.data as IOption<number>[]}
 				/>
-			</div>
 
-			<div className='space-y-3'>
-				<label
-					className='block text-sm font-medium text-gray-700'
-					id='user_status'
-				>
-					{t('status')}
-				</label>
-				<Controller
-					name='isActive'
-					control={control}
-					render={({ field }) => (
-						<Switch
-							checked={field.value}
-							onCheckedChange={checked => field.onChange(checked)}
-							name={field.name}
-							ref={field.ref}
-						/>
-					)}
-				/>
+				<div className='space-y-3'>
+					<label
+						className='block text-sm font-medium text-gray-700'
+						id='user_status'
+					>
+						{t('status')}
+					</label>
+					<Controller
+						name='isActive'
+						control={control}
+						render={({ field }) => (
+							<Switch
+								checked={field.value}
+								onCheckedChange={checked => field.onChange(checked)}
+								name={field.name}
+								ref={field.ref}
+							/>
+						)}
+					/>
+				</div>
 			</div>
 
 			<Button
-				loading={createPending}
-				disabled={createPending}
+				loading={createPending || editPending}
+				disabled={createPending || editPending}
 				className='col-span-2 mt-5 w-full'
 				type='submit'
 			>

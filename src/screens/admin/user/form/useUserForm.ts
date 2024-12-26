@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -10,6 +10,8 @@ import { IOption } from '@/types/custom.types'
 
 import { useRoleForSelect } from '../../role/hooks/useRoleForSelect'
 import { useCreateUser } from '../hooks/useCreateUser'
+import { useEditUser } from '../hooks/useEditUser'
+import { useFetchUser } from '../hooks/useFetchUser'
 
 import { userSchema } from './userSchema'
 
@@ -37,20 +39,70 @@ export const useUserForm = (props: TypeUseUserForm) => {
 	})
 
 	const { createPending, createUser } = useCreateUser(props)
-
 	const { query: roleSelectQuery } = useRoleForSelect()
 
-	const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = data => {
-		const roles: string[] = (roleSelectQuery.data as IOption<number>[])
-			.filter((role: IOption<number>) =>
-				data.roles.some((roleName: string) => roleName === role.label)
-			)
-			.map((role: IOption<number>) => role.label)
+	const { editPending, editUser } = useEditUser({
+		setIsOpen: props.setIsOpen
+	})
 
-		createUser({
-			...data,
-			roles: roles
-		})
+	const { query: userQuery } = useFetchUser({
+		userId: props.userId as string
+	})
+
+	useEffect(() => {
+		if (props.userId && userQuery?.data && !Array.isArray(userQuery.data)) {
+			const { firstName, lastName, username, email, isActive, roles } =
+				userQuery.data
+
+			const mappedRoles = roles.flatMap((roleName: string) =>
+				(roleSelectQuery.data as IOption<number>[])
+					.filter((role: IOption<number>) => role.label === roleName)
+					.map((matchedRole: IOption<number>) => String(matchedRole.value))
+			)
+
+			formMethod.reset({
+				firstName,
+				lastName,
+				username,
+				email,
+				isActive,
+				roles: mappedRoles
+			})
+		}
+	}, [
+		props.userId,
+		userQuery?.data,
+		userQuery.isFetched,
+		userQuery.isLoading,
+		userQuery.isFetching,
+		formMethod,
+		roleSelectQuery.data
+	])
+
+	const onSubmit: SubmitHandler<z.infer<typeof userSchema>> = data => {
+		const selectedRoleLabels: string[] = data?.roles.flatMap(
+			(selectedRoleValue: string) =>
+				(roleSelectQuery.data as IOption<number>[])
+					.filter(
+						(availableRole: IOption<number>) =>
+							String(availableRole.value) === selectedRoleValue
+					)
+					.map((matchedRole: IOption<number>) => matchedRole.label)
+		)
+
+		if (props.type === CrudEnum.CREATE) {
+			createUser({
+				...data,
+				password: data.password as string,
+				roles: selectedRoleLabels
+			})
+		} else {
+			editUser({
+				...data,
+				roles: selectedRoleLabels,
+				id: props.userId as string
+			})
+		}
 	}
 
 	return {
@@ -60,6 +112,7 @@ export const useUserForm = (props: TypeUseUserForm) => {
 		isShow,
 		handleToggle,
 		roleSelectQuery,
-		createPending
+		createPending,
+		editPending
 	}
 }

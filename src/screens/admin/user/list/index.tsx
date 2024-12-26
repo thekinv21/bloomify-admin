@@ -51,7 +51,7 @@ export function UserList() {
 		}
 	}, [query.isError])
 
-	const columns = UserDataTableColumns()
+	const { columns, isEdit, setIsEdit, userId } = UserDataTableColumns()
 
 	return (
 		<>
@@ -89,6 +89,21 @@ export function UserList() {
 					setIsOpen={setIsAdd}
 				>
 					<UserForm setIsOpen={setIsAdd} type={CrudEnum.CREATE} />
+				</CustomModal>
+			)}
+
+			{isEdit && (
+				<CustomModal
+					title={t('edit_user')}
+					size='lg'
+					isOpen={isEdit}
+					setIsOpen={setIsEdit}
+				>
+					<UserForm
+						setIsOpen={setIsEdit}
+						type={CrudEnum.EDIT}
+						userId={userId}
+					/>
 				</CustomModal>
 			)}
 		</>

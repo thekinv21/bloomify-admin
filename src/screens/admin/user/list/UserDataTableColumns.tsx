@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { FilePenLineIcon, Trash2Icon, UserRoundCogIcon } from 'lucide-react'
-import { useMemo } from 'react'
+import React, { useMemo } from 'react'
 
 import { useCookie, useTranslate } from '@/hooks'
 
@@ -8,7 +8,6 @@ import { IUser } from '@/types'
 
 import {
 	Alert,
-	Button,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
@@ -28,6 +27,9 @@ export const UserDataTableColumns = () => {
 	const { deleteUser } = useDeleteUser()
 
 	const { isAdmins } = useCookie()
+
+	const [isEdit, setIsEdit] = React.useState<boolean>(false)
+	const [userId, setUserId] = React.useState<string | null>(null)
 
 	const columns = useMemo<ColumnDef<IUser>[]>(
 		() => [
@@ -67,9 +69,7 @@ export const UserDataTableColumns = () => {
 					return (
 						<DropdownMenu>
 							<DropdownMenuTrigger className='select-none text-sm font-normal outline-none'>
-								<Button variant='outline' size='xs'>
-									{t('show_roles')}
-								</Button>
+								{t('show_roles')}
 							</DropdownMenuTrigger>
 							<DropdownMenuContent className='min-w-28 text-sm'>
 								{roles.map((role: string, idx: number) => (
@@ -117,7 +117,10 @@ export const UserDataTableColumns = () => {
 							{isAdmins && (
 								<button
 									title={t(`edit`)}
-									onClick={() => alert(`Edit Id = ${id}`)}
+									onClick={() => {
+										setUserId(id)
+										setIsEdit(!isEdit)
+									}}
 								>
 									<FilePenLineIcon color='blue' size={20} />
 								</button>
@@ -143,8 +146,13 @@ export const UserDataTableColumns = () => {
 				}
 			}
 		],
-		[]
+		[userId, isEdit]
 	)
 
-	return columns
+	return {
+		columns,
+		isEdit,
+		setIsEdit,
+		userId
+	}
 }

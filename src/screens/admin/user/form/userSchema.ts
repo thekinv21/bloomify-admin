@@ -34,7 +34,7 @@ export const userSchema = z.object({
 			invalid_type_error: 'password_required',
 			required_error: 'password_required'
 		})
-		.nonempty('password_required'),
+		.optional(),
 
 	roles: z.array(z.string().min(1, 'role_required')).nonempty('role_required'),
 	isActive: z.boolean()

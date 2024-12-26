@@ -35,6 +35,7 @@
 	"email": "E-posta",
 	"email_placeholder": "E-posta giriniz",
 	"email_required": "E-posta zorunludur",
+	"email_invalid" : "E-posta geçersiz",
 	"isActive": "Aktif",
 	"actions": "İşlemler",
 	"createdAt": "Oluşturulma Tarihi",

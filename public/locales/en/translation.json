@@ -35,6 +35,7 @@
 	"email": "Email",
 	"email_placeholder": "Enter Email",
 	"email_required" : "Email is required",
+	"email_invalid" : "Email is invalid",
 	"isActive": "IsActive",
 	"actions": "Actions",
 	"createdAt": "Created At",
