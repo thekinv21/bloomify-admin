@@ -12,7 +12,12 @@ import { CrudEnum } from '@/types/custom.enum'
 import '@/types/custom.types'
 import { IOption } from '@/types/custom.types'
 
-import { Button, CustomInput, MultiSelect, Switch } from '@/components/ui'
+import {
+	Button,
+	CustomInput,
+	CustomSingleSelect,
+	Switch
+} from '@/components/ui'
 
 import { useUserForm } from './useUserForm'
 
@@ -29,8 +34,8 @@ export function UserForm(props: TypeUserForm) {
 		onSubmit,
 		isShow,
 		handleToggle,
-		roleSelectQuery,
-		createPending
+		createPending,
+		roleSelectQuery
 	} = useUserForm(props)
 
 	const {
@@ -96,15 +101,15 @@ export function UserForm(props: TypeUserForm) {
 					error={errors.password}
 				/>
 
-				<MultiSelect
+				<CustomSingleSelect
 					control={control}
 					name='roles'
 					label={t('role')}
 					placeholder={t('role_placeholder')}
-					isLoading={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
-					isDisabled={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
-					options={roleSelectQuery.data as IOption<number>[]}
-					required
+					error={errors.username}
+					// isLoading={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
+					// isDisabled={roleSelectQuery.isLoading || roleSelectQuery.isFetching}
+					options={roleSelectQuery?.data as IOption<number>[]}
 				/>
 			</div>
 
