@@ -24,10 +24,10 @@ export function AlertNotification(props: IAlertNotification) {
 			popup: props.customClass
 		},
 		width:
-			props.message?.toString().length > 40
+			props.message?.toString().length > 10
 				? props.width
 					? props.width
-					: 450
+					: 350
 				: 'auto'
 	})
 	notification.fire({

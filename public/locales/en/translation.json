@@ -27,8 +27,15 @@
 	"yes": "Yes",
 	"no": "No",
 	"firstName": "FirstName",
+	"firstName_placeholder": "Enter FirstName",
+	"firstName_required" : "FirstName is required",
 	"lastName": "LastName",
+	"lastName_placeholder": "Enter LastName",
+	"lastName_required" : "LastName is required",
 	"email": "Email",
+	"email_placeholder": "Enter Email",
+	"email_required" : "Email is required",
+	"email_invalid" : "Email is invalid",
 	"isActive": "IsActive",
 	"actions": "Actions",
 	"createdAt": "Created At",
@@ -58,10 +65,16 @@
 	"roleName_placeholder": "Enter Role Name",
 	"roleName_required": "Role Name is required",
 	"roleName_must_be": "Role Name must be at least 4 characters",
+	"role_placeholder": "Select Roles",
+	"role_required": "Role is required",
+	"show_roles": "Show roles",
 	"create_role" : "Create Role",
 	"edit_role" : "Edit Role",
 	"users_list": "Users List",
 	"create_user" : "Create User",
-	"edit_user" : "Edit User"
+	"edit_user" : "Edit User",
+	"not_found": "Not Found",
+	"options_is_not_found": "Options is not found",
+	"select_option": "Select option"
 	
 }

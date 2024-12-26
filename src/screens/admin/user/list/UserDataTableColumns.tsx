@@ -1,12 +1,19 @@
 import { ColumnDef } from '@tanstack/react-table'
-import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
-import { useMemo } from 'react'
+import { FilePenLineIcon, Trash2Icon, UserRoundCogIcon } from 'lucide-react'
+import React, { useMemo } from 'react'
 
 import { useCookie, useTranslate } from '@/hooks'
 
 import { IUser } from '@/types'
 
-import { Alert, Switch } from '@/components/ui'
+import {
+	Alert,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+	Switch
+} from '@/components/ui'
 
 import { useDeleteUser } from '../hooks/useDeleteUser'
 import { useToggleUser } from '../hooks/useToggleUser'
@@ -20,6 +27,9 @@ export const UserDataTableColumns = () => {
 	const { deleteUser } = useDeleteUser()
 
 	const { isAdmins } = useCookie()
+
+	const [isEdit, setIsEdit] = React.useState<boolean>(false)
+	const [userId, setUserId] = React.useState<string | null>(null)
 
 	const columns = useMemo<ColumnDef<IUser>[]>(
 		() => [
@@ -47,6 +57,31 @@ export const UserDataTableColumns = () => {
 				accessorKey: 'updatedAt',
 				header: () => <>{t('updatedAt')}</>,
 				cell: info => <>{DateShowFormat(info.getValue() as string)}</>
+			},
+
+			{
+				accessorKey: 'roles',
+				header: () => <>{t('role')}</>,
+				cell: info => {
+					const row = info.row.original
+					const roles = row.roles
+
+					return (
+						<DropdownMenu>
+							<DropdownMenuTrigger className='select-none text-sm font-normal outline-none'>
+								{t('show_roles')}
+							</DropdownMenuTrigger>
+							<DropdownMenuContent className='min-w-28 text-sm'>
+								{roles.map((role: string, idx: number) => (
+									<DropdownMenuItem key={idx}>
+										<UserRoundCogIcon size={16} strokeWidth={2} />
+										{role}
+									</DropdownMenuItem>
+								))}
+							</DropdownMenuContent>
+						</DropdownMenu>
+					)
+				}
 			},
 
 			{
@@ -82,7 +117,10 @@ export const UserDataTableColumns = () => {
 							{isAdmins && (
 								<button
 									title={t(`edit`)}
-									onClick={() => alert(`Edit Id = ${id}`)}
+									onClick={() => {
+										setUserId(id)
+										setIsEdit(!isEdit)
+									}}
 								>
 									<FilePenLineIcon color='blue' size={20} />
 								</button>
@@ -108,8 +146,13 @@ export const UserDataTableColumns = () => {
 				}
 			}
 		],
-		[]
+		[userId, isEdit]
 	)
 
-	return columns
+	return {
+		columns,
+		isEdit,
+		setIsEdit,
+		userId
+	}
 }

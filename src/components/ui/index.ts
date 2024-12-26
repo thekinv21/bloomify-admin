@@ -5,6 +5,14 @@ import {
 	ChartTooltipContent
 } from '@/components/ui/chart'
 import {
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList
+} from '@/components/ui/command'
+import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuGroup,
@@ -18,6 +26,11 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger
+} from '@/components/ui/popover'
 import { Switch } from '@/components/ui/switch'
 
 import { Alert, AlertNotification } from './alert/Alert'
@@ -33,6 +46,7 @@ import {
 } from './card'
 import CustomInput from './custom/CustomInput'
 import { CustomModal } from './custom/CustomModal'
+import { CustomSingleSelect } from './custom/CustomSingleSelect'
 import { CustomTooltip } from './custom/CustomTooltip'
 import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
@@ -56,8 +70,15 @@ export {
 	ChartContainer,
 	ChartTooltip,
 	ChartTooltipContent,
+	Command,
+	CommandEmpty,
+	CommandGroup,
+	CommandInput,
+	CommandItem,
+	CommandList,
 	CustomInput,
 	CustomModal,
+	CustomSingleSelect,
 	CustomTooltip,
 	DataTable,
 	DropdownMenu,
@@ -75,5 +96,8 @@ export {
 	Input,
 	Label,
 	Loader,
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
 	Switch
 }

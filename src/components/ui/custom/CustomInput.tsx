@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { forwardRef, InputHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
 import { FieldError } from 'react-hook-form'
 
 import { useTranslate } from '@/hooks'
@@ -29,7 +29,6 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 			label,
 			error,
 			type = 'text',
-			id,
 			className,
 			iconLeft,
 			iconRight,
@@ -41,11 +40,13 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 	) => {
 		const { t } = useTranslate()
 
+		const uuid = useId()
+
 		return (
 			<div className='space-y-2'>
 				{label && (
 					<Label
-						htmlFor={id}
+						htmlFor={`input${uuid}`}
 						className={clsx(
 							'text-sm font-normal',
 							error ? 'text-destructive' : ''
@@ -70,7 +71,7 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 					)}
 
 					<Input
-						id={id}
+						id={`input${uuid}`}
 						className={clsx(
 							className,
 							iconLeft ? 'ps-10' : '',
