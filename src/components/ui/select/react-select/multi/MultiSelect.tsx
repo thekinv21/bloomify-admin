@@ -1,3 +1,5 @@
+import clsx from 'clsx'
+import { t } from 'i18next'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
@@ -18,40 +20,46 @@ export function MultiSelect(props: ISelectProps) {
 			<Controller
 				control={props.control}
 				name={props.name}
-				rules={{ required: props.required }}
+				rules={{ required: props.required ? true : false }}
 				render={({
 					field: { onChange, onBlur, value, ref },
 					fieldState: { error }
 				}) => {
 					return (
-						<div>
-							<div>
-								<Select
-									closeMenuOnSelect={false}
-									ref={ref}
-									name={props.name}
-									placeholder={props.placeholder ?? 'Seçiniz'}
-									value={props.options?.filter(option =>
-										Array.isArray(value) ? value.includes(option.value) : null
-									)}
-									onChange={(newValue: any) => {
-										onChange(newValue?.map((item: any) => item?.value))
-									}}
-									onBlur={onBlur}
-									components={animatedComponent}
-									classNamePrefix={'custom_select'}
-									className={cn(
-										props.className,
-										error &&
-											'rounded-lg border border-red-500 hover:border-none focus:border-none'
-									)}
-									options={props.options}
-									isMulti
-									isDisabled={props.isDisabled}
-									isLoading={props.isLoading}
-									isClearable
-								/>
-							</div>
+						<>
+							<Select
+								closeMenuOnSelect={false}
+								ref={ref}
+								name={props.name}
+								placeholder={props.placeholder ?? t(`select_option`)}
+								value={props.options?.filter(opt =>
+									Array.isArray(value) ? value.includes(opt.value) : null
+								)}
+								onChange={(newValue: any) => {
+									onChange(newValue?.map((item: any) => item?.value))
+								}}
+								onBlur={onBlur}
+								components={animatedComponent}
+								classNamePrefix={'custom_select'}
+								className={clsx(
+									'custom_select',
+									props.className,
+									error
+										? 'rounded-md border-0 border-destructive text-destructive hover:border-primary focus:border-primary'
+										: ''
+								)}
+								options={props.options}
+								isMulti
+								isDisabled={props.isDisabled}
+								isLoading={props.isLoading}
+								isClearable
+								styles={{
+									placeholder: base => ({
+										...base,
+										color: error ? 'red' : '#0d0d0d90'
+									})
+								}}
+							/>
 
 							<p
 								className={cn(
@@ -59,9 +67,11 @@ export function MultiSelect(props: ISelectProps) {
 									error ? 'text-red-500' : 'text-transparent'
 								)}
 							>
-								{error?.message ? error.message : 'This field is required'}
+								{error?.message
+									? t(`${error.message}`)
+									: t('This field is required')}
 							</p>
-						</div>
+						</>
 					)
 				}}
 			/>

@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import { Controller } from 'react-hook-form'
 import Select from 'react-select'
 import makeAnimated from 'react-select/animated'
@@ -14,7 +15,7 @@ export function SingleSelect(props: ISelectProps) {
 		<Controller
 			control={props.control}
 			name={props.name}
-			rules={{ required: props.required }}
+			rules={{ required: props.required ? true : false }}
 			render={({
 				field: { onChange, onBlur, value, ref },
 				fieldState: { error }
@@ -23,20 +24,24 @@ export function SingleSelect(props: ISelectProps) {
 					props.options?.find(option => option.value === value) || null
 
 				return (
-					<div>
-						<div>
+					<div className='space-y-2'>
+						{props.label && (
+							<label className='text-sm font-normal'>{props.label}</label>
+						)}
+
+						<>
 							<Select
 								ref={ref}
 								name={props.name}
 								placeholder={props.placeholder ?? 'Seçiniz'}
-								value={option}
+								value={option ?? ''}
 								onChange={(newValue: any) => {
 									onChange(newValue ? newValue.value : null)
 								}}
 								onBlur={onBlur}
 								components={animatedComponent}
 								classNamePrefix={`custom_select`}
-								className={cn(
+								className={clsx(
 									props.className,
 									error &&
 										'rounded-lg border border-red-500 hover:border-none focus:border-none'
@@ -46,7 +51,7 @@ export function SingleSelect(props: ISelectProps) {
 								isLoading={props.isLoading}
 								isClearable
 							/>
-						</div>
+						</>
 
 						<p
 							className={cn(
