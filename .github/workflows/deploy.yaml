@@ -1,0 +1,50 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**'
+      - 'public/**'
+      - 'package.json'
+      - '.env'
+      - 'index.html'
+      - 'postcss.config.js'
+      - 'pnpm-lock.yaml'
+      - 'tailwind.config.js'
+      - 'tsconfig.json'
+      - 'tsconfig.node.json'
+      - 'vite.config.ts'
+      - '.github/workflows/deploy.yaml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd /home/bloomify-admin
+            echo "Pulling from master branch"
+            git fetch
+            git pull origin master
+            echo "nvm settings"
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh
+            echo "node version"
+            node -v
+            echo "npm version"
+            npm -v
+            echo "Installing dependencies"
+            npm install
+            echo "Building..."
+            npm run build-prod
+            echo "Copying files to /var/www/bloomify-admin-panel"
+            sudo cp -r dist/* /var/www/bloomify-admin-panel
+            echo "Restarting nginx..."
+            sudo systemctl restart nginx
