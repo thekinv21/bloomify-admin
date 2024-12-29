@@ -1,4 +1,4 @@
-name: deploy-to-prod
+name: deploying-to-production
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
       - 'tsconfig.json'
       - 'tsconfig.node.json'
       - 'vite.config.ts'
-      - '.github/workflows/deploy-to-prod.yaml'
+      - '.github/workflows/deploying-to-production.yaml'
 
 jobs:
   build:
@@ -45,6 +45,7 @@ jobs:
               exit 1
             else
               echo "No merge conflicts."
+            fi
 
             echo "NVM settings"
             export NVM_DIR=~/.nvm
