@@ -1,4 +1,4 @@
-name: deploy
+name: deploying-to-production
 
 on:
   push:
@@ -16,7 +16,7 @@ on:
       - 'tsconfig.json'
       - 'tsconfig.node.json'
       - 'vite.config.ts'
-      - '.github/workflows/deploy.yaml'
+      - '.github/workflows/deploying-to-production.yaml'
 
 jobs:
   build:
@@ -38,12 +38,12 @@ jobs:
             source ~/.nvm/nvm.sh
             echo "node version"
             node -v
-            echo "npm version"
-            npm -v
+            echo "pnpm version"
+            pnpm -v
             echo "Installing dependencies"
-            npm install
+            pnpm install
             echo "Building..."
-            npm run build-prod
+            pnpm run build-prod
             echo "Copying files to /var/www/bloomify-admin-panel"
             sudo cp -r dist/* /var/www/bloomify-admin-panel
             echo "Restarting nginx..."
