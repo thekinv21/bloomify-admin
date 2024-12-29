@@ -45,16 +45,16 @@ jobs:
             echo "node version"
             node -v
             echo "npm version"
-            pnpm -v
+            npm -v
 
             echo "Clean project cache..."
-            pnpm run clean
+            npm run clean
 
             echo "Installing dependencies"
-            pnpm install
+            npm install
 
             echo "Building..."
-            pnpm run build-prod
+            npm run build
 
             echo "Removing old files in /var/www/bloomify-admin-panel"
             sudo rm -rf /var/www/bloomify-admin-panel/*
