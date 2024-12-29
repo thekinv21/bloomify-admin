@@ -36,6 +36,7 @@ export function DataTableFooter<TData>(props: IDataTableFooter<TData>) {
 
 			<div className={styles.navigation_container}>
 				<select
+					id='show_per_page'
 					value={props.customTable.getState().pagination.pageSize}
 					onChange={e => props.customTable.setPageSize(Number(e.target.value))}
 					className={styles.show_per_page}

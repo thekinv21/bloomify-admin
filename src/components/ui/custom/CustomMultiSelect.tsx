@@ -76,7 +76,7 @@ export function CustomMultiSelect(props: IMultiSelect) {
 										`font-normal`,
 										props.error ? 'text-destructive' : ''
 									)}
-									htmlFor={`select_option_${uuid}`}
+									htmlFor={`select_option_multi_${uuid}`}
 								>
 									{props.label}
 								</Label>
@@ -84,7 +84,7 @@ export function CustomMultiSelect(props: IMultiSelect) {
 							<Popover open={isOpen} onOpenChange={setIsOpen}>
 								<PopoverTrigger asChild>
 									<Button
-										id={`select_option_${uuid}`}
+										id={`select_option_multi_${uuid}`}
 										variant='outline'
 										role='combobox'
 										disabled={props.isDisabled}

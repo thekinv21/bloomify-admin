@@ -33,6 +33,7 @@ export default function LoginPage() {
 				</CardHeader>
 				<CardContent>
 					<form
+						name='login_form'
 						className={styles.form}
 						onSubmit={formMethod.handleSubmit(onSubmit)}
 					>
