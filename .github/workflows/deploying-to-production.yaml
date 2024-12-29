@@ -30,8 +30,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/bloomify-admin
-            echo "clean project cache"
-            npm run clean
+            echo "Pulling from master branch"
+            git fetch
+            git pull origin master
             echo "nvm settings"
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
@@ -41,11 +42,9 @@ jobs:
             npm -v
             echo "Installing dependencies"
             npm install
-            echo "Pulling from master branch"
-            git fetch
-            git pull origin master
             echo "Building..."
             npm run build-prod
+
             echo "Copying files to /var/www/bloomify-admin-panel"
             sudo cp -r dist/* /var/www/bloomify-admin-panel
             echo "Restarting nginx..."
