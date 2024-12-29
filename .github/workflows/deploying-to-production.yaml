@@ -38,7 +38,6 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
 
-            # Install and use Node.js 21
             echo "Installing Node.js version 21"
             nvm install 21
             nvm use 21
@@ -46,7 +45,10 @@ jobs:
             echo "node version"
             node -v
             echo "npm version"
-            npm -v
+            pnpm -v
+
+            echo "Clean project cache..."
+            pnpm run clean
 
             echo "Installing dependencies"
             pnpm install
@@ -54,7 +56,12 @@ jobs:
             echo "Building..."
             pnpm run build-prod
 
-            echo "Copying files to /var/www/bloomify-admin-panel"
+            echo "Removing old files in /var/www/bloomify-admin-panel"
+            sudo rm -rf /var/www/bloomify-admin-panel/*
+
+
+            echo "Copying new files to /var/www/bloomify-admin-panel"
             sudo cp -r dist/* /var/www/bloomify-admin-panel
+
             echo "Restarting nginx..."
             sudo systemctl restart nginx

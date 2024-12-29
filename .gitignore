@@ -8,10 +8,14 @@ pnpm-debug.log*
 pnpm-lock*
 lerna-debug.log*
 
+pnpm-workspace.yaml
+pnpm-lock.yaml
+
 node_modules
 dist
 dist-ssr
 *.local
+
 
 # Editor directories and files
 .vscode/*
