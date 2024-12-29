@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "GENERATE_SOURCEMAP=false tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
-    "build-prod": "tsc && vite build --mode production",
-		"build-test": "tsc && vite build --mode development",
+    "build-prod": "GENERATE_SOURCEMAP=false tsc && vite build --mode production",
+		"build-test": "GENERATE_SOURCEMAP=false tsc && vite build --mode development",
     "clean": "rm -rf dist && rm -rf build && rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock && rm -f pnpm-lock.yaml"
   },
   "dependencies": {
