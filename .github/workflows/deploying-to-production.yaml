@@ -38,6 +38,15 @@ jobs:
             echo "Pulling from master branch"
             git pull origin master
 
+            # Check for merge conflicts
+            echo "Checking for merge conflicts"
+            if git ls-files -u | grep -q .; then
+              echo "Merge conflict detected!"
+              exit 1
+            else
+              echo "No merge conflicts."
+            fi
+
             echo "NVM settings"
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
