@@ -48,6 +48,9 @@ jobs:
             echo "PNPM version"
             pnpm -v
 
+            echo "Clean repository"
+            pnpm run clean
+
             echo "Verify NPM cache"
             npm cache verify
 
