@@ -29,22 +29,39 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            echo "Find repository"
             cd /home/bloomify-admin
-            echo "Pulling from master branch"
+
+            echo "Fetching all branches"
             git fetch
+
+            echo "Pulling from master branch"
             git pull origin master
-            echo "nvm settings"
+
+            echo "NVM settings"
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
-            echo "node version"
+
+            echo "Node version"
             node -v
-            echo "npm version"
-            npm -v
+
+            echo "PNPM version"
+            pnpm -v
+
+            echo "Verify NPM cache"
+            npm cache verify
+
+            echo "Clean NPM cache"
+            npm cache clean --force
+
             echo "Installing dependencies"
-            npm install
+            pnpm install
+
             echo "Building..."
-            npm run build-prod
+            pnpm run build-prod
+
             echo "Copying files to /var/www/bloomify-admin-panel/"
             sudo cp -r dist/* /var/www/bloomify-admin-panel/
+
             echo "Restarting nginx..."
             sudo systemctl restart nginx
