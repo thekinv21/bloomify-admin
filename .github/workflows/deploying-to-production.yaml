@@ -38,9 +38,9 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
 
-            echo "Installing Node.js version 21"
-            nvm install 21
-            nvm use 21
+            echo "Installing Node.js version 21.7.3"
+            nvm install 21.7.3
+            nvm use 21.7.3
 
             echo "node version"
             node -v
@@ -55,10 +55,6 @@ jobs:
 
             echo "Building..."
             npm run build
-
-            echo "Removing old files in /var/www/bloomify-admin-panel"
-            sudo rm -rf /var/www/bloomify-admin-panel/*
-
 
             echo "Copying new files to /var/www/bloomify-admin-panel"
             sudo cp -r dist/* /var/www/bloomify-admin-panel

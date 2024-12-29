@@ -12,7 +12,7 @@
     "prettier:fix": "npm run prettier -- --write",
     "build-prod": "tsc && vite build --mode production",
 		"build-test": "tsc && vite build --mode development",
-    "clean": "rm -rf dist && rm -rf build && rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock && rm -f pnpm-lock.yaml && npm cache clean --force"
+    "clean": "rm -rf dist && rm -rf build && rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock && rm -f pnpm-lock.yaml"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
