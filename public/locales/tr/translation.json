@@ -37,7 +37,7 @@
 	"email_required": "E-posta zorunludur",
 	"email_invalid" : "E-posta geçersiz",
 	"isActive": "Aktif",
-	"actions": "İşlemler",
+	"actions": "Aksiyonlar",
 	"createdAt": "Oluşturulma Tarihi",
 	"updatedAt": "Güncelleme Tarihi",
 	"active": "Aktif",
