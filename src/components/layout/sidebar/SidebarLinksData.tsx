@@ -1,4 +1,5 @@
 import {
+	FlowerIcon,
 	LayoutDashboardIcon,
 	ShieldCheckIcon,
 	UserRoundCheckIcon,
@@ -49,5 +50,13 @@ export const sidebarLinks: ISidebarLink[] = [
 				icon: <UserRoundCogIcon size={16} strokeWidth={2} />
 			}
 		]
+	},
+
+	{
+		label: 'flowers',
+		url: '/flowers',
+		heading: 'products',
+		icon: <FlowerIcon size={18} strokeWidth={2} />,
+		hasAuthority: [RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN]
 	}
 ]

@@ -34,13 +34,6 @@ jobs:
             echo "Pulling from master branch"
             git fetch
             git pull origin master
-            echo "nvm settings"
-            export NVM_DIR=~/.nvm
-            source ~/.nvm/nvm.sh
-
-            echo "Installing Node.js version 21.7.3"
-            nvm install 21.7.3
-            nvm use 21.7.3
 
             echo "node version"
             node -v

@@ -75,5 +75,7 @@
 	"edit_user" : "Редактировать пользователя",
 	"not_found": "Не найдено",
 	"options_is_not_found": "Опции не найдены",
-	"select_option": "Выберите опцию"
+	"select_option": "Выберите опцию",
+	"flowers": "Цветы",
+	"products": "Продукты"
 }

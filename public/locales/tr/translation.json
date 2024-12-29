@@ -75,5 +75,7 @@
 	"edit_user" : "Kullanıcıyı Düzenle",
 	"not_found": "Bulunamadı",
 	"options_is_not_found": "Seçenekler bulunamadı",
-	"select_option": "Seçenek seçiniz"
+	"select_option": "Seçenek seçiniz",
+	"flowers": "Çiçekler",
+	"products": "Ürünler"
 }

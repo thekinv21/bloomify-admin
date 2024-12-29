@@ -75,6 +75,8 @@
 	"edit_user" : "Edit User",
 	"not_found": "Not Found",
 	"options_is_not_found": "Options is not found",
-	"select_option": "Select option"
+	"select_option": "Select option",
+	"flowers": "Flowers",
+	"products": "Products"
 	
 }
