@@ -20,7 +20,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: appleboy/ssh-action@v0.1.10
         with:
@@ -30,7 +30,9 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e  # Exit on any error
-            cd /home/bloomify-admin
+
+            echo "Find repository..."
+            cd /home/bloomify-admin/
 
             echo "Pulling from master branch"
             git fetch
