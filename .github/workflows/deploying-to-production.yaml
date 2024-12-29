@@ -51,6 +51,9 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
 
+            echo "Use Node 20"
+            nvm use 20
+
             echo "Node version"
             node -v
 
