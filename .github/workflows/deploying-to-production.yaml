@@ -54,11 +54,11 @@ jobs:
             echo "Node version"
             node -v
 
-            echo "PNPM version"
-            pnpm -v
+            echo "NPM version"
+            npm -v
 
             echo "Clean repository"
-            pnpm run clean
+            npm run clean
 
             echo "Verify NPM cache"
             npm cache verify
@@ -67,10 +67,10 @@ jobs:
             npm cache clean --force
 
             echo "Installing dependencies"
-            pnpm install
+            npm install
 
             echo "Building..."
-            pnpm run build-prod
+            npm run build-prod
 
             echo "Copying files to /var/www/bloomify-admin-panel/"
             sudo cp -r dist/* /var/www/bloomify-admin-panel/

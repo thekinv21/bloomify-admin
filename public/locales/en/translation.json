@@ -74,9 +74,10 @@
 	"create_user" : "Create User",
 	"edit_user" : "Edit User",
 	"not_found": "Not Found",
+	"not_found_description": "Sorry, we can't find that page. You'll find lots to explore on the home page.",
+	"back_to_home": "Back to home",
 	"options_is_not_found": "Options is not found",
 	"select_option": "Select option",
 	"flowers": "Flowers",
 	"products": "Products"
-	
 }

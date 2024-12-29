@@ -1,8 +1,10 @@
+import { Suspense } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router'
 
 import { IRoute } from '@/types/routes.types'
 
 import { MainLayout } from '@/components/layout'
+import { Loader } from '@/components/ui'
 
 import { AllowPageProvider } from './AllowPageProvider'
 import { AuthProvider } from './AuthProvider'
@@ -12,32 +14,34 @@ export default function ReactRouterProvider() {
 	const { routes } = useRouters()
 
 	return (
-		<BrowserRouter>
-			<AuthProvider>
-				<Routes>
-					{routes.map((route: IRoute) => (
-						<Route
-							key={route.path}
-							path={route.path}
-							element={
-								route.layout === 'default' ? (
-									<MainLayout>
-										{route.hasAuthority ? (
-											<AllowPageProvider hasAuthority={route.hasAuthority}>
-												{route.element}
-											</AllowPageProvider>
-										) : (
-											<>{route.element}</>
-										)}
-									</MainLayout>
-								) : (
-									route.element
-								)
-							}
-						/>
-					))}
-				</Routes>
-			</AuthProvider>
-		</BrowserRouter>
+		<Suspense fallback={<Loader />}>
+			<BrowserRouter>
+				<AuthProvider>
+					<Routes>
+						{routes.map((route: IRoute) => (
+							<Route
+								key={route.path}
+								path={route.path}
+								element={
+									route.layout === 'default' ? (
+										<MainLayout>
+											{route.hasAuthority ? (
+												<AllowPageProvider hasAuthority={route.hasAuthority}>
+													{route.element}
+												</AllowPageProvider>
+											) : (
+												<>{route.element}</>
+											)}
+										</MainLayout>
+									) : (
+										route.element
+									)
+								}
+							/>
+						))}
+					</Routes>
+				</AuthProvider>
+			</BrowserRouter>
+		</Suspense>
 	)
 }

@@ -3,13 +3,19 @@ import { pathConstant } from '@/constant'
 import { IRoute } from '@/types'
 import { RoleEnum } from '@/types/custom.enum'
 
-import { HomePage, LoginPage, RolesPage, UserPage } from '@/screens'
+import {
+	HomePage,
+	LoginPage,
+	NotFoundPage,
+	RolesPage,
+	UserPage
+} from '@/screens'
 
 export const useRouters = () => {
 	const routes: IRoute[] = [
 		{
 			path: '*',
-			element: <div>Not found</div>,
+			element: <NotFoundPage />,
 			layout: 'blank'
 		},
 		{
