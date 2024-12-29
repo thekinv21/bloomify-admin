@@ -29,6 +29,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            set -e  # Exit on any error
             cd /home/bloomify-admin
             echo "Pulling from master branch"
             git fetch
@@ -36,16 +37,25 @@ jobs:
             echo "nvm settings"
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
+
+            # Install and use Node.js 21
+            echo "Installing Node.js version 21"
+            nvm install 21
+            nvm use 21
+
             echo "node version"
             node -v
             echo "npm version"
             npm -v
+
             echo "Installing dependencies"
-            npm install
+            npm ci  # Better for CI/CD workflows
+
             echo "Building..."
             npm run build-prod
 
             echo "Copying files to /var/www/bloomify-admin-panel"
-            sudo cp -r dist/* /var/www/bloomify-admin-panel
+            sudo cp -r dist/* /var/www/bloomify-admin-panel || { echo 'Copy failed!'; exit 1; }
+
             echo "Restarting nginx..."
-            sudo systemctl restart nginx
+            sudo systemctl restart nginx || { echo 'Failed to restart nginx'; exit 1; }
