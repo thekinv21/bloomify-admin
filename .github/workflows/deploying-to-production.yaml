@@ -31,21 +31,21 @@ jobs:
           script: |
             cd /home/bloomify-admin
             echo "clean project cache"
-            pnpm run clean
+            npm run clean
             echo "nvm settings"
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh
             echo "node version"
             node -v
-            echo "pnpm version"
-            pnpm -v
+            echo "npm version"
+            npm -v
             echo "Installing dependencies"
-            pnpm install
+            npm install
             echo "Pulling from master branch"
             git fetch
             git pull origin master
             echo "Building..."
-            pnpm run build-prod
+            npm run build-prod
             echo "Copying files to /var/www/bloomify-admin-panel"
             sudo cp -r dist/* /var/www/bloomify-admin-panel
             echo "Restarting nginx..."
