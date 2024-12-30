@@ -3,7 +3,7 @@ import { Controller } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 
-import { Button, CustomInput, Switch } from '@/components/ui'
+import { Button, CustomInput, Label, Switch } from '@/components/ui'
 
 import { useRoleForm } from './useRoleForm'
 
@@ -34,17 +34,18 @@ export function RoleForm(props: TypeRoleForm) {
 			/>
 
 			<div className='space-y-3'>
-				<label
+				<Label
 					className='block text-sm font-medium text-gray-700'
-					id='role_status'
+					htmlFor='isActive'
 				>
 					{t('status')}
-				</label>
+				</Label>
 				<Controller
 					name='isActive'
 					control={formMethod.control}
 					render={({ field }) => (
 						<Switch
+							id='isActive'
 							checked={field.value}
 							onCheckedChange={checked => field.onChange(checked)}
 							name={field.name}

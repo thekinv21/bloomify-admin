@@ -8,6 +8,7 @@ import { IUser } from '@/types'
 
 import {
 	Alert,
+	Button,
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
@@ -26,7 +27,7 @@ export const UserDataTableColumns = () => {
 	const { toggleUser } = useToggleUser()
 	const { deleteUser } = useDeleteUser()
 
-	const { isAdmins } = useCookie()
+	const { isAdmins, accessToken } = useCookie()
 
 	const [isEdit, setIsEdit] = React.useState<boolean>(false)
 	const [userId, setUserId] = React.useState<string | null>(null)
@@ -61,15 +62,17 @@ export const UserDataTableColumns = () => {
 
 			{
 				accessorKey: 'roles',
-				header: () => <>{t('role')}</>,
+				header: () => <>{t('roles')}</>,
 				cell: info => {
 					const row = info.row.original
 					const roles = row.roles
 
 					return (
 						<DropdownMenu>
-							<DropdownMenuTrigger className='select-none text-sm font-normal outline-none'>
-								{t('show_roles')}
+							<DropdownMenuTrigger className='select-none border' asChild>
+								<Button variant='secondary' size='xs'>
+									{t('show_roles')}
+								</Button>
 							</DropdownMenuTrigger>
 							<DropdownMenuContent className='min-w-28 text-sm'>
 								{roles.map((role: string, idx: number) => (
@@ -146,7 +149,7 @@ export const UserDataTableColumns = () => {
 				}
 			}
 		],
-		[userId, isEdit]
+		[userId, isEdit, accessToken]
 	)
 
 	return {

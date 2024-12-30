@@ -68,6 +68,7 @@
 	"role_placeholder": "Select Roles",
 	"role_required": "Role is required",
 	"show_roles": "Show roles",
+	"roles": "Roles",
 	"create_role" : "Create Role",
 	"edit_role" : "Edit Role",
 	"users_list": "Users List",

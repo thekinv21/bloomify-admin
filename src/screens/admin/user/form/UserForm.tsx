@@ -129,6 +129,8 @@ export function UserForm(props: TypeUserForm) {
 						control={control}
 						render={({ field }) => (
 							<Switch
+								id='user_status'
+								aria-labelledby='user_status'
 								checked={field.value}
 								onCheckedChange={checked => field.onChange(checked)}
 								name={field.name}
