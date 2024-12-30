@@ -1,8 +1,10 @@
-import NotFoundPage from '@/screens/error/NotFound'
-import HomePage from '@/screens/home'
+import React from 'react'
 
-import RolesPage from './admin/role/index'
-import UserPage from './admin/user/index'
-import LoginPage from './auth/login'
+import NotFoundPage from '@/screens/error/NotFound'
+
+const LoginPage = React.lazy(() => import('@/screens/auth/login'))
+const RolesPage = React.lazy(() => import('@/screens/admin/role'))
+const UserPage = React.lazy(() => import('@/screens/admin/user'))
+const HomePage = React.lazy(() => import('@/screens/home'))
 
 export { HomePage, LoginPage, NotFoundPage, RolesPage, UserPage }

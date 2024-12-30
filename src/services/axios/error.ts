@@ -1,8 +1,6 @@
-import { AxiosError } from 'axios'
-
-export const errorCatch = (error: AxiosError): string =>
+export const errorCatch = (error: any): string =>
 	error.response && error.response.data
 		? typeof error.response.data === 'object'
-			? (error.response.data as { error: string }).error
-			: (error.response.data as { message: string }).message
+			? error.response.data.error
+			: error.response.data
 		: error.message
