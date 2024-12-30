@@ -57,10 +57,28 @@ axiosWithAuth.interceptors.response.use(
 
 					if (refreshToken) {
 						const response = await authService.refreshToken(refreshToken)
-
 						retryCount++
 
 						if (response && response.status >= 200 && response.status < 300) {
+							const expireMinute = 2
+							const newExpiryDate = new Date(
+								new Date().getTime() + expireMinute * 60 * 1000
+							)
+
+							Cookies.set(
+								TokenEnum.USER,
+								JSON.stringify({
+									value: JSON.stringify({
+										user: response?.data?.user,
+										accessToken: response?.data?.accessToken,
+										refreshToken: response?.data?.refreshToken,
+										tokenSign: response?.data?.tokenSign
+									}),
+									expires: newExpiryDate
+								}),
+								{ expires: newExpiryDate }
+							)
+
 							await useUserStore.setState({
 								user: response?.data?.user,
 								accessToken: response?.data?.accessToken,

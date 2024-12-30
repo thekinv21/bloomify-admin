@@ -46,7 +46,7 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 			<div className='space-y-2'>
 				{label && (
 					<Label
-						htmlFor={`input${uuid}`}
+						htmlFor={`input_${uuid}`}
 						className={clsx(
 							'text-sm font-normal',
 							error ? 'text-destructive' : ''
@@ -71,7 +71,7 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 					)}
 
 					<Input
-						id={`input${uuid}`}
+						id={`input_${uuid}`}
 						className={clsx(
 							className,
 							iconLeft ? 'ps-10' : '',
