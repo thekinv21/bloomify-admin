@@ -18,7 +18,11 @@ export function RoleForm(props: TypeRoleForm) {
 		useRoleForm(props)
 
 	return (
-		<form className='space-y-5' onSubmit={formMethod.handleSubmit(onSubmit)}>
+		<form
+			name='role_form'
+			className='space-y-5'
+			onSubmit={formMethod.handleSubmit(onSubmit)}
+		>
 			<CustomInput
 				label={t('roleName')}
 				placeholder={t('roleName_placeholder')}

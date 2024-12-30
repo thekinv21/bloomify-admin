@@ -65,7 +65,7 @@ export function AuthProvider({ children }: IAuthProvider) {
 	useEffect(() => {
 		handleTransitionStart()
 
-		const timeout = setTimeout(handleTransitionEnd, 2000)
+		const timeout = setTimeout(handleTransitionEnd, 1500)
 
 		return () => clearTimeout(timeout)
 	}, [location.pathname, handleTransitionStart, handleTransitionEnd])

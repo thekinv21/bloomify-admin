@@ -15,16 +15,13 @@ import { useUserStore } from '@/store/userStore'
 
 export const useUserActions = () => {
 	const { removeUserFromStore } = useUserStore()
-	const { accessToken, user } = useCookie()
+	const { user } = useCookie()
 
 	const { t } = useTranslate()
 
 	const { mutate: logout } = useMutation({
 		mutationKey: [keyConstant.logout],
-		mutationFn: (token: string) =>
-			authService.logout({
-				token
-			}),
+		mutationFn: () => authService.logout(),
 		onSuccess: () => {
 			removeUserFromStore()
 		},
@@ -40,7 +37,7 @@ export const useUserActions = () => {
 	function handleLogout() {
 		Alert({
 			action: async () => {
-				return logout(accessToken as string)
+				return logout()
 			}
 		})
 	}

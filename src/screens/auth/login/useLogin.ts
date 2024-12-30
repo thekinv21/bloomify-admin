@@ -21,7 +21,6 @@ import { useUserStore } from '@/store/userStore'
 import { loginSchema } from './loginSchema'
 
 export const useLogin = () => {
-	const [isSubmit, setIsSubmit] = useState<boolean>(false)
 	const [isShow, setIsShow] = useState<boolean>(false)
 
 	const { route } = useRoute()
@@ -37,17 +36,15 @@ export const useLogin = () => {
 
 	const { saveUserToStore, removeUserFromStore } = useUserStore()
 
-	const { mutate: LOGIN } = useMutation({
+	const { mutate: LOGIN, isPending: loginPending } = useMutation({
 		mutationKey: [keyConstant.login],
-		mutationFn: (data: ILoginRequest) => authService.login(data),
-		onSuccess({ data }) {
-			setIsSubmit(false)
-			saveUserToStore(data)
+		mutationFn: async (data: ILoginRequest) => authService.login(data),
+		async onSuccess({ data }) {
+			await saveUserToStore(data)
 			formMethod.reset()
-			route(pathConstant.home)
+			await route(pathConstant.home, { replace: true })
 		},
 		onError(error: AxiosError) {
-			setIsSubmit(false)
 			removeUserFromStore()
 			formMethod.resetField('password')
 			AlertNotification({
@@ -59,7 +56,6 @@ export const useLogin = () => {
 	})
 
 	const onSubmit = async (data: z.infer<typeof loginSchema>) => {
-		await setIsSubmit(!isSubmit)
 		LOGIN(data)
 	}
 
@@ -70,7 +66,7 @@ export const useLogin = () => {
 	return {
 		formMethod,
 		onSubmit,
-		isSubmit,
+		loginPending,
 		handleToggle,
 		isShow
 	}

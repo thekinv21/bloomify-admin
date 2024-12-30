@@ -43,7 +43,11 @@ export function UserForm(props: TypeUserForm) {
 	} = formMethod
 
 	return (
-		<form className='flex flex-col gap-5' onSubmit={handleSubmit(onSubmit)}>
+		<form
+			name='user_form'
+			className='flex flex-col gap-5'
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<div className='grid grid-cols-1 gap-5 sm:grid-cols-2'>
 				<CustomInput
 					label={t('firstName')}
