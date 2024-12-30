@@ -2,6 +2,9 @@ import { IUser } from './admin/user.types'
 
 export interface ILoginResponse {
 	accessToken: string
+	tokenSign: string
+	refreshToken: string
+	otpIsRequired: boolean | null
 	user: IUser
 }
 

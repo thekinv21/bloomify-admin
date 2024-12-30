@@ -8,6 +8,8 @@ import { TokenEnum } from '@/types/custom.enum'
 interface IUserStore {
 	user: IUser | null
 	accessToken: string | null
+	refreshToken: string | null
+	tokenSign: string | null
 	saveUserToStore: (data: ILoginResponse) => void
 	removeUserFromStore: () => void
 }
@@ -55,6 +57,8 @@ export const useUserStore = create<IUserStore>()(
 		set => ({
 			user: null,
 			accessToken: null,
+			refreshToken: null,
+			tokenSign: null,
 			saveUserToStore: (data: ILoginResponse) => {
 				const cookie = Cookies?.get(TokenEnum.USER)
 				const cookieObject = cookie ? JSON.parse(cookie) : null
@@ -67,15 +71,27 @@ export const useUserStore = create<IUserStore>()(
 					? JSON.parse(cookieObject?.value)?.state?.user
 					: null
 
+				const refreshToken = cookieObject
+					? JSON.parse(cookieObject?.value)?.state?.refreshToken
+					: null
+
+				const tokenSign = cookieObject
+					? JSON.parse(cookieObject?.value)?.state?.tokenSign
+					: null
+
 				set({
 					user: data.user || user,
-					accessToken: data.accessToken || accessToken
+					accessToken: data.accessToken || accessToken,
+					refreshToken: data.refreshToken || refreshToken,
+					tokenSign: data.tokenSign || tokenSign
 				})
 			},
 			removeUserFromStore: () =>
 				set({
 					user: null,
-					accessToken: null
+					accessToken: null,
+					refreshToken: null,
+					tokenSign: null
 				})
 		}),
 		{
