@@ -1,11 +1,17 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Cookies from 'js-cookie'
 
 import { API_URL } from '@/constant'
 
-import { TokenEnum } from '@/types/custom.enum'
+import { AlertCustomEnum, AlertEnum, TokenEnum } from '@/types/custom.enum'
+
+import { AlertNotification } from '@/components/ui'
+
+import { useUserStore } from '@/store/userStore'
 
 import { authService } from '../auth.service'
+
+import { errorCatch } from './error'
 
 const options = {
 	baseURL: API_URL,
@@ -28,6 +34,7 @@ axiosWithAuth.interceptors.request.use(config => {
 	if (config.headers && accessToken) {
 		config.headers.Authorization = `Bearer ${accessToken}`
 	}
+
 	return config
 })
 
@@ -41,7 +48,6 @@ axiosWithAuth.interceptors.response.use(
 			config._retry = true
 
 			if (retryCount < 3) {
-				retryCount++
 				try {
 					const cookie = Cookies?.get(TokenEnum.USER)
 					const cookieObject = cookie ? JSON.parse(cookie) : null
@@ -49,20 +55,40 @@ axiosWithAuth.interceptors.response.use(
 						? JSON.parse(cookieObject?.value)?.state?.refreshToken
 						: null
 
-					const response = await authService.refreshToken(
-						refreshToken as string
-					)
-					if (response && response.status === 200) {
-						console.log('Token refreshed', response)
+					if (refreshToken) {
+						const response = await authService.refreshToken(refreshToken)
 
-						retryCount = 0
-						return axiosWithAuth(config)
+						retryCount++
+
+						if (response && response.status >= 200 && response.status < 300) {
+							await useUserStore.setState({
+								user: response?.data?.user,
+								accessToken: response?.data?.accessToken,
+								refreshToken: response?.data?.refreshToken,
+								tokenSign: response?.data?.tokenSign
+							})
+
+							retryCount = 0
+							return axiosWithAuth(config)
+						}
 					}
-				} catch (err) {
-					console.error('Error refreshing token:', err)
+				} catch (error) {
+					AlertNotification({
+						icon: AlertEnum.WARNING,
+						message: errorCatch(error as AxiosError),
+						customClass: AlertCustomEnum.WARNING
+					})
 				}
 			} else {
+				await useUserStore.setState({
+					user: null,
+					accessToken: null,
+					refreshToken: null,
+					tokenSign: null
+				})
+
 				await Cookies.remove(TokenEnum.USER)
+
 				const currentPath = window.location.pathname
 				window.location.href = `/auth/login?redirectUrl=${encodeURIComponent(currentPath)}`
 			}
