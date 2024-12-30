@@ -16,7 +16,8 @@ import styles from './LoginPage.module.scss'
 import { useLogin } from './useLogin'
 
 export default function LoginPage() {
-	const { formMethod, onSubmit, isSubmit, isShow, handleToggle } = useLogin()
+	const { formMethod, onSubmit, loginPending, isShow, handleToggle } =
+		useLogin()
 	const { t } = useTranslate()
 
 	return (
@@ -69,7 +70,7 @@ export default function LoginPage() {
 
 						<div>
 							<Button
-								loading={isSubmit}
+								loading={loginPending}
 								type='submit'
 								className={styles.button}
 							>
