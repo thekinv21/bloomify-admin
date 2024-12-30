@@ -14,6 +14,14 @@ export const useCookie = () => {
 		? JSON.parse(cookieObject?.value)?.state?.accessToken
 		: null
 
+	const refreshToken = cookieObject
+		? JSON.parse(cookieObject?.value)?.state?.refreshToken
+		: null
+
+	const tokenSign = cookieObject
+		? JSON.parse(cookieObject?.value)?.state?.tokenSign
+		: null
+
 	const USER_ROLES = user?.roles
 
 	const isAdmins =
@@ -24,6 +32,8 @@ export const useCookie = () => {
 		user,
 		accessToken,
 		USER_ROLES,
-		isAdmins
+		isAdmins,
+		refreshToken,
+		tokenSign
 	}
 }
