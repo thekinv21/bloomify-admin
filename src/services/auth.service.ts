@@ -2,14 +2,13 @@ import {
 	IGetMeResponse,
 	ILoginRequest,
 	ILoginResponse,
-	ILogoutRequest,
 	IRegisterRequest
 } from '@/types'
 
-import { API_URL, axiosClassic, axiosWithAuth } from './axios/axios'
+import { axiosClassic, axiosWithAuth } from './axios/axios'
 
 class AuthService {
-	private BASE_URL = `${API_URL}/api/auth`
+	private BASE_URL = `${import.meta.env.VITE_BASE_URL}/api/auth`
 
 	async login(request: ILoginRequest) {
 		const response = await axiosClassic.post<ILoginResponse>(
@@ -34,10 +33,15 @@ class AuthService {
 		return response
 	}
 
-	async logout(request: ILogoutRequest) {
-		const response = await axiosWithAuth.post<IGetMeResponse>(
-			`${this.BASE_URL}/logout`,
-			request
+	async logout() {
+		const response = await axiosWithAuth.post<void>(`${this.BASE_URL}/logout`)
+		return response
+	}
+
+	async refreshToken(refreshToken: string) {
+		const response = await axiosWithAuth.post<ILoginResponse>(
+			`${this.BASE_URL}/refresh-token`,
+			{ refreshToken }
 		)
 		return response
 	}

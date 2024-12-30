@@ -1,3 +1,5 @@
+import { API_URL } from '@/constant'
+
 import {
 	ICreateUserRequest,
 	ICustomResponse,
@@ -6,7 +8,7 @@ import {
 } from '@/types'
 import { IOption, IPaginationParams } from '@/types/custom.types'
 
-import { API_URL, axiosWithAuth } from '../axios/axios'
+import { axiosWithAuth } from '../axios/axios'
 
 class UserService {
 	private BASE_URL = `${API_URL}/api/user`
