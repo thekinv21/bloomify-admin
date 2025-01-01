@@ -32,14 +32,14 @@ jobs:
             echo "Find repository"
             cd /home/bloomify-admin
 
+            echo "Clean repository"
+            npm run clean
+
             echo "Fetching all branches"
             git fetch
 
             echo "Pulling from master branch"
             git pull origin master
-
-            echo "Clean repository"
-            npm run clean
 
             # Check for merge conflicts
             echo "Checking for merge conflicts"
