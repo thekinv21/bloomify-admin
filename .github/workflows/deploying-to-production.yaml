@@ -32,9 +32,6 @@ jobs:
             echo "Find repository"
             cd /home/bloomify-admin
 
-            echo "Clean repository"
-            npm run clean
-
             echo "Fetching all branches"
             git fetch
 
@@ -62,6 +59,9 @@ jobs:
 
             echo "NPM version"
             npm -v
+
+            echo "Clean repository"
+            npm run clean
 
             echo "Verify NPM cache"
             npm cache verify
