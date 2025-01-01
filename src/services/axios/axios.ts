@@ -17,12 +17,10 @@ const options = {
 	baseURL: API_URL,
 	headers: {
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': '*'
-	},
-	withCredentials: true,
-	accessControlAllowOrigin: 'https://admin.bloomify.life',
-	accessControlAllowMethods: '*',
-	accessControlAllowHeaders: '*'
+		'Access-Control-Allow-Origin': '*',
+		'Access-Control-Allow-Methods': '*',
+		'Access-Control-Allow-Headers': '*'
+	}
 }
 
 const axiosClassic = axios.create(options)
