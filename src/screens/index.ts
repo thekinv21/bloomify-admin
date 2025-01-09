@@ -6,5 +6,6 @@ const LoginPage = React.lazy(() => import('@/screens/auth/login'))
 const RolesPage = React.lazy(() => import('@/screens/admin/role'))
 const UserPage = React.lazy(() => import('@/screens/admin/user'))
 const HomePage = React.lazy(() => import('@/screens/home'))
+const FlowersPage = React.lazy(() => import('@/screens/flowers'))
 
-export { HomePage, LoginPage, NotFoundPage, RolesPage, UserPage }
+export { FlowersPage, HomePage, LoginPage, NotFoundPage, RolesPage, UserPage }
