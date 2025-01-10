@@ -5,9 +5,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-import { useRoute } from '@/hooks'
-
-import { keyConstant, pathConstant } from '@/constant'
+import { keyConstant } from '@/constant'
 
 import { ILoginRequest } from '@/types'
 import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
@@ -22,8 +20,8 @@ import { loginSchema } from './loginSchema'
 
 export const useLogin = () => {
 	const [isShow, setIsShow] = useState<boolean>(false)
-
-	const { route } = useRoute()
+	const [isOpenOtpModal, setIsOpenOtpModal] = useState<boolean>(true)
+	const [tokenSign, setTokenSign] = useState<string | null>(null)
 
 	const formMethod = useForm<z.infer<typeof loginSchema>>({
 		resolver: zodResolver(loginSchema),
@@ -42,7 +40,8 @@ export const useLogin = () => {
 		async onSuccess({ data }) {
 			await saveUserToStore(data)
 			formMethod.reset()
-			await route(pathConstant.home, { replace: true })
+			await setIsOpenOtpModal(true)
+			setTokenSign(data.tokenSign)
 		},
 		onError(error: AxiosError) {
 			removeUserFromStore()
@@ -52,6 +51,7 @@ export const useLogin = () => {
 				message: errorCatch(error),
 				customClass: AlertCustomEnum.WARNING
 			})
+			setIsOpenOtpModal(false)
 		}
 	})
 
@@ -68,6 +68,9 @@ export const useLogin = () => {
 		onSubmit,
 		loginPending,
 		handleToggle,
-		isShow
+		isShow,
+		isOpenOtpModal,
+		setIsOpenOtpModal,
+		tokenSign
 	}
 }
