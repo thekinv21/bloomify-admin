@@ -2,6 +2,8 @@ import { AtSign, Eye, EyeOff, Lock } from 'lucide-react'
 
 import { useTranslate } from '@/hooks'
 
+import { ILoginResponse } from '@/types'
+
 import {
 	Button,
 	Card,
@@ -26,7 +28,7 @@ export default function LoginPage() {
 		handleToggle,
 		isOpenOtpModal,
 		setIsOpenOtpModal,
-		tokenSign
+		data
 	} = useLogin()
 	const { t } = useTranslate()
 
@@ -93,11 +95,11 @@ export default function LoginPage() {
 				</Card>
 			</section>
 
-			{isOpenOtpModal ? (
+			{isOpenOtpModal && data !== null ? (
 				<OTP
 					isOpen={isOpenOtpModal}
 					setIsOpen={setIsOpenOtpModal}
-					tokenSign={tokenSign as string}
+					data={data as ILoginResponse}
 				/>
 			) : null}
 		</>

@@ -1,3 +1,5 @@
+import { ILoginResponse } from '@/types'
+
 import { CustomModal } from '@/components/ui'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -7,7 +9,7 @@ import { useOtp } from './useOtp'
 interface IOtp {
 	isOpen: boolean
 	setIsOpen: (isOpen: boolean) => void
-	tokenSign: string | null
+	data: ILoginResponse | null
 }
 
 export function OTP(props: IOtp) {

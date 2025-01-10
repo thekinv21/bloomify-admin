@@ -4,7 +4,7 @@ import { ChangeEvent, KeyboardEvent, useRef, useState } from 'react'
 
 import { keyConstant } from '@/constant'
 
-import { IOtpRequest } from '@/types'
+import { ILoginResponse, IOtpRequest } from '@/types'
 import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 
 import { authService, errorCatch } from '@/services'
@@ -16,7 +16,7 @@ import { useUserStore } from '@/store/userStore'
 type TypeUseOtp = {
 	isOpen: boolean
 	setIsOpen: (isOpen: boolean) => void
-	tokenSign: string | null
+	data: ILoginResponse | null
 }
 
 export const useOtp = (props: TypeUseOtp) => {
@@ -64,8 +64,8 @@ export const useOtp = (props: TypeUseOtp) => {
 	const { mutate, isPending } = useMutation({
 		mutationKey: [keyConstant.verify_otp],
 		mutationFn: async (data: IOtpRequest) => authService.verifyOtp(data),
-		async onSuccess({ data }) {
-			await saveUserToStore(data)
+		async onSuccess() {
+			await saveUserToStore(props.data as ILoginResponse)
 			await props.setIsOpen(!props.isOpen)
 		},
 		onError(error: AxiosError) {
@@ -86,7 +86,7 @@ export const useOtp = (props: TypeUseOtp) => {
 
 		mutate({
 			otpCode: enteredOtp,
-			tokenSign: props.tokenSign as string
+			tokenSign: props.data?.tokenSign as string
 		})
 	}
 

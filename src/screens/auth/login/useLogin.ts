@@ -7,7 +7,7 @@ import { z } from 'zod'
 
 import { keyConstant } from '@/constant'
 
-import { ILoginRequest } from '@/types'
+import { ILoginRequest, ILoginResponse } from '@/types'
 import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 
 import { authService, errorCatch } from '@/services'
@@ -19,7 +19,7 @@ import { loginSchema } from './loginSchema'
 export const useLogin = () => {
 	const [isShow, setIsShow] = useState<boolean>(false)
 	const [isOpenOtpModal, setIsOpenOtpModal] = useState<boolean>(false)
-	const [tokenSign, setTokenSign] = useState<string | null>(null)
+	const [data, setData] = useState<ILoginResponse | null>(null)
 
 	const formMethod = useForm<z.infer<typeof loginSchema>>({
 		resolver: zodResolver(loginSchema),
@@ -36,7 +36,7 @@ export const useLogin = () => {
 		async onSuccess({ data }) {
 			formMethod.reset()
 			await setIsOpenOtpModal(true)
-			setTokenSign(data.tokenSign)
+			await setData(data)
 		},
 		onError(error: AxiosError) {
 			formMethod.resetField('password')
@@ -46,6 +46,7 @@ export const useLogin = () => {
 				customClass: AlertCustomEnum.WARNING
 			})
 			setIsOpenOtpModal(false)
+			setData(null)
 		}
 	})
 
@@ -65,6 +66,6 @@ export const useLogin = () => {
 		isShow,
 		isOpenOtpModal,
 		setIsOpenOtpModal,
-		tokenSign
+		data
 	}
 }
