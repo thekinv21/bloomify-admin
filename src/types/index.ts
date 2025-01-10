@@ -17,6 +17,7 @@ import {
 	ILoginRequest,
 	ILoginResponse,
 	ILogoutRequest,
+	IOtpRequest,
 	IRegisterRequest,
 	IRegisterResponse
 } from './auth.types'
@@ -31,6 +32,7 @@ export type {
 	ILoginRequest,
 	ILoginResponse,
 	ILogoutRequest,
+	IOtpRequest,
 	IRegisterRequest,
 	IRegisterResponse,
 	IRole,

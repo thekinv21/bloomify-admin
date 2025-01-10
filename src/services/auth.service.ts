@@ -49,7 +49,7 @@ class AuthService {
 
 	async verifyOtp(data: IOtpRequest) {
 		const response = await axiosClassic.post<ILoginResponse>(
-			`${this.BASE_URL}/verify-otp`,
+			`${this.BASE_URL}/validate-otp`,
 			data
 		)
 		return response

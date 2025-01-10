@@ -14,13 +14,11 @@ import { authService, errorCatch } from '@/services'
 
 import { AlertNotification } from '@/components/ui'
 
-import { useUserStore } from '@/store/userStore'
-
 import { loginSchema } from './loginSchema'
 
 export const useLogin = () => {
 	const [isShow, setIsShow] = useState<boolean>(false)
-	const [isOpenOtpModal, setIsOpenOtpModal] = useState<boolean>(true)
+	const [isOpenOtpModal, setIsOpenOtpModal] = useState<boolean>(false)
 	const [tokenSign, setTokenSign] = useState<string | null>(null)
 
 	const formMethod = useForm<z.infer<typeof loginSchema>>({
@@ -32,19 +30,15 @@ export const useLogin = () => {
 		}
 	})
 
-	const { saveUserToStore, removeUserFromStore } = useUserStore()
-
 	const { mutate: LOGIN, isPending: loginPending } = useMutation({
 		mutationKey: [keyConstant.login],
 		mutationFn: async (data: ILoginRequest) => authService.login(data),
 		async onSuccess({ data }) {
-			await saveUserToStore(data)
 			formMethod.reset()
 			await setIsOpenOtpModal(true)
 			setTokenSign(data.tokenSign)
 		},
 		onError(error: AxiosError) {
-			removeUserFromStore()
 			formMethod.resetField('password')
 			AlertNotification({
 				icon: AlertEnum.WARNING,
