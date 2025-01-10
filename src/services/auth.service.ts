@@ -2,6 +2,7 @@ import {
 	IGetMeResponse,
 	ILoginRequest,
 	ILoginResponse,
+	IOtpRequest,
 	IRegisterRequest
 } from '@/types'
 
@@ -42,6 +43,14 @@ class AuthService {
 		const response = await axiosClassic.post<ILoginResponse>(
 			`${this.BASE_URL}/refresh-token`,
 			{ refreshToken }
+		)
+		return response
+	}
+
+	async verifyOtp(data: IOtpRequest) {
+		const response = await axiosClassic.post<ILoginResponse>(
+			`${this.BASE_URL}/verify-otp`,
+			data
 		)
 		return response
 	}

@@ -2,6 +2,7 @@ export const keyConstant = {
 	login: 'login',
 	register: 'register',
 	get_me: 'get-me',
+	verify_otp: 'verify-otp',
 	logout: 'logout',
 	get_users: 'get-all-users',
 	get_user: 'get-user-by-id',

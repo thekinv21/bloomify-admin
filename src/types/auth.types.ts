@@ -34,3 +34,8 @@ export interface IRegisterRequest {
 export interface ILogoutRequest {
 	token: string
 }
+
+export interface IOtpRequest {
+	tokenSign: string
+	otpCode: string
+}
