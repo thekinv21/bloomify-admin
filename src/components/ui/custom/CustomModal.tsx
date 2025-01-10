@@ -21,13 +21,16 @@ export function CustomModal(props: ICustomModal) {
 				aria-description='describedby'
 				aria-describedby='content_modal'
 				size={props.size}
+				className='pointer-events-none'
 			>
 				<DialogTitle className='text-md uppercase text-gray-600'>
 					{props.title}
 				</DialogTitle>
 
 				<DialogDescription>{props.subTitle}</DialogDescription>
-				<div className='text-sm'>{props.children}</div>
+				<div className='border-none text-sm outline-none focus-within:border-none focus:border-none focus:outline-none'>
+					{props.children}
+				</div>
 			</DialogContent>
 		</Dialog>
 	)
