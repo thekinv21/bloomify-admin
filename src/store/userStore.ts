@@ -34,7 +34,7 @@ const cookiesStorage: StateStorage = {
 	},
 
 	setItem: (name: string, value: string) => {
-		const expireMinute = 5
+		const expireMinute = 60 * 24 * 30
 		const expireDate = new Date(new Date().getTime() + expireMinute * 60 * 1000)
 
 		Cookies.set(

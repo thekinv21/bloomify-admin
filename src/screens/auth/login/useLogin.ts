@@ -14,6 +14,8 @@ import { authService, errorCatch } from '@/services'
 
 import { AlertNotification } from '@/components/ui'
 
+import { useUserStore } from '@/store/userStore'
+
 import { loginSchema } from './loginSchema'
 
 export const useLogin = () => {
@@ -30,13 +32,18 @@ export const useLogin = () => {
 		}
 	})
 
+	const { saveUserToStore } = useUserStore()
+
 	const { mutate: LOGIN, isPending: loginPending } = useMutation({
 		mutationKey: [keyConstant.login],
 		mutationFn: async (data: ILoginRequest) => authService.login(data),
 		async onSuccess({ data }) {
-			formMethod.reset()
-			await setIsOpenOtpModal(true)
-			await setData(data)
+			if (data.otpIsRequired) {
+				await setIsOpenOtpModal(true)
+				await setData(data)
+			} else {
+				await saveUserToStore(data)
+			}
 		},
 		onError(error: AxiosError) {
 			formMethod.resetField('password')

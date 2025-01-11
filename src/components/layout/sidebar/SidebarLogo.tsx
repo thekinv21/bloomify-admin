@@ -10,14 +10,15 @@ export function SidebarLogo({ sidebar }: ISidebarLogo) {
 	return (
 		<a href='/dashboard' className={styles.logo}>
 			{sidebar === SidebarStatus.NORMAL ? (
-				<img draggable={false} src='/logo.svg' className='h-10 w-10' />
-			) : null}
-			{sidebar === SidebarStatus.NORMAL ? (
-				<h5>Bloomify</h5>
+				<img
+					draggable={false}
+					src='/logo.png'
+					className='my-4 max-h-10 object-cover'
+				/>
 			) : (
 				<>
 					{sidebar === SidebarStatus.MOBILE ? null : (
-						<h5 className='w-full text-center'>B</h5>
+						<h5 className='w-full p-5 text-center'>B</h5>
 					)}
 				</>
 			)}
