@@ -1,16 +1,7 @@
-import { t } from 'i18next'
 import Swal from 'sweetalert2'
 
 import './Alert.scss'
 import { IAlert, IAlertNotification } from './Alert.types'
-
-/* 
-
-	1) AlertNotification: it's notification for show after crud
-	2) Alert: alert modal for confirming crud's
-	3) import "./Alert.scss" custom styles for sweet alerts2
-
-*/
 
 export function AlertNotification(props: IAlertNotification) {
 	const notification = Swal.mixin({
@@ -21,20 +12,16 @@ export function AlertNotification(props: IAlertNotification) {
 		timer: 4000,
 		showCloseButton: false,
 		customClass: {
-			popup: props.customClass
+			popup: props.customClass,
+			title: 'swal2-custom-title'
 		},
-		width:
-			props.message?.toString().length > 10
-				? props.width
-					? props.width
-					: 350
-				: 'auto'
+		width: props.width ?? 300
 	})
 	notification.fire({
 		title:
 			props.message?.toString().length > 40
 				? `${props.message.toString().slice(0, 37)}...`
-				: props.message?.toString()
+				: props.message?.toString() + '!'
 	})
 }
 
@@ -49,11 +36,11 @@ export function Alert(props: IAlert) {
 	})
 	sweetAlert
 		.fire({
-			title: props.title ?? `${t(`are_you_sure`)}`,
-			text: props.subTitle ?? `${t(`are_yor_sure_confirm`)}`,
+			title: props.title ?? `Are you sure?`,
+			text: props.subTitle ?? 'You wanna continue this action?',
 			icon: props.icon ?? 'warning',
-			confirmButtonText: props.confirmText ?? `${t(`yes`)}`,
-			cancelButtonText: props.cancelText ?? `${t(`no`)}`,
+			confirmButtonText: props.confirmText ?? `Confirm`,
+			cancelButtonText: props.cancelText ?? `Cancel`,
 			reverseButtons: true,
 			showConfirmButton: props.isConfirmAlert ?? true,
 			showCancelButton: props.isConfirmAlert ?? true,

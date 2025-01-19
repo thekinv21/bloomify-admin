@@ -1,33 +1,33 @@
 .alert-confirm-btn {
-	@apply ml-3 min-w-28 max-w-32 truncate whitespace-nowrap rounded-md bg-[#00ab55] py-2 text-sm text-white transition duration-200 ease-in-out hover:bg-opacity-90;
+	@apply ml-3 min-w-28 max-w-32 truncate whitespace-nowrap rounded-md bg-[#10b981] py-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-opacity-90;
 }
 
 .alert-cancel-btn {
-	@apply mr-3 min-w-28 whitespace-nowrap rounded-md bg-[#e7515a] py-2 text-sm text-white transition duration-200 ease-in-out hover:bg-opacity-90;
+	@apply mr-3 min-w-28 whitespace-nowrap rounded-md bg-[#ff6a55] py-2 text-sm font-semibold text-white transition duration-200 ease-in-out hover:bg-opacity-90;
+}
+
+.swal2-popup.swal2-toast {
+	display: flex !important;
 }
 
 .alert-color-warning {
-	background-color: #e2a03f !important;
+	background-color: #f59e0b !important;
 }
 
 .alert-color-success {
-	background-color: #00ab55 !important;
+	background-color: #10b981 !important;
 }
 
 .alert-color-error {
-	background-color: #e7515a !important;
+	background-color: #ff6a55 !important;
 }
 
 .alert-color-info {
-	background-color: #2196f3 !important;
-}
-
-.swal2-title {
-	@apply mb-[5px] select-none text-2xl font-normal capitalize;
+	background-color: #2a85ff !important;
 }
 
 .swal2-popup.swal2-toast .swal2-title {
-	@apply select-none capitalize text-gray-100;
+	@apply flex select-none font-semibold capitalize tracking-wide text-gray-100;
 }
 
 @keyframes fadeInDown {
@@ -45,9 +45,44 @@
 	animation: fadeInDown 0.5s !important;
 }
 
+// Error icon styles
+
+.swal2-toast .swal2-icon.swal2-error {
+	margin-left: 10px !important;
+	margin-right: 0 !important;
+}
+
+// warning icon styles
+
+.swal2-toast .swal2-icon.swal2-warning {
+	margin-left: 10px !important;
+	margin-right: 0 !important;
+}
+
+.swal2-toast .swal2-icon.swal2-warning .swal2-icon-content {
+	color: #f5f5f5 !important;
+}
+
+// info icon styles
+
+.swal2-toast .swal2-icon.swal2-info {
+	margin-left: 10px !important;
+	margin-right: 0 !important;
+}
+
+// success icon styles
+
+.swal2-toast .swal2-icon.swal2-success {
+	margin-left: 10px !important;
+	margin-right: 0 !important;
+}
+
 .swal2-html-container {
-	color: #f18f49 !important;
-	margin-bottom: 5px !important;
+	color: #ff6a55 !important;
 	text-overflow: wrap !important;
 	font-size: 16px !important;
+}
+
+.swal2-custom-title {
+	@apply max-w-[250px] truncate whitespace-nowrap text-center text-gray-100;
 }
