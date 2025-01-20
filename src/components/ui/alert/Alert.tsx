@@ -15,13 +15,10 @@ export function AlertNotification(props: IAlertNotification) {
 			popup: props.customClass,
 			title: 'swal2-custom-title'
 		},
-		width: props.width ?? 300
+		width: props.width ?? 'auto'
 	})
 	notification.fire({
-		title:
-			props.message?.toString().length > 40
-				? `${props.message.toString().slice(0, 37)}...`
-				: props.message?.toString() + '!'
+		title: props.message?.toString() + '...'
 	})
 }
 

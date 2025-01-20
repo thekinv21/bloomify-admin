@@ -59,10 +59,6 @@
 	margin-right: 0 !important;
 }
 
-.swal2-toast .swal2-icon.swal2-warning .swal2-icon-content {
-	color: #f5f5f5 !important;
-}
-
 // info icon styles
 
 .swal2-toast .swal2-icon.swal2-info {
@@ -84,5 +80,5 @@
 }
 
 .swal2-custom-title {
-	@apply max-w-[250px] truncate whitespace-nowrap text-center text-gray-100;
+	@apply mx-5 max-w-[350px] truncate whitespace-nowrap text-center text-gray-100;
 }
