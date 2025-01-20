@@ -11,7 +11,7 @@
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
     "build-prod": "GENERATE_SOURCEMAP=false tsc && vite build --mode production",
-		"build-test": "GENERATE_SOURCEMAP=false tsc && vite build --mode development",
+    "build-test": "GENERATE_SOURCEMAP=false tsc && vite build --mode development",
     "clean": "rm -rf dist && rm -rf build && rm -rf node_modules && rm -f package-lock.json && rm -f yarn.lock && rm -f pnpm-lock.yaml"
   },
   "dependencies": {
@@ -52,6 +52,7 @@
     "sweetalert2": "^11.6.13",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
+    "vite-plugin-dynamic-import": "^1.6.0",
     "zod": "^3.24.0",
     "zustand": "^5.0.2"
   },

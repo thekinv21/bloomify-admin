@@ -27,7 +27,7 @@
 }
 
 .swal2-popup.swal2-toast .swal2-title {
-	@apply flex select-none font-semibold capitalize tracking-wide text-gray-100;
+	@apply mx-5 flex max-w-[250px] select-none truncate capitalize tracking-wide text-white/85;
 }
 
 @keyframes fadeInDown {
@@ -77,8 +77,4 @@
 	color: #ff6a55 !important;
 	text-overflow: wrap !important;
 	font-size: 16px !important;
-}
-
-.swal2-custom-title {
-	@apply mx-5 max-w-[350px] truncate whitespace-nowrap text-center text-gray-100;
 }

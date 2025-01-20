@@ -17,9 +17,7 @@ const options = {
 	baseURL: API_URL,
 	headers: {
 		'Content-Type': 'application/json',
-		'Access-Control-Allow-Origin': '*',
-		'Access-Control-Allow-Methods': '*',
-		'Access-Control-Allow-Headers': '*'
+		'Access-Control-Allow-Origin': '*'
 	}
 }
 
@@ -62,7 +60,7 @@ axiosWithAuth.interceptors.response.use(
 						retryCount++
 
 						if (response && response.status >= 200 && response.status < 300) {
-							const expireMinute = 2
+							const expireMinute = 60
 							const newExpiryDate = new Date(
 								new Date().getTime() + expireMinute * 60 * 1000
 							)
