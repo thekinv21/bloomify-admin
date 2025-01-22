@@ -17,30 +17,26 @@
 }
 
 .flower_category {
-	@apply mb-2 flex items-center justify-between;
+	@apply mb-2 flex items-center gap-3;
 
 	> p {
-		@apply text-xs font-normal uppercase text-gray-500;
+		@apply text-xs font-normal text-gray-500;
 	}
 }
 
 .flower_title {
-	@apply mb-[6px] line-clamp-1 text-base font-medium text-gray-700;
+	@apply max-w-52 truncate text-base font-medium text-gray-700;
 }
 
 .flower_description {
-	@apply mb-2 line-clamp-1 text-sm font-normal text-gray-500;
+	@apply mb-2 line-clamp-2 text-sm font-normal text-gray-500;
 }
 
 .flower_price_container {
 	@apply mb-4 space-x-4;
 
 	> span {
-		@apply mt-2 text-base font-medium text-gray-700;
-	}
-
-	> del {
-		@apply text-base font-normal text-gray-400;
+		@apply text-base font-semibold text-gray-500;
 	}
 }
 

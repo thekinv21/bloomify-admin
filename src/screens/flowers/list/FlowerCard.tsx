@@ -1,5 +1,3 @@
-import { Eye } from 'lucide-react'
-
 import { useTranslate } from '@/hooks'
 
 import { IFlower } from '@/types'
@@ -7,6 +5,7 @@ import { IFlower } from '@/types'
 import { Button, Card } from '@/components/ui'
 
 import styles from './Flower.module.scss'
+import { detectCurrency } from '@/utils'
 
 interface IFlowerCard {
 	flower: IFlower
@@ -22,23 +21,32 @@ export function FlowerCard({ flower }: IFlowerCard) {
 					alt='Flower'
 					src={flower.imageUrl ?? '/avatar.png'}
 					className='group-hover:scale-105'
+					draggable={false}
 				/>
 			</div>
 
-			<>
-				<div className={styles.flower_category}>
-					<p>{flower.title}</p>
-				</div>
-				<h6 className={styles.flower_title}>{flower.title}</h6>
-				<p className={styles.flower_description}>{flower.description}</p>
-				<p className={styles.flower_price_container}>
-					<span>{flower.price + ' ' + flower.currency}</span>
-					<del>{flower.discountedPrice + ' ' + flower.currency}</del>
+			<div className={styles.flower_category}>
+				<p>
+					{t('width')} : {flower.width}cm
 				</p>
-				<Button leftSection={<Eye size={16} />} className='w-full'>
-					{t('view')}
-				</Button>
-			</>
+
+				<p>
+					{t('height')} : {flower.height}cm
+				</p>
+			</div>
+
+			<div className='flex w-full justify-between'>
+				<h6 className={styles.flower_title}>{flower.title}</h6>
+				<p className={styles.flower_price_container}>
+					<span>{`${detectCurrency(flower.currency) + ' ' + flower.price}`}</span>
+				</p>
+			</div>
+
+			<p className={styles.flower_description}>{flower.description}</p>
+
+			<div className='flex w-full justify-end'>
+				<Button variant='link'>{t('view')}</Button>
+			</div>
 		</Card>
 	)
 }

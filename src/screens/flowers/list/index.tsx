@@ -4,12 +4,17 @@ import { IFlower } from '@/types'
 
 import { BreadCrumb, Card } from '@/components/ui'
 
+import { useFetchFlowers } from '../hooks/useFetchFlowers'
+
 import styles from './Flower.module.scss'
 import { FlowerCardMapper } from './FlowerCardMapper'
 import { FlowerListHeader } from './FlowerListHeader'
 
 export function FlowerList() {
-	const flowers: IFlower[] = []
+	const { query } = useFetchFlowers({
+		page: 0,
+		size: 10
+	})
 
 	return (
 		<>
@@ -25,7 +30,7 @@ export function FlowerList() {
 
 			<Card className={styles.page_content}>
 				<FlowerListHeader />
-				<FlowerCardMapper flowers={flowers} />
+				<FlowerCardMapper flowers={query.data?.content as IFlower[]} />
 			</Card>
 		</>
 	)

@@ -21,3 +21,20 @@ export const isValueBoolean = (bool: boolean): boolean => {
 export const isNotNull = <T>(value: T): boolean => {
 	return value !== null
 }
+
+export const isUndefined = <T>(value: T): boolean => {
+	return value === undefined
+}
+
+export const detectCurrency = (currency: string): string => {
+	switch (currency) {
+		case 'USD':
+			return '$'
+		case 'EUR':
+			return '€'
+		case 'GBP':
+			return '£'
+		default:
+			return '₺'
+	}
+}
