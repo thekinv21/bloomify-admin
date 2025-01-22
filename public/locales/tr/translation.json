@@ -105,5 +105,6 @@
 	"view": "Görüntüle",
 	"filter": "Filtrele",
 	"view_type": "Görünüm Tipi",
-	"card": "Kart"
+	"card": "Kart",
+	"view_details": "Detayları Görüntüle"
 }

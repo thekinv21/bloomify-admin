@@ -45,7 +45,7 @@ export function FlowerCard({ flower }: IFlowerCard) {
 			<p className={styles.flower_description}>{flower.description}</p>
 
 			<div className='flex w-full justify-end'>
-				<Button variant='link'>{t('view')}</Button>
+				<Button variant='link'>{t('view_details')}</Button>
 			</div>
 		</Card>
 	)

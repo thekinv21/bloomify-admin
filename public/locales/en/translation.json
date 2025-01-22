@@ -105,5 +105,6 @@
 	"view": "View",
 	"filter": "Filter",
 	"view_type": "View Type",
-	"card": "Card"
+	"card": "Card",
+	"view_details": "View Details"
 }
