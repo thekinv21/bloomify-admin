@@ -21,13 +21,23 @@ import {
 	IRegisterRequest,
 	IRegisterResponse
 } from './auth.types'
+import {
+	ICreateFlowerImage,
+	IFlowerImage,
+	IUpdateFlowerImage
+} from './flower-image.types'
+import { ICreateFlower, IFlower, IUpdateFlower } from './flower.types'
 
 export type {
 	AlertCustomEnum,
 	AlertMessageEnum,
+	ICreateFlower,
+	ICreateFlowerImage,
 	ICreateRoleRequest,
 	ICreateUserRequest,
 	ICustomResponse,
+	IFlower,
+	IFlowerImage,
 	IGetMeResponse,
 	ILoginRequest,
 	ILoginResponse,
@@ -37,6 +47,8 @@ export type {
 	IRegisterResponse,
 	IRole,
 	IRoute,
+	IUpdateFlower,
+	IUpdateFlowerImage,
 	IUpdateRoleRequest,
 	IUpdateUserRequest,
 	IUser
