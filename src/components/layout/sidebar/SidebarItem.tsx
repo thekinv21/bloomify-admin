@@ -1,5 +1,6 @@
+import clsx from 'clsx'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AnimateHeight from 'react-animate-height'
 import { NavLink, useLocation } from 'react-router'
 
@@ -21,10 +22,7 @@ export function SidebarItem({ item }: ISidebarItem) {
 		<NavLink
 			to={item.url}
 			className={({ isActive }) =>
-				[
-					styles.link_button,
-					isActive ? 'bg-gray-100/20 text-primary' : ''
-				].join(' ')
+				[styles.link_button, isActive ? 'text-primary/70' : ''].join(' ')
 			}
 		>
 			<div className={styles.link_icon}>{item.icon}</div>
@@ -48,8 +46,6 @@ export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 
-	const toggleDropdown = () => setIsOpen(!isOpen)
-
 	const isAlwaysVisible =
 		USER_ROLES?.includes(RoleEnum.ADMIN) ||
 		USER_ROLES?.includes(RoleEnum.SUPER_ADMIN)
@@ -62,12 +58,27 @@ export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 		(role: string) => USER_ROLES?.includes(role)
 	)
 
+	useEffect(() => {
+		if (hasActiveLink) {
+			setIsOpen(true)
+		}
+	}, [hasActiveLink])
+
+	const toggleDropdown = () => {
+		if (!hasActiveLink) {
+			setIsOpen(prevState => !prevState)
+		}
+	}
+
 	return (
 		<>
 			<button
-				className={styles.link_button}
+				className={clsx(
+					styles.link_button,
+					hasActiveLink ? 'text-primary/90' : ''
+				)}
 				onClick={toggleDropdown}
-				aria-expanded={hasActiveLink}
+				aria-expanded={isOpen}
 			>
 				<span className={styles.link_icon}>{dropdownLink.icon}</span>
 				<div className={styles.dropdown_label}>

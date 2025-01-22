@@ -19,14 +19,14 @@
 }
 
 .heading {
-	@apply my-2 px-2 text-xs font-semibold uppercase opacity-70;
+	@apply my-3 px-2 text-xs font-semibold uppercase opacity-70;
 }
 
 .link_button {
 	@apply relative flex w-full items-center rounded px-2 py-2.5 text-start leading-tight text-black/70 outline-none transition-all duration-300 ease-in-out;
 
 	&:hover {
-		@apply bg-gray-100/30 text-primary;
+		@apply bg-[#e7ffe4]/25 text-primary/70;
 	}
 }
 
@@ -59,7 +59,7 @@
 }
 
 .dropdown_item {
-	@apply inline-flex w-full rounded border-none py-2.5 pl-5 text-sm outline-none transition duration-300 ease-out;
+	@apply inline-flex w-full rounded border-none py-1.5 pl-5 text-sm outline-none transition duration-300 ease-out;
 
 	> li {
 		@apply flex items-center gap-2 before:border-l-emerald-50 before:text-lg before:content-['-'];
