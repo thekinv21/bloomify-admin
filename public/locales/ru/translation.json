@@ -103,5 +103,6 @@
 	"width_placeholder": "Введите ширину",
 	"width_required" : "Ширина обязательна",
 	"view": "Просмотр",
-	"filter": "Фильтр"
+	"filter": "Фильтр",
+	"view_type": "Тип просмотра"
 }

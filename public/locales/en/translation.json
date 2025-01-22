@@ -103,5 +103,6 @@
 	"width_placeholder": "Enter Width",
 	"width_required" : "Width is required",
 	"view": "View",
-	"filter": "Filter"
+	"filter": "Filter",
+	"view_type": "View Type"
 }
