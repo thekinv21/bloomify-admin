@@ -101,5 +101,6 @@
 	"height_required" : "Height is required",
 	"width": "Width",
 	"width_placeholder": "Enter Width",
-	"width_required" : "Width is required"
+	"width_required" : "Width is required",
+	"view": "View"
 }

@@ -5,6 +5,7 @@ export interface IFlower {
 	title: string
 	description: string
 	price: number
+	discountedPrice: number
 	currency: string
 	imageUrl: string
 	height: number

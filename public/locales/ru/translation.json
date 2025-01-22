@@ -101,5 +101,6 @@
 	"height_required" : "Высота обязательна",
 	"width": "Ширина",
 	"width_placeholder": "Введите ширину",
-	"width_required" : "Ширина обязательна"
+	"width_required" : "Ширина обязательна",
+	"view": "Просмотр"
 }

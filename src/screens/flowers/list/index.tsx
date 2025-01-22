@@ -1,49 +1,146 @@
-import { PaginationState } from '@tanstack/react-table'
-import { AxiosError } from 'axios'
 import { FlowerIcon } from 'lucide-react'
-import React from 'react'
 
-import { useDebounce, useTranslate } from '@/hooks'
+import { useTranslate } from '@/hooks'
 
-import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
+import { IFlower } from '@/types'
 
-import { errorCatch } from '@/services'
+import { BreadCrumb } from '@/components/ui'
 
-import { AlertNotification, BreadCrumb, DataTable } from '@/components/ui'
-
-import { useFetchFlowers } from '../hooks/useFetchFlowers'
-
-import { FlowerDataTableColumns } from './FlowerDataTableColumns'
+import { FlowerCard } from './FlowerCard'
 
 export function FlowerList() {
 	const { t } = useTranslate()
 
-	const { columns } = FlowerDataTableColumns()
-
-	const [searchTerm, setSearchTerm] = React.useState<string>('')
-
-	const [pagination, setPagination] = React.useState<PaginationState>({
-		pageIndex: 0,
-		pageSize: 10
-	})
-
-	const debouncedSearch = useDebounce(searchTerm, 1500)
-
-	const { query } = useFetchFlowers({
-		page: pagination.pageIndex,
-		size: pagination.pageSize,
-		searchTerm: debouncedSearch.trim() !== '' ? debouncedSearch : undefined
-	})
-
-	React.useEffect(() => {
-		if (query.isError) {
-			return AlertNotification({
-				icon: AlertEnum.WARNING,
-				message: errorCatch(query.error as AxiosError),
-				customClass: AlertCustomEnum.WARNING
-			})
+	const flowers: IFlower[] = [
+		{
+			id: 1,
+			title: 'Elegant Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 50,
+			discountedPrice: 75,
+			currency: 'USD',
+			imageUrl: '/avatar.png',
+			width: 12,
+			height: 12,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 2,
+			title: 'White Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 65,
+			discountedPrice: 55,
+			currency: 'TRY',
+			imageUrl: '/avatar.png',
+			width: 8,
+			height: 29,
+			flowerImages: [],
+			isActive: true,
+			order: 2,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 3,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 8,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 4,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 5,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 6,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
+		},
+		{
+			id: 7,
+			title: 'Red Rose Bouquet',
+			description: 'A bouquet of premium roses for all occasions.',
+			price: 89,
+			discountedPrice: 65,
+			currency: 'KG',
+			imageUrl: '/avatar.png',
+			width: 4,
+			height: 21,
+			flowerImages: [],
+			isActive: true,
+			order: 1,
+			createdAt: '2025-01-08T16:06:58.24192',
+			updatedAt: '2025-01-19T19:42:16.164925'
 		}
-	}, [query.isError])
+	]
 
 	return (
 		<>
@@ -57,15 +154,15 @@ export function FlowerList() {
 				]}
 			/>
 
-			<DataTable
-				columns={columns}
-				tableHeading={t('flowers_list')}
-				query={query}
-				pagination={pagination}
-				setPagination={setPagination}
-				searchTerm={searchTerm}
-				setSearchTerm={setSearchTerm}
-			/>
+			{Array.isArray(flowers) && flowers.length ? (
+				<div className='flex flex-wrap gap-4'>
+					{flowers.map((flower: IFlower) => (
+						<FlowerCard flower={flower} key={flower.id} />
+					))}
+				</div>
+			) : (
+				<span className='text-center'>{t('not_found')}</span>
+			)}
 		</>
 	)
 }

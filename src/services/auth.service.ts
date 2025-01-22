@@ -40,7 +40,7 @@ class AuthService {
 	}
 
 	async refreshToken(refreshToken: string) {
-		const response = await axiosWithAuth.post<ILoginResponse>(
+		const response = await axiosClassic.post<ILoginResponse>(
 			`${this.BASE_URL}/refresh-token`,
 			{ refreshToken }
 		)
