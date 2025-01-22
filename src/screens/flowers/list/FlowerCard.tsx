@@ -18,7 +18,11 @@ export function FlowerCard({ flower }: IFlowerCard) {
 	return (
 		<Card className={`group ${styles.flower_card}`}>
 			<div className={styles.flower_image_container}>
-				<img alt='Flower' src={flower.imageUrl ?? '/avatar.png'} />
+				<img
+					alt='Flower'
+					src={flower.imageUrl ?? '/avatar.png'}
+					className='group-hover:scale-105'
+				/>
 			</div>
 
 			<>

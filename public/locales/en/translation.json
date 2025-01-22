@@ -102,5 +102,6 @@
 	"width": "Width",
 	"width_placeholder": "Enter Width",
 	"width_required" : "Width is required",
-	"view": "View"
+	"view": "View",
+	"filter": "Filter"
 }

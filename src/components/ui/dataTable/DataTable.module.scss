@@ -13,7 +13,7 @@
 		@apply relative w-full sm:w-auto;
 	}
 	.heading {
-		@apply inline-block text-center text-lg font-normal uppercase text-gray-600;
+		@apply inline-block text-center text-lg font-normal text-gray-600 sm:text-xl;
 	}
 }
 
