@@ -14,6 +14,7 @@ import { BreadCrumb, Button, Card } from '@/components/ui'
 
 import styles from './Flower.module.scss'
 import { FlowerCard } from './FlowerCard'
+import { isArrayNotEmpty } from '@/utils'
 
 export function FlowerList() {
 	const { t } = useTranslate()
@@ -49,7 +50,7 @@ export function FlowerList() {
 					</div>
 				</div>
 
-				{Array.isArray(flowers) && flowers.length ? (
+				{isArrayNotEmpty(flowers) ? (
 					<div className={styles.flower_card_grid}>
 						{flowers.map((flower: IFlower) => (
 							<FlowerCard flower={flower} key={flower.id} />
