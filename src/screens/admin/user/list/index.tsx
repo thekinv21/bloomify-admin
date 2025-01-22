@@ -58,7 +58,7 @@ export function UserList() {
 			<BreadCrumb
 				linksArray={[
 					{
-						link: '/admin',
+						link: '#',
 						title: 'admin',
 						icon: <ShieldCheckIcon size={16} />
 					},
