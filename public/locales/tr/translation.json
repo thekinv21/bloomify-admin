@@ -104,5 +104,6 @@
 	"width_required" : "Genişlik zorunludur",
 	"view": "Görüntüle",
 	"filter": "Filtrele",
-	"view_type": "Görünüm Tipi"
+	"view_type": "Görünüm Tipi",
+	"card": "Kart"
 }
