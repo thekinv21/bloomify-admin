@@ -2,6 +2,8 @@
 	@apply grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4;
 }
 
+// flower card styles
+
 .flower_card {
 	@apply max-w-full rounded-md bg-white p-4 shadow-md transition-shadow duration-300 hover:shadow-lg xl:max-w-md;
 }
@@ -39,5 +41,35 @@
 
 	> del {
 		@apply text-base font-normal text-gray-400;
+	}
+}
+
+// flower list page styles
+
+.page_content {
+	@apply mx-auto flex w-full flex-col p-5;
+}
+
+.page_header_container {
+	@apply mb-5 flex flex-col items-start gap-5 px-1 sm:flex-row sm:items-center sm:justify-between sm:gap-0;
+
+	> h3 {
+		@apply inline-block text-center text-lg font-normal text-gray-600 sm:text-xl;
+	}
+
+	> div {
+		@apply flex select-none flex-wrap items-center gap-5;
+
+		> button {
+			@apply min-w-[120px];
+		}
+	}
+}
+
+.not_found_container {
+	@apply flex flex-col items-center justify-center gap-2 py-20;
+
+	> span {
+		@apply text-base md:text-lg;
 	}
 }

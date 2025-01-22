@@ -1,4 +1,10 @@
-import { FilterIcon, FlowerIcon, PlusIcon } from 'lucide-react'
+import {
+	DatabaseIcon,
+	FilterIcon,
+	FlowerIcon,
+	Grid2X2Icon,
+	PlusIcon
+} from 'lucide-react'
 
 import { useTranslate } from '@/hooks'
 
@@ -26,27 +32,20 @@ export function FlowerList() {
 				]}
 			/>
 
-			<Card className='mx-auto flex w-full flex-col p-5'>
-				<div className='flex items-center justify-between'>
-					<h3 className='inline-block text-center text-lg font-normal text-gray-600 sm:text-xl'>
-						{t('flowers_list')}
-					</h3>
+			<Card className={styles.page_content}>
+				<div className={styles.page_header_container}>
+					<h3>{t('flowers_list')}</h3>
 
-					<div className='flex items-center gap-5'>
-						<Button
-							leftSection={<FilterIcon size={16} />}
-							className='min-w-[120px]'
-							variant='outline'
-						>
+					<div>
+						<Button leftSection={<Grid2X2Icon size={16} />} variant='outline'>
+							{t('view_type')}
+						</Button>
+
+						<Button leftSection={<FilterIcon size={16} />} variant='warning'>
 							{t('filter')}
 						</Button>
 
-						<Button
-							leftSection={<PlusIcon size={16} />}
-							className='min-w-[120px]'
-						>
-							{t('create')}
-						</Button>
+						<Button leftSection={<PlusIcon size={16} />}>{t('create')}</Button>
 					</div>
 				</div>
 
@@ -57,14 +56,14 @@ export function FlowerList() {
 						))}
 					</div>
 				) : (
-					<div className='flex flex-col items-center justify-center gap-2'>
-						<FlowerIcon
-							size={60}
+					<div className={styles.not_found_container}>
+						<DatabaseIcon
+							size={40}
 							strokeWidth={1}
 							aria-label='Flower_Icon'
 							aria-description='Flower_icon_not_found'
 						/>
-						<span className='text-lg md:text-xl'>{t('data_empty')}</span>
+						<span>{t('data_empty')}</span>
 					</div>
 				)}
 			</Card>
