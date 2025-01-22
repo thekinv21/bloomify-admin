@@ -17,5 +17,18 @@ export const keyConstant = {
 	edit_role: 'edit-role',
 	delete_role: 'delete-role',
 	toggle_role: 'toggle-role',
-	get_role_for_select: 'get-role-for-select'
+	get_role_for_select: 'get-role-for-select',
+	get_flowers: 'get-all-flowers',
+	get_flower: 'get-flower-by-id',
+	create_flower: 'create-flower',
+	edit_flower: 'edit-flower',
+	delete_flower: 'delete-flower',
+	toggle_flower: 'toggle-flower',
+	get_flower_image: 'get-flower-images',
+	get_flower_image_by_id: 'get-flower-image-by-id',
+	get_flower_image_by_flower_id: 'get-flower-image-by-flower-id',
+	create_flower_image: 'create-flower-image',
+	edit_flower_image: 'edit-flower-image',
+	delete_flower_image: 'delete-flower-image',
+	toggle_flower_image: 'toggle-flower-image'
 } as const
