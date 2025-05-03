@@ -22,7 +22,10 @@ export function SidebarItem({ item }: ISidebarItem) {
 		<NavLink
 			to={item.url}
 			className={({ isActive }) =>
-				[styles.link_button, isActive ? 'text-primary/70' : ''].join(' ')
+				[
+					styles.link_button,
+					isActive ? 'bg-[#e7ffe4]/25 text-primary/70' : ''
+				].join(' ')
 			}
 		>
 			<div className={styles.link_icon}>{item.icon}</div>
@@ -75,7 +78,7 @@ export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 			<button
 				className={clsx(
 					styles.link_button,
-					hasActiveLink ? 'text-primary/90' : ''
+					hasActiveLink ? 'bg-[#e7ffe4]/25 text-primary/70' : ''
 				)}
 				onClick={toggleDropdown}
 				aria-expanded={isOpen}
@@ -97,9 +100,10 @@ export function SidebarItemDropdown(dropdownLink: ISidebarItemDropdown) {
 									to={item.url}
 									key={idx}
 									className={({ isActive }) =>
-										[styles.dropdown_item, isActive ? 'text-primary' : ''].join(
-											' '
-										)
+										[
+											styles.dropdown_item,
+											isActive ? 'text-primary/70' : ''
+										].join(' ')
 									}
 								>
 									<li>
