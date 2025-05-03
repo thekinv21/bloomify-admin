@@ -51,7 +51,7 @@ import { CustomTooltip } from './custom/CustomTooltip'
 import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
 import { Label } from './label'
-import { Loader } from './loader/Loader'
+import { Loader, SmallLoader } from './loader'
 
 export {
 	Alert,
@@ -99,5 +99,6 @@ export {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
+	SmallLoader,
 	Switch
 }

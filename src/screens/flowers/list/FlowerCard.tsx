@@ -2,7 +2,7 @@ import { useTranslate } from '@/hooks'
 
 import { IFlower } from '@/types'
 
-import { Button, Card } from '@/components/ui'
+import { Button } from '@/components/ui'
 
 import styles from './Flower.module.scss'
 import { detectCurrency } from '@/utils'
@@ -15,7 +15,7 @@ export function FlowerCard({ flower }: IFlowerCard) {
 	const { t } = useTranslate()
 
 	return (
-		<Card className={`group ${styles.flower_card}`}>
+		<div className={`group ${styles.flower_card}`}>
 			<div className={styles.flower_image_container}>
 				<img
 					alt='Flower'
@@ -47,6 +47,6 @@ export function FlowerCard({ flower }: IFlowerCard) {
 			<div className='flex w-full justify-end'>
 				<Button variant='link'>{t('view_details')}</Button>
 			</div>
-		</Card>
+		</div>
 	)
 }

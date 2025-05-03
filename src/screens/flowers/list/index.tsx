@@ -2,7 +2,7 @@ import { FlowerIcon } from 'lucide-react'
 
 import { IFlower } from '@/types'
 
-import { BreadCrumb, Card } from '@/components/ui'
+import { BreadCrumb } from '@/components/ui'
 
 import { useFetchFlowers } from '../hooks/useFetchFlowers'
 
@@ -28,10 +28,10 @@ export function FlowerList() {
 				]}
 			/>
 
-			<Card className={styles.page_content}>
+			<div className={styles.page_content}>
 				<FlowerListHeader />
 				<FlowerCardMapper flowers={query.data?.content as IFlower[]} />
-			</Card>
+			</div>
 		</>
 	)
 }
