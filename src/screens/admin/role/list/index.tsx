@@ -15,6 +15,7 @@ import {
 	CustomModal,
 	DataTable
 } from '@/components/ui'
+import { DataTableHeading } from '@/components/ui/dataTable/DataTableHeading'
 
 import { RoleForm } from '../form/RoleForm'
 import { useFetchRoles } from '../hooks/useFetchRoles'
@@ -68,15 +69,23 @@ export function RoleList() {
 					}
 				]}
 			/>
-			<DataTable
-				columns={columns}
-				tableHeading={t('roles_list')}
-				query={query}
-				pagination={pagination}
-				setPagination={setPagination}
+
+			<DataTableHeading
+				heading={t('roles_list')}
 				searchTerm={searchTerm}
 				setSearchTerm={setSearchTerm}
 				setIsOpen={setIsAdd}
+			/>
+
+			<DataTable
+				columns={columns}
+				// tableHeading={t('roles_list')}
+				query={query}
+				pagination={pagination}
+				setPagination={setPagination}
+				// searchTerm={searchTerm}
+				// setSearchTerm={setSearchTerm}
+				// setIsOpen={setIsAdd}
 			/>
 
 			{isAdd && (

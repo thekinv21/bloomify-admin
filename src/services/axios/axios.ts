@@ -1,17 +1,13 @@
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import Cookies from 'js-cookie'
 
 import { API_URL } from '@/constant'
 
-import { AlertCustomEnum, AlertEnum, TokenEnum } from '@/types/custom.enum'
-
-import { AlertNotification } from '@/components/ui'
+import { TokenEnum } from '@/types/custom.enum'
 
 import { useUserStore } from '@/store/userStore'
 
 import { authService } from '../auth.service'
-
-import { errorCatch } from './error'
 
 const options = {
 	baseURL: API_URL,
@@ -46,6 +42,8 @@ axiosWithAuth.interceptors.response.use(
 		const config = error.config
 		if (error.response && error.response.status === 401 && !config._retry) {
 			config._retry = true
+
+			console.log('Retrying request...', retryCount)
 
 			if (retryCount < 3) {
 				try {
@@ -91,11 +89,8 @@ axiosWithAuth.interceptors.response.use(
 						}
 					}
 				} catch (error) {
-					AlertNotification({
-						icon: AlertEnum.WARNING,
-						message: errorCatch(error as AxiosError),
-						customClass: AlertCustomEnum.WARNING
-					})
+					retryCount++
+					console.log('Error refreshing token:', error)
 				}
 			} else {
 				await useUserStore.setState({
