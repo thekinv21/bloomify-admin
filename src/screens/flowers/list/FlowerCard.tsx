@@ -1,8 +1,10 @@
-import { useTranslate } from '@/hooks'
+import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
+
+import { useCookie, useTranslate } from '@/hooks'
 
 import { IFlower } from '@/types'
 
-import { Alert, Button, Switch } from '@/components/ui'
+import { Alert, Switch } from '@/components/ui'
 
 import styles from './Flower.module.scss'
 import { detectCurrency } from '@/utils'
@@ -13,6 +15,8 @@ interface IFlowerCard {
 
 export function FlowerCard({ flower }: IFlowerCard) {
 	const { t } = useTranslate()
+
+	const { isAdmins } = useCookie()
 
 	return (
 		<div className={`group ${styles.flower_card}`}>
@@ -44,22 +48,42 @@ export function FlowerCard({ flower }: IFlowerCard) {
 
 			<p className={styles.flower_description}>{flower.description}</p>
 
-			<div className='flex w-full items-center justify-between gap-2'>
-				<Button variant='link'>{t('view_details')}</Button>
+			{isAdmins && (
+				<div className='flex w-full items-center justify-between gap-2'>
+					<Switch
+						checked={flower.isActive as boolean}
+						size='sm'
+						onClick={() => {
+							Alert({
+								subTitle: t('toggle_confirm'),
+								action: async () => {
+									console.log('id', flower.id)
+								}
+							})
+						}}
+					/>
 
-				<Switch
-					checked={flower.isActive as boolean}
-					size='sm'
-					onClick={() => {
-						Alert({
-							subTitle: t('toggle_confirm'),
-							action: async () => {
-								console.log('id', flower.id)
-							}
-						})
-					}}
-				/>
-			</div>
+					<div className='flex items-center gap-2'>
+						<button title={t(`edit`)}>
+							<FilePenLineIcon color='blue' size={20} />
+						</button>
+
+						<button
+							title={t(`delete`)}
+							onClick={() => {
+								Alert({
+									subTitle: t('delete_confirm'),
+									action: async () => {
+										console.log('id', flower.id)
+									}
+								})
+							}}
+						>
+							<Trash2Icon color='red' size={20} />
+						</button>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }
