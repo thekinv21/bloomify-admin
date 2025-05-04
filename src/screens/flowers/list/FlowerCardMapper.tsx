@@ -18,6 +18,10 @@ type TypeFlowerList = {
 export function FlowerCardMapper({ flowers, isLoading }: TypeFlowerList) {
 	const { t } = useTranslate()
 
+	const sortByOrder = (array: IFlower[]) => {
+		return array.sort((a: IFlower, b: IFlower) => a.order - b.order)
+	}
+
 	return (
 		<>
 			{isLoading ? (
@@ -31,7 +35,7 @@ export function FlowerCardMapper({ flowers, isLoading }: TypeFlowerList) {
 				<div>
 					{isArrayNotEmpty(flowers) ? (
 						<div className={styles.flower_card_grid}>
-							{flowers.map((flower: IFlower) => (
+							{sortByOrder(flowers)?.map((flower: IFlower) => (
 								<FlowerCard flower={flower} key={flower.id} />
 							))}
 						</div>
@@ -42,8 +46,11 @@ export function FlowerCardMapper({ flowers, isLoading }: TypeFlowerList) {
 								strokeWidth={1}
 								aria-label='Flower_Icon'
 								aria-description='Flower_icon_not_found'
+								className='text-foreground/30'
 							/>
-							<span>{t('data_empty')}</span>
+							<span className='font-semibold text-foreground/30'>
+								{t('data_empty')}
+							</span>
 						</div>
 					)}
 				</div>

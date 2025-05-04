@@ -47,8 +47,12 @@ export function FlowerHeader(props: IFlowerHeader) {
 
 				<DropdownMenu>
 					<DropdownMenuTrigger asChild>
-						<div aria-label='Change View Type'>
-							<Button variant='warning' leftSection={<FlowerIcon size={16} />}>
+						<div aria-label='Change View Type' className='w-full sm:w-auto'>
+							<Button
+								variant='warning'
+								leftSection={<FlowerIcon size={16} />}
+								className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
+							>
 								{t('view_type')}
 							</Button>
 						</div>

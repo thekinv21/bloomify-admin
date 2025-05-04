@@ -2,7 +2,7 @@ import { useTranslate } from '@/hooks'
 
 import { IFlower } from '@/types'
 
-import { Button } from '@/components/ui'
+import { Alert, Button, Switch } from '@/components/ui'
 
 import styles from './Flower.module.scss'
 import { detectCurrency } from '@/utils'
@@ -44,8 +44,21 @@ export function FlowerCard({ flower }: IFlowerCard) {
 
 			<p className={styles.flower_description}>{flower.description}</p>
 
-			<div className='flex w-full justify-end'>
+			<div className='flex w-full items-center justify-between gap-2'>
 				<Button variant='link'>{t('view_details')}</Button>
+
+				<Switch
+					checked={flower.isActive as boolean}
+					size='sm'
+					onClick={() => {
+						Alert({
+							subTitle: t('toggle_confirm'),
+							action: async () => {
+								console.log('id', flower.id)
+							}
+						})
+					}}
+				/>
 			</div>
 		</div>
 	)
