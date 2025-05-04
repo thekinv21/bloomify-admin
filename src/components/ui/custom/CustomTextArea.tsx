@@ -12,6 +12,7 @@ export interface ITextAreaProps {
 	placeholder?: string
 	error?: FieldError
 	className?: string
+	rows?: number
 }
 
 type TypeInputProps = InputHTMLAttributes<HTMLTextAreaElement> & ITextAreaProps
@@ -44,8 +45,8 @@ const CustomTextArea = forwardRef<HTMLTextAreaElement, TypeInputProps>(
 								: 'placeholder:text-muted-foreground'
 						)}
 						placeholder={placeholder}
-						rows={6}
 						ref={ref}
+						rows={props.rows ?? 3}
 						{...props}
 					/>
 				</div>

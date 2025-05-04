@@ -116,6 +116,8 @@
 	"description_max_length": "Description max length is 400 characters",
 	"description_min_length": "Description min length is 5 characters",
 	"max_length": "Max length is 50 characters",
-	"min_length": "Min length is 3 characters"
+	"min_length": "Min length is 3 characters",
+	"main_image": "Main Image",
+	"main_image_placeholder": "Enter main image link"
 
 }

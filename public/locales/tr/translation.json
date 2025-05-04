@@ -116,5 +116,7 @@
 	"description_max_length": "Açıklama maksimum uzunluğu 400 karakterdir",
 	"description_min_length": "Açıklama minimum uzunluğu 5 karakterdir",
 	"max_length": "Maksimum uzunluk 50 karakter olmalıdır",
-	"min_length": "Minimum uzunluk 5 karakter olmalıdır"
+	"min_length": "Minimum uzunluk 5 karakter olmalıdır",
+	"main_image": "Ana Resim",
+	"main_image_placeholder":" Ana resim linki giriniz"
 }

@@ -1,6 +1,12 @@
 import clsx from 'clsx'
 import { X } from 'lucide-react'
-import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
+import {
+	ChangeEvent,
+	forwardRef,
+	InputHTMLAttributes,
+	ReactNode,
+	useId
+} from 'react'
 import { FieldError } from 'react-hook-form'
 
 import { useTranslate } from '@/hooks'
@@ -17,6 +23,8 @@ export interface IFieldProps {
 	iconRight?: ReactNode
 	iconLeftOnClick?: () => void
 	iconRightOnClick?: () => void
+	message?: string
+	isHaveInputMessage?: boolean
 }
 
 type TypeInputProps = InputHTMLAttributes<HTMLInputElement> & IFieldProps
@@ -106,7 +114,9 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 							className='absolute inset-y-0 end-3 my-auto flex items-center text-muted-foreground/80'
 							onClick={() => {
 								if (props.onChange) {
-									props.onChange({ target: { value: '' } } as any)
+									props.onChange({
+										target: { value: '' }
+									} as ChangeEvent<HTMLInputElement>)
 								}
 							}}
 							size={16}

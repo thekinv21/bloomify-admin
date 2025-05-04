@@ -37,9 +37,7 @@ export function FlowerForm({ type }: IFlowerForm) {
 				<CustomInput
 					label={t('title')}
 					placeholder={t('title_placeholder')}
-					{...formMethod.register('title', {
-						required: t('title_required')
-					})}
+					{...formMethod.register('title')}
 					error={formMethod.formState.errors.title}
 				/>
 
@@ -48,8 +46,7 @@ export function FlowerForm({ type }: IFlowerForm) {
 					label={t('price')}
 					placeholder={t('price_placeholder')}
 					{...formMethod.register('price', {
-						valueAsNumber: true,
-						required: t('price_required')
+						valueAsNumber: true
 					})}
 					error={formMethod.formState.errors.price}
 				/>
@@ -75,7 +72,34 @@ export function FlowerForm({ type }: IFlowerForm) {
 					/>
 				</div>
 
-				<div className='space-y-3'>
+				<CustomInput
+					type='number'
+					label={t('height')}
+					placeholder={t('height_placeholder')}
+					{...formMethod.register('height', {
+						valueAsNumber: true
+					})}
+					error={formMethod.formState.errors.height}
+				/>
+
+				<CustomInput
+					type='number'
+					label={t('width')}
+					placeholder={t('width_placeholder')}
+					{...formMethod.register('width', {
+						valueAsNumber: true
+					})}
+					error={formMethod.formState.errors.width}
+				/>
+
+				<CustomInput
+					label={t('main_image')}
+					placeholder={t('main_image_placeholder')}
+					{...formMethod.register('imageUrl')}
+					error={formMethod.formState.errors.imageUrl}
+				/>
+
+				<div className='mt-3 flex flex-col gap-2'>
 					<Label
 						className='block text-sm font-medium text-gray-700'
 						htmlFor='isActive'

@@ -12,13 +12,22 @@ export const flowerSchema = z.object({
 		message: 'description_required'
 	}),
 
-	price: z
-		.number({
-			required_error: 'price_required'
-		})
-		.nonnegative({
-			message: 'min_value'
-		}),
+	price: z.preprocess(
+		val => {
+			if (typeof val === 'string') {
+				const parsed = parseFloat(val)
+				return isNaN(parsed) ? undefined : parsed
+			}
+			return val
+		},
+		z
+			.number({
+				required_error: 'price_required',
+				invalid_type_error: 'price_required'
+			})
+			.nonnegative({ message: 'min_value' })
+			.refine(val => val > 0, { message: 'min_value' })
+	),
 
 	currency: z
 		.string({
@@ -29,32 +38,27 @@ export const flowerSchema = z.object({
 			message: 'currency_required'
 		}),
 
-	imageUrl: z
-		.string({
-			invalid_type_error: 'invalid_type',
-			required_error: 'image_required'
-		})
-		.nonempty({
-			message: 'image_required'
-		}),
+	imageUrl: z.string().optional(),
 
 	height: z
 		.number({
-			invalid_type_error: 'invalid_type',
+			invalid_type_error: 'height_required',
 			required_error: 'height_required'
 		})
 		.nonnegative({
 			message: 'min_value'
-		}),
+		})
+		.refine(val => val > 0, { message: 'min_value' }),
 
 	width: z
 		.number({
-			invalid_type_error: 'invalid_type',
+			invalid_type_error: 'width_required',
 			required_error: 'width_required'
 		})
 		.nonnegative({
 			message: 'min_value'
-		}),
+		})
+		.refine(val => val > 0, { message: 'min_value' }),
 
 	isActive: z.boolean(),
 
