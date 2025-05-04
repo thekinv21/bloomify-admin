@@ -11,13 +11,13 @@ import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 import { errorCatch } from '@/services'
 
 import { AlertNotification, BreadCrumb, DataTable } from '@/components/ui'
-import { DataTableHeading } from '@/components/ui/dataTable/DataTableHeading'
 
 import { useFetchFlowers } from '../hooks/useFetchFlowers'
 
 import styles from './Flower.module.scss'
 import { FlowerCardMapper } from './FlowerCardMapper'
 import { FlowerDataTableColumns } from './FlowerDataTableColumns'
+import { FlowerHeader } from './FlowerHeader'
 import { cn } from '@/utils/utils'
 
 export function FlowerList() {
@@ -67,20 +67,18 @@ export function FlowerList() {
 			/>
 
 			<div className={cn('panel', styles.page_content)}>
+				<FlowerHeader
+					heading={t('flowers_list')}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
+					setIsOpen={setIsAdd}
+					setIsGridView={setIsGridView}
+				/>
+
 				{isGridView ? (
-					<FlowerCardMapper
-						flowers={query.data?.content as IFlower[]}
-						setIsGridView={setIsGridView}
-					/>
+					<FlowerCardMapper flowers={query.data?.content as IFlower[]} />
 				) : (
 					<>
-						<DataTableHeading
-							heading={t('flowers_list')}
-							searchTerm={searchTerm}
-							setSearchTerm={setSearchTerm}
-							setIsOpen={setIsAdd}
-						/>
-
 						<DataTable
 							columns={columns}
 							query={query}

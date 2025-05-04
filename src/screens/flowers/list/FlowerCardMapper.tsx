@@ -6,21 +6,17 @@ import { IFlower } from '@/types'
 
 import styles from './Flower.module.scss'
 import { FlowerCard } from './FlowerCard'
-import { FlowerListHeader } from './FlowerListHeader'
 import { isArrayNotEmpty } from '@/utils'
 
 type TypeFlowerList = {
 	flowers: IFlower[]
-	setIsGridView: (isGridView: boolean) => void
 }
 
-export function FlowerCardMapper({ flowers, setIsGridView }: TypeFlowerList) {
+export function FlowerCardMapper({ flowers }: TypeFlowerList) {
 	const { t } = useTranslate()
 
 	return (
 		<>
-			<FlowerListHeader setIsGridView={setIsGridView} />
-
 			{isArrayNotEmpty(flowers) ? (
 				<div className={styles.flower_card_grid}>
 					{flowers.map((flower: IFlower) => (
