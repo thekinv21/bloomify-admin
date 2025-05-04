@@ -106,5 +106,8 @@
 	"filter": "Filter",
 	"view_type": "View Type",
 	"card": "Card",
-	"view_details": "View Details"
+	"view_details": "View Details",
+	"invalid_type": "Invalid type, please select a valid type",
+	"min_value": "Minimum value must be higher than 0",
+	"flower_images_required": "Flower images are required"
 }

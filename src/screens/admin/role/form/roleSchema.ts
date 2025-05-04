@@ -8,8 +8,5 @@ export const roleSchema = z.object({
 		})
 		.toUpperCase()
 		.nonempty('roleName_required'),
-	isActive: z.boolean({
-		invalid_type_error: 'password_required',
-		required_error: 'password_required'
-	})
+	isActive: z.boolean()
 })

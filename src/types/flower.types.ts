@@ -18,7 +18,7 @@ export interface IFlower {
 }
 
 export interface ICreateFlower
-	extends Omit<IFlower, 'id' | 'createdAt' | 'updatedAt'> {}
+	extends Omit<IFlower, 'id' | 'createdAt' | 'updatedAt' | 'order'> {}
 
 export interface IUpdateFlower
 	extends Omit<IFlower, 'createdAt' | 'updatedAt'> {}
