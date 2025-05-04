@@ -8,16 +8,12 @@ export const flowerSchema = z.object({
 		})
 		.nonempty('title_required'),
 
-	description: z
-		.string({
-			invalid_type_error: 'invalid_type',
-			required_error: 'description_required'
-		})
-		.nonempty('description_required'),
+	description: z.string().nonempty({
+		message: 'description_required'
+	}),
 
 	price: z
 		.number({
-			invalid_type_error: 'invalid_type',
 			required_error: 'price_required'
 		})
 		.nonnegative({

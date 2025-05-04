@@ -109,5 +109,12 @@
 	"view_details": "Detayları Görüntüle",
 	"invalid_type": "Geçersiz tür, lütfen geçerli bir tür seçin",
 	"min_value": "Minimum değer 0'dan büyük olmalıdır",
-	"flower_images_required": "Çiçek resimleri zorunludur"
+	"flower_images_required": "Çiçek resimleri zorunludur",
+	"reset": "Sıfırla",
+	"create_flower" : "Çiçek Oluştur",
+	"edit_flower" : "Çiçeği Düzenle",
+	"description_max_length": "Açıklama maksimum uzunluğu 400 karakterdir",
+	"description_min_length": "Açıklama minimum uzunluğu 5 karakterdir",
+	"max_length": "Maksimum uzunluk 50 karakter olmalıdır",
+	"min_length": "Minimum uzunluk 5 karakter olmalıdır"
 }

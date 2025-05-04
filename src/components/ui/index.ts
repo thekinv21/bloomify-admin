@@ -47,6 +47,7 @@ import {
 import CustomInput from './custom/CustomInput'
 import { CustomModal } from './custom/CustomModal'
 import { CustomSingleSelect } from './custom/CustomSingleSelect'
+import CustomTextArea from './custom/CustomTextArea'
 import { CustomTooltip } from './custom/CustomTooltip'
 import { DataTable } from './dataTable/DataTable'
 import { Input } from './input'
@@ -79,6 +80,7 @@ export {
 	CustomInput,
 	CustomModal,
 	CustomSingleSelect,
+	CustomTextArea,
 	CustomTooltip,
 	DataTable,
 	DropdownMenu,

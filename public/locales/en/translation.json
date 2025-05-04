@@ -109,5 +109,13 @@
 	"view_details": "View Details",
 	"invalid_type": "Invalid type, please select a valid type",
 	"min_value": "Minimum value must be higher than 0",
-	"flower_images_required": "Flower images are required"
+	"flower_images_required": "Flower images are required",
+	"reset": "Reset",
+	"create_flower" : "Create Flower",
+	"edit_flower" : "Edit Flower",
+	"description_max_length": "Description max length is 400 characters",
+	"description_min_length": "Description min length is 5 characters",
+	"max_length": "Max length is 50 characters",
+	"min_length": "Min length is 3 characters"
+
 }

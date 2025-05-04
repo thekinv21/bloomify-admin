@@ -1,8 +1,16 @@
-import { Controller } from 'react-hook-form'
+import { BrushIcon, Edit, Plus } from 'lucide-react'
+import { Control, Controller } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 
-import { Button, CustomInput, Label, Switch } from '@/components/ui'
+import {
+	Button,
+	CustomInput,
+	CustomSingleSelect,
+	CustomTextArea,
+	Label,
+	Switch
+} from '@/components/ui'
 
 import { useFlowerForm } from './useFlowerForm'
 
@@ -18,48 +26,103 @@ export function FlowerForm({ type }: IFlowerForm) {
 	return (
 		<form
 			name='role_form'
-			className='space-y-5'
+			className='panel flex flex-col gap-4'
 			onSubmit={formMethod.handleSubmit(onSubmit)}
 		>
-			<CustomInput
-				label={t('roleName')}
-				placeholder={t('roleName_placeholder')}
-				{...formMethod.register('title', {
-					required: t('roleName_required')
-				})}
-				error={formMethod.formState.errors.title}
-			/>
+			<h1 className='text-xl uppercase text-gray-600'>
+				{type === CrudEnum.CREATE ? t('create_flower') : t('edit_flower')}
+			</h1>
 
-			<div className='space-y-3'>
-				<Label
-					className='block text-sm font-medium text-gray-700'
-					htmlFor='isActive'
-				>
-					{t('status')}
-				</Label>
-				<Controller
-					name='isActive'
-					control={formMethod.control}
-					render={({ field }) => (
-						<Switch
-							id='isActive'
-							checked={field.value}
-							onCheckedChange={checked => field.onChange(checked)}
-							name={field.name}
-							ref={field.ref}
-						/>
-					)}
+			<div className='grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3'>
+				<CustomInput
+					label={t('title')}
+					placeholder={t('title_placeholder')}
+					{...formMethod.register('title', {
+						required: t('title_required')
+					})}
+					error={formMethod.formState.errors.title}
 				/>
+
+				<CustomInput
+					type='number'
+					label={t('price')}
+					placeholder={t('price_placeholder')}
+					{...formMethod.register('price', {
+						valueAsNumber: true,
+						required: t('price_required')
+					})}
+					error={formMethod.formState.errors.price}
+				/>
+
+				<CustomSingleSelect
+					label={t('currency')}
+					name='currency'
+					control={formMethod.control as Control<any>}
+					options={[
+						{ label: 'USD', value: 'USD' },
+						{ label: 'EUR', value: 'EUR' },
+						{ label: 'GBP', value: 'GBP' }
+					]}
+					error={formMethod.formState.errors.currency}
+				/>
+
+				<div className='col-span-full'>
+					<CustomTextArea
+						label={t('description')}
+						placeholder={t('description_placeholder')}
+						{...formMethod.register('description')}
+						error={formMethod.formState.errors.description}
+					/>
+				</div>
+
+				<div className='space-y-3'>
+					<Label
+						className='block text-sm font-medium text-gray-700'
+						htmlFor='isActive'
+					>
+						{t('status')}
+					</Label>
+					<Controller
+						name='isActive'
+						control={formMethod.control}
+						render={({ field }) => (
+							<Switch
+								id='isActive'
+								checked={field.value}
+								onCheckedChange={checked => field.onChange(checked)}
+								name={field.name}
+								ref={field.ref}
+							/>
+						)}
+					/>
+				</div>
 			</div>
 
-			<Button
-				// loading={createPending || editPending}
-				// disabled={createPending || editPending}
-				className='w-full'
-				type='submit'
-			>
-				{type === CrudEnum.CREATE ? t('create') : t('edit')}
-			</Button>
+			<div className='ml-auto flex max-w-xs items-center gap-4'>
+				<Button
+					type='button'
+					className='min-w-28 font-semibold'
+					variant='warning'
+					leftSection={<BrushIcon className='h-4 w-4' />}
+					onClick={() => formMethod.reset()}
+				>
+					{t('reset')}
+				</Button>
+
+				<Button
+					type='submit'
+					className='min-w-28 font-semibold'
+					leftSection={
+						type === CrudEnum.CREATE ? (
+							<Plus className='h-4 w-4' />
+						) : (
+							<Edit className='h-4 w-4' />
+						)
+					}
+				>
+					{type === CrudEnum.CREATE ? t('create') : t('edit')}
+				</Button>
+			</div>
 		</form>
 	)
 }
