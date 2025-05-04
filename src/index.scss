@@ -78,4 +78,8 @@
 	.animate-custom-spin {
 		animation: custom-spin 1s infinite linear;
 	}
+
+	.panel {
+		@apply relative w-full rounded bg-white p-5 shadow;
+	}
 }

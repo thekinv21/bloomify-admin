@@ -70,23 +70,21 @@ export function RoleList() {
 				]}
 			/>
 
-			<DataTableHeading
-				heading={t('roles_list')}
-				searchTerm={searchTerm}
-				setSearchTerm={setSearchTerm}
-				setIsOpen={setIsAdd}
-			/>
+			<div className='panel'>
+				<DataTableHeading
+					heading={t('roles_list')}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
+					setIsOpen={setIsAdd}
+				/>
 
-			<DataTable
-				columns={columns}
-				// tableHeading={t('roles_list')}
-				query={query}
-				pagination={pagination}
-				setPagination={setPagination}
-				// searchTerm={searchTerm}
-				// setSearchTerm={setSearchTerm}
-				// setIsOpen={setIsAdd}
-			/>
+				<DataTable
+					columns={columns}
+					query={query}
+					pagination={pagination}
+					setPagination={setPagination}
+				/>
+			</div>
 
 			{isAdd && (
 				<CustomModal
