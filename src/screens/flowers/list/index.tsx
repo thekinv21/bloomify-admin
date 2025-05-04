@@ -55,7 +55,7 @@ export function FlowerList() {
 	const { columns } = FlowerDataTableColumns()
 
 	return (
-		<>
+		<div>
 			<BreadCrumb
 				linksArray={[
 					{
@@ -76,7 +76,10 @@ export function FlowerList() {
 				/>
 
 				{isGridView ? (
-					<FlowerCardMapper flowers={query.data?.content as IFlower[]} />
+					<FlowerCardMapper
+						flowers={query.data?.content as IFlower[]}
+						isLoading={query.isLoading || query.isFetching}
+					/>
 				) : (
 					<>
 						<DataTable
@@ -88,6 +91,6 @@ export function FlowerList() {
 					</>
 				)}
 			</div>
-		</>
+		</div>
 	)
 }

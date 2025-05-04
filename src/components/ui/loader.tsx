@@ -16,16 +16,18 @@ export function Loader() {
 
 type TypeSmallLoader = {
 	className?: string
+	size?: number
 }
 
-export function SmallLoader({ className }: TypeSmallLoader) {
+export function SmallLoader({ className, size }: TypeSmallLoader) {
 	return (
 		<div className='flex h-full w-full items-center justify-center'>
 			<LoaderCircleIcon
 				className={cn(
-					`animate-custom-spin text-secondary-primary transition-colors ease-linear`,
+					`animate-custom-spin text-primary transition-colors ease-linear`,
 					className
 				)}
+				size={size}
 				strokeWidth={1}
 			/>
 		</div>
