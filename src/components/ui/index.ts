@@ -44,6 +44,7 @@ import {
 	CardHeader,
 	CardTitle
 } from './card'
+import { CustomDropzone } from './custom/CustomDropzone'
 import CustomInput from './custom/CustomInput'
 import { CustomModal } from './custom/CustomModal'
 import { CustomSingleSelect } from './custom/CustomSingleSelect'
@@ -77,6 +78,7 @@ export {
 	CommandInput,
 	CommandItem,
 	CommandList,
+	CustomDropzone,
 	CustomInput,
 	CustomModal,
 	CustomSingleSelect,

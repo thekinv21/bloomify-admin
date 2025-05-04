@@ -5,6 +5,7 @@ import { CrudEnum } from '@/types/custom.enum'
 
 import {
 	Button,
+	CustomDropzone,
 	CustomInput,
 	CustomSingleSelect,
 	CustomTextArea,
@@ -118,6 +119,16 @@ export function FlowerForm({ type }: IFlowerForm) {
 								ref={field.ref}
 							/>
 						)}
+					/>
+				</div>
+
+				<div className='col-span-full'>
+					<CustomDropzone
+						name='flowerImages'
+						control={formMethod.control}
+						label={t('flower_images')}
+						acceptOnlyImage
+						multiple
 					/>
 				</div>
 			</div>

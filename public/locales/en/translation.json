@@ -118,6 +118,11 @@
 	"max_length": "Max length is 50 characters",
 	"min_length": "Min length is 3 characters",
 	"main_image": "Main Image",
-	"main_image_placeholder": "Enter main image link"
+	"main_image_placeholder": "Enter main image link",
+	"max_image_size": "Max image size is",
+	"accepted_image_formats": "Accepted image formats",
+	"max_file_size": "Max file size is",
+	"accepted_file_formats": "Accepted file formats",
+	"flower_images": "Flower Images"
 
 }

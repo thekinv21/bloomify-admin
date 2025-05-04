@@ -118,5 +118,10 @@
 	"max_length": "Maksimum uzunluk 50 karakter olmalıdır",
 	"min_length": "Minimum uzunluk 5 karakter olmalıdır",
 	"main_image": "Ana Resim",
-	"main_image_placeholder":" Ana resim linki giriniz"
+	"main_image_placeholder":" Ana resim linki giriniz",
+	"max_image_size": "Maksimum resim boyutu",
+	"accepted_image_formats": "Kabul edilen resim formatları",
+	"max_file_size": "Maksimum dosya boyutu",
+	"accepted_file_formats": "Kabul edilen dosya formatları",
+	"flower_images": "Çiçek resimleri"
 }
