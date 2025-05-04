@@ -1,12 +1,15 @@
 import { ColumnDef } from '@tanstack/react-table'
 import { FilePenLineIcon, Trash2Icon } from 'lucide-react'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import { useCookie, useTranslate } from '@/hooks'
 
 import { IFlower } from '@/types'
 
 import { Alert, CustomTooltip, Switch } from '@/components/ui'
+
+import { useDeleteFlower } from '../hooks/useDeleteFlower'
+import { useToggleFlower } from '../hooks/useToggleFlower'
 
 import { DateShowFormat, detectCurrency } from '@/utils'
 
@@ -15,8 +18,8 @@ export const FlowerDataTableColumns = () => {
 
 	const { isAdmins } = useCookie()
 
-	const [isEdit, setIsEdit] = React.useState<boolean>(false)
-	const [Id, setId] = React.useState<number | null>(null)
+	const { toggleFlower } = useToggleFlower()
+	const { deleteFlower } = useDeleteFlower()
 
 	const columns = useMemo<ColumnDef<IFlower>[]>(
 		() => [
@@ -102,7 +105,7 @@ export const FlowerDataTableColumns = () => {
 								Alert({
 									subTitle: t('toggle_confirm'),
 									action: async () => {
-										console.log('id', id)
+										toggleFlower(id as number)
 									}
 								})
 							}}
@@ -115,17 +118,11 @@ export const FlowerDataTableColumns = () => {
 				accessorKey: 'id',
 				header: () => <span>{t('actions')}</span>,
 				cell: info => {
-					const id = info.getValue() as string
+					const id = info.getValue() as number
 					return (
 						<div className='flex items-start gap-x-5'>
 							{isAdmins && (
-								<button
-									title={t(`edit`)}
-									onClick={() => {
-										setId(+id)
-										setIsEdit(!isEdit)
-									}}
-								>
+								<button title={t(`edit`)}>
 									<FilePenLineIcon color='blue' size={20} />
 								</button>
 							)}
@@ -137,7 +134,7 @@ export const FlowerDataTableColumns = () => {
 										Alert({
 											subTitle: t('delete_confirm'),
 											action: async () => {
-												console.log('id', id)
+												deleteFlower(id as number)
 											}
 										})
 									}}
@@ -150,13 +147,10 @@ export const FlowerDataTableColumns = () => {
 				}
 			}
 		],
-		[Id, isEdit]
+		[]
 	)
 
 	return {
-		columns,
-		isEdit,
-		setIsEdit,
-		Id
+		columns
 	}
 }

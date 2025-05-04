@@ -24,9 +24,6 @@ export function FlowerList() {
 	const { t } = useTranslate()
 
 	const [searchTerm, setSearchTerm] = useState<string>('')
-	const [isAdd, setIsAdd] = useState<boolean>(false)
-
-	console.log('FlowerList', isAdd)
 
 	const [pagination, setPagination] = useState<PaginationState>({
 		pageIndex: 0,
@@ -71,7 +68,6 @@ export function FlowerList() {
 					heading={t('flowers_list')}
 					searchTerm={searchTerm}
 					setSearchTerm={setSearchTerm}
-					setIsOpen={setIsAdd}
 					setIsGridView={setIsGridView}
 				/>
 

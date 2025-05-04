@@ -6,6 +6,9 @@ import { IFlower } from '@/types'
 
 import { Alert, Switch } from '@/components/ui'
 
+import { useDeleteFlower } from '../hooks/useDeleteFlower'
+import { useToggleFlower } from '../hooks/useToggleFlower'
+
 import styles from './Flower.module.scss'
 import { detectCurrency } from '@/utils'
 
@@ -17,6 +20,8 @@ export function FlowerCard({ flower }: IFlowerCard) {
 	const { t } = useTranslate()
 
 	const { isAdmins } = useCookie()
+	const { toggleFlower } = useToggleFlower()
+	const { deleteFlower } = useDeleteFlower()
 
 	return (
 		<div className={`group ${styles.flower_card}`}>
@@ -57,7 +62,7 @@ export function FlowerCard({ flower }: IFlowerCard) {
 							Alert({
 								subTitle: t('toggle_confirm'),
 								action: async () => {
-									console.log('id', flower.id)
+									toggleFlower(flower.id)
 								}
 							})
 						}}
@@ -74,7 +79,7 @@ export function FlowerCard({ flower }: IFlowerCard) {
 								Alert({
 									subTitle: t('delete_confirm'),
 									action: async () => {
-										console.log('id', flower.id)
+										deleteFlower(flower.id)
 									}
 								})
 							}}

@@ -2,6 +2,7 @@ import Swal from 'sweetalert2'
 
 import './Alert.scss'
 import { IAlert, IAlertNotification } from './Alert.types'
+import i18n from '@/i18n'
 
 export function AlertNotification(props: IAlertNotification) {
 	const notification = Swal.mixin({
@@ -33,11 +34,11 @@ export function Alert(props: IAlert) {
 	})
 	sweetAlert
 		.fire({
-			title: props.title ?? `Are you sure?`,
-			text: props.subTitle ?? 'You wanna continue this action?',
+			title: props.title ?? i18n.t('are_you_sure'),
+			text: props.subTitle ?? i18n.t('are_yor_sure_confirm'),
 			icon: props.icon ?? 'warning',
-			confirmButtonText: props.confirmText ?? `Confirm`,
-			cancelButtonText: props.cancelText ?? `Cancel`,
+			confirmButtonText: props.confirmText ?? i18n.t('yes'),
+			cancelButtonText: props.cancelText ?? i18n.t('no'),
 			reverseButtons: true,
 			showConfirmButton: props.isConfirmAlert ?? true,
 			showCancelButton: props.isConfirmAlert ?? true,

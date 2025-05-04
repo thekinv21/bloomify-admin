@@ -23,8 +23,6 @@ interface IFlowerHeader {
 	searchTerm: string
 	setSearchTerm: (v: string) => void
 	heading: string
-	navigateTo?: string
-	setIsOpen?: (v: boolean) => void
 	setIsGridView: (v: boolean) => void
 }
 
@@ -73,15 +71,12 @@ export function FlowerHeader(props: IFlowerHeader) {
 					</DropdownMenuContent>
 				</DropdownMenu>
 
-				{props.setIsOpen && (
-					<Button
-						leftSection={<Plus size={16} />}
-						className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
-						onClick={() => props.setIsOpen?.(true)}
-					>
-						{t('create')}
-					</Button>
-				)}
+				<Button
+					leftSection={<Plus size={16} />}
+					className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
+				>
+					{t('create')}
+				</Button>
 			</div>
 		</div>
 	)
