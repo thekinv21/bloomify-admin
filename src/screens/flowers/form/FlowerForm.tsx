@@ -1,5 +1,5 @@
 import { BrushIcon, Edit, Plus } from 'lucide-react'
-import { Control, Controller } from 'react-hook-form'
+import { Control, Controller, FieldErrors } from 'react-hook-form'
 
 import { CrudEnum } from '@/types/custom.enum'
 
@@ -23,6 +23,10 @@ export function FlowerForm({ type }: IFlowerForm) {
 	const { t, formMethod, onSubmit } = useFlowerForm({
 		type: type
 	})
+
+	const { flowerImages } = formMethod.watch()
+
+	console.log('flowerImages', flowerImages)
 
 	return (
 		<form
@@ -129,20 +133,25 @@ export function FlowerForm({ type }: IFlowerForm) {
 						label={t('flower_images')}
 						acceptOnlyImage
 						multiple
+						error={
+							formMethod.formState.errors.flowerImages as unknown as FieldErrors
+						}
 					/>
 				</div>
 			</div>
 
 			<div className='ml-auto flex max-w-xs items-center gap-4'>
-				<Button
-					type='button'
-					className='min-w-28 font-semibold'
-					variant='warning'
-					leftSection={<BrushIcon className='h-4 w-4' />}
-					onClick={() => formMethod.reset()}
-				>
-					{t('reset')}
-				</Button>
+				{type === CrudEnum.CREATE && (
+					<Button
+						type='button'
+						className='min-w-28 font-semibold'
+						variant='warning'
+						leftSection={<BrushIcon className='h-4 w-4' />}
+						onClick={() => formMethod.reset()}
+					>
+						{t('reset')}
+					</Button>
+				)}
 
 				<Button
 					type='submit'

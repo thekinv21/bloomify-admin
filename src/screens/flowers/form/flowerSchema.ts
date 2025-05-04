@@ -64,28 +64,37 @@ export const flowerSchema = z.object({
 
 	order: z.number().optional(),
 
-	flowerImages: z
-		.object({
-			imageTitle: z.string({
-				invalid_type_error: 'invalid_type',
-				required_error: 'image_title_required'
-			}),
-			imageCost: z.string().optional(),
-
-			imageUrl: z
-				.string({
-					invalid_type_error: 'invalid_type',
-					required_error: 'image_required'
+	flowerImages: z.union([
+		z
+			.array(
+				z.object({
+					imageTitle: z.string({
+						invalid_type_error: 'invalid_type',
+						required_error: 'image_title_required'
+					}),
+					imageCost: z.string().optional(),
+					imageUrl: z
+						.string({
+							invalid_type_error: 'invalid_type',
+							required_error: 'image_required'
+						})
+						.nonempty({ message: 'image_required' }),
+					isMainImage: z.boolean().optional(),
+					isActive: z.boolean().optional(),
+					order: z.number().optional()
 				})
-				.nonempty({
-					message: 'image_required'
-				}),
-			isMainImage: z.boolean().optional(),
-			isActive: z.boolean().optional(),
-			order: z.number().optional()
-		})
-		.array()
-		.nonempty({
-			message: 'flower_images_required'
-		})
+			)
+			.nonempty({ message: 'flower_images_required' }),
+		z.array(
+			z
+				.instanceof(File, { message: 'Cover Image must be a file' })
+				.refine(
+					file => ['image/jpeg', 'image/jpg', 'image/png'].includes(file.type),
+					{ message: 'Accepted formats: .jpg, .jpeg, .png' }
+				)
+				.refine(file => file.size <= 5 * 1024 * 1024, {
+					message: `max_image_size`
+				})
+		)
+	])
 })

@@ -14,7 +14,7 @@ interface IDropzoneFieldProps {
 	multiple?: boolean
 	label?: string
 	acceptOnlyImage?: boolean
-	error?: FieldError
+	error?: FieldError | FieldErrors | undefined
 }
 
 export function CustomDropzone({
