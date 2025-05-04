@@ -13,7 +13,6 @@ import { ICustomResponse } from '@/types'
 import styles from './DataTable.module.scss'
 import { DataTableContent } from './DataTableContent'
 import { DataTableFooter } from './DataTableFooter'
-import { DataTableHeading } from './DataTableHeading'
 
 interface IDataTable<TData> {
 	columns: ColumnDef<TData>[]
@@ -46,13 +45,13 @@ export function DataTable<TData>({ columns, ...props }: IDataTable<TData>) {
 
 	return (
 		<aside className={styles.panel}>
-			<DataTableHeading
+			{/* <DataTableHeading
 				heading={props.tableHeading}
 				searchTerm={props.searchTerm}
 				setSearchTerm={props.setSearchTerm}
 				setIsOpen={props.setIsOpen as (v: boolean) => void}
 				navigateTo={props.navigateTo}
-			/>
+			/> */}
 			<DataTableContent
 				customTable={customTable}
 				isFetching={props.query.isFetching}

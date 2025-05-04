@@ -12,7 +12,11 @@ import {
 
 import styles from './Flower.module.scss'
 
-export function FlowerListHeader() {
+type TypeFlowerListHeaderProps = {
+	setIsGridView: (isGridView: boolean) => void
+}
+
+export function FlowerListHeader({ setIsGridView }: TypeFlowerListHeaderProps) {
 	const { t } = useTranslate()
 
 	return (
@@ -29,13 +33,13 @@ export function FlowerListHeader() {
 						</div>
 					</DropdownMenuTrigger>
 					<DropdownMenuContent className='min-w-[145px]'>
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={() => setIsGridView(false)}>
 							<div className='flex items-start gap-2'>
 								<ListIcon size={14} />
 								<span>{t('list')}</span>
 							</div>
 						</DropdownMenuItem>
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={() => setIsGridView(true)}>
 							<div className='flex items-start gap-2'>
 								<WalletCardsIcon size={14} />
 								<span>{t('card')}</span>

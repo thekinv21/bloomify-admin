@@ -1,5 +1,5 @@
 .sidebar {
-	@apply fixed left-0 z-30 h-[calc(100vh)] select-none flex-col border-r bg-white bg-clip-border p-4 shadow-lg md:flex lg:relative;
+	@apply fixed left-0 z-30 h-[calc(100vh)] select-none flex-col border-r bg-white p-4 md:flex lg:relative;
 }
 
 .sidebar_content {
@@ -73,7 +73,7 @@
 // Collapsed sidebar styles
 
 .collapsed_sidebar {
-	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white shadow-lg md:flex lg:relative;
+	@apply fixed left-0 z-30 h-[calc(100vh)] flex-col border-r bg-white md:flex lg:relative;
 }
 
 .collapsed_sidebar_content {

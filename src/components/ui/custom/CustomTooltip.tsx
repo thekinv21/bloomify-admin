@@ -26,6 +26,7 @@ export function CustomTooltip({ children, ...props }: ICustomTooltip) {
 					side={props.position}
 					sideOffset={props.offset}
 					align={props.align}
+					className='w-fit max-w-[200px] text-wrap text-sm'
 				>
 					{props.isLink ? (
 						<a
