@@ -11,12 +11,14 @@ import { AlertCustomEnum, AlertEnum } from '@/types/custom.enum'
 import { errorCatch } from '@/services'
 
 import { AlertNotification, BreadCrumb, DataTable } from '@/components/ui'
+import { DataTableHeading } from '@/components/ui/dataTable/DataTableHeading'
 
 import { useFetchFlowers } from '../hooks/useFetchFlowers'
 
 import styles from './Flower.module.scss'
 import { FlowerCardMapper } from './FlowerCardMapper'
 import { FlowerDataTableColumns } from './FlowerDataTableColumns'
+import { cn } from '@/utils/utils'
 
 export function FlowerList() {
 	const { t } = useTranslate()
@@ -64,23 +66,28 @@ export function FlowerList() {
 				]}
 			/>
 
-			<div className={styles.page_content}>
+			<div className={cn('panel', styles.page_content)}>
 				{isGridView ? (
 					<FlowerCardMapper
 						flowers={query.data?.content as IFlower[]}
 						setIsGridView={setIsGridView}
 					/>
 				) : (
-					<DataTable
-						columns={columns}
-						tableHeading={t('flowers_list')}
-						query={query}
-						pagination={pagination}
-						setPagination={setPagination}
-						searchTerm={searchTerm}
-						setSearchTerm={setSearchTerm}
-						setIsOpen={setIsAdd}
-					/>
+					<>
+						<DataTableHeading
+							heading={t('flowers_list')}
+							searchTerm={searchTerm}
+							setSearchTerm={setSearchTerm}
+							setIsOpen={setIsAdd}
+						/>
+
+						<DataTable
+							columns={columns}
+							query={query}
+							pagination={pagination}
+							setPagination={setPagination}
+						/>
+					</>
 				)}
 			</div>
 		</>

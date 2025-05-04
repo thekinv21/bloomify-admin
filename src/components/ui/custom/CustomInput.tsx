@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { X } from 'lucide-react'
 import { forwardRef, InputHTMLAttributes, ReactNode, useId } from 'react'
 import { FieldError } from 'react-hook-form'
 
@@ -98,6 +99,21 @@ const CustomInput = forwardRef<HTMLInputElement, ICustomInput>(
 						>
 							{iconRight}
 						</button>
+					)}
+
+					{props.value && (
+						<X
+							className='absolute inset-y-0 end-3 my-auto flex items-center text-muted-foreground/80'
+							onClick={() => {
+								if (props.onChange) {
+									props.onChange({ target: { value: '' } } as any)
+								}
+							}}
+							size={16}
+							role='button'
+							aria-label={t('clear')}
+							aria-hidden='true'
+						/>
 					)}
 				</div>
 

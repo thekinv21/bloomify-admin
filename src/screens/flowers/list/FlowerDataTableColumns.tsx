@@ -8,7 +8,7 @@ import { IFlower } from '@/types'
 
 import { Alert, CustomTooltip, Switch } from '@/components/ui'
 
-import { DateShowFormat } from '@/utils'
+import { DateShowFormat, detectCurrency } from '@/utils'
 
 export const FlowerDataTableColumns = () => {
 	const { t } = useTranslate()
@@ -37,21 +37,27 @@ export const FlowerDataTableColumns = () => {
 				accessorKey: 'title',
 				header: () => <>{t('title')}</>,
 				cell: info => (
-					<div className='cursor-pointer hover:text-blue-500 hover:underline'>
+					<>
 						{
 							<CustomTooltip message={info.getValue() as string}>
-								<span className='inline-block max-w-[200px] truncate'>
+								<span className='inline-block max-w-[200px] cursor-pointer truncate hover:underline'>
 									{info.getValue() as string}
 								</span>
 							</CustomTooltip>
 						}
-					</div>
+					</>
 				)
 			},
 
 			{
 				accessorKey: 'price',
-				header: () => <>{t('price')}</>
+				header: () => <>{t('price')}</>,
+				cell: info => (
+					<>
+						{info.getValue() as number}{' '}
+						{detectCurrency(info.row.original?.currency)}
+					</>
+				)
 			},
 
 			{
