@@ -4,6 +4,7 @@ import { IRoute } from '@/types'
 import { RoleEnum } from '@/types/custom.enum'
 
 import {
+	CreateFlowerPage,
 	FlowersPage,
 	HomePage,
 	LoginPage,
@@ -50,6 +51,12 @@ export const useRouters = () => {
 		{
 			path: pathConstant.flowers,
 			element: <FlowersPage />,
+			layout: 'default',
+			hasAuthority: [RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN]
+		},
+		{
+			path: pathConstant.createFlower,
+			element: <CreateFlowerPage />,
 			layout: 'default',
 			hasAuthority: [RoleEnum.ADMIN, RoleEnum.SUPER_ADMIN]
 		}

@@ -6,7 +6,9 @@ import {
 	WalletCardsIcon
 } from 'lucide-react'
 
-import { useTranslate } from '@/hooks'
+import { useRoute, useTranslate } from '@/hooks'
+
+import { pathConstant } from '@/constant'
 
 import {
 	Button,
@@ -28,6 +30,8 @@ interface IFlowerHeader {
 
 export function FlowerHeader(props: IFlowerHeader) {
 	const { t } = useTranslate()
+
+	const { route } = useRoute()
 
 	return (
 		<div className={styles.custom_table_heading}>
@@ -74,6 +78,7 @@ export function FlowerHeader(props: IFlowerHeader) {
 				<Button
 					leftSection={<Plus size={16} />}
 					className='w-full text-xs font-semibold uppercase sm:w-auto sm:px-5'
+					onClick={() => route(pathConstant.createFlower)}
 				>
 					{t('create')}
 				</Button>
