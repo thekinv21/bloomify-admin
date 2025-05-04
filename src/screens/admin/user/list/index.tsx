@@ -15,6 +15,7 @@ import {
 	CustomModal,
 	DataTable
 } from '@/components/ui'
+import { DataTableHeading } from '@/components/ui/dataTable/DataTableHeading'
 
 import { UserForm } from '../form/UserForm'
 import { useFetchUsers } from '../hooks/useFetchUsers'
@@ -70,16 +71,21 @@ export function UserList() {
 				]}
 			/>
 
-			<DataTable
-				columns={columns}
-				tableHeading={t('users_list')}
-				query={query}
-				pagination={pagination}
-				setPagination={setPagination}
-				searchTerm={searchTerm}
-				setSearchTerm={setSearchTerm}
-				setIsOpen={setIsAdd}
-			/>
+			<div className='panel'>
+				<DataTableHeading
+					heading={t('users_list')}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
+					setIsOpen={setIsAdd}
+				/>
+
+				<DataTable
+					columns={columns}
+					query={query}
+					pagination={pagination}
+					setPagination={setPagination}
+				/>
+			</div>
 
 			{isAdd && (
 				<CustomModal
